@@ -1123,7 +1123,8 @@ Main Banner CSS
 }
 
 .main-banner.banner-bg1 {
-  background-image: url(../../assets/img/main-banner1.jpg);
+    background-color: #0b1315;
+  /*background-image: url(../../assets/img/main-banner1.jpg);*/
 }
 
 .main-banner.banner-bg2 {

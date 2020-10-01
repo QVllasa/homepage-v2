@@ -7,7 +7,7 @@ import { HomeFourComponent } from './components/defaults/home-four/home-four.com
 import { HomeFiveComponent } from './components/defaults/home-five/home-five.component';
 import { HomeSixComponent } from './components/defaults/home-six/home-six.component';
 import { HomeSevenComponent } from './components/defaults/home-seven/home-seven.component';
-import { HomeEightComponent } from './components/pages/home-eight/home-eight.component';
+import { HomeEightComponent } from './components/defaults/home-eight/home-eight.component';
 import { HomeNineComponent } from './components/defaults/home-nine/home-nine.component';
 import { HomeTenComponent } from './components/defaults/home-ten/home-ten.component';
 import { HomeElevenComponent } from './components/defaults/home-eleven/home-eleven.component';
@@ -31,7 +31,7 @@ import { HomeTwentyEightComponent } from './components/defaults/home-twenty-eigh
 import { HomeTwentyNineComponent } from './components/defaults/home-twenty-nine/home-twenty-nine.component';
 import { HomeThirtyComponent } from './components/defaults/home-thirty/home-thirty.component';
 import { HomeThirtyOneComponent } from './components/defaults/home-thirty-one/home-thirty-one.component';
-import { HomeThirtyTwoComponent } from './components/defaults/home-thirty-two/home-thirty-two.component';
+import { HomeThirtyTwoComponent } from './components/pages/home-thirty-two/home-thirty-two.component';
 import { HomeThirtyThreeComponent } from './components/defaults/home-thirty-three/home-thirty-three.component';
 import { HomeThirtyFourComponent } from './components/defaults/home-thirty-four/home-thirty-four.component';
 import { HomeThirtyFiveComponent } from './components/defaults/home-thirty-five/home-thirty-five.component';
@@ -45,7 +45,7 @@ import { WorksDetailsComponent } from './components/pages/works-details/works-de
 import { BlogDetailsComponent } from './components/pages/blog-details/blog-details.component';
 
 const routes: Routes = [
-    {path: '', component: HomeEightComponent},
+    {path: '', component: HomeThirtyTwoComponent},
     {path: 'home-two', component: HomeTwoComponent},
     {path: 'home-three', component: HomeThreeComponent},
     {path: 'home-four', component: HomeFourComponent},

@@ -11,7 +11,7 @@ import { HomeFourComponent } from './components/defaults/home-four/home-four.com
 import { HomeFiveComponent } from './components/defaults/home-five/home-five.component';
 import { HomeSixComponent } from './components/defaults/home-six/home-six.component';
 import { HomeSevenComponent } from './components/defaults/home-seven/home-seven.component';
-import { HomeEightComponent } from './components/pages/home-eight/home-eight.component';
+import { HomeEightComponent } from './components/defaults/home-eight/home-eight.component';
 import { HomeNineComponent } from './components/defaults/home-nine/home-nine.component';
 import { HomeTenComponent } from './components/defaults/home-ten/home-ten.component';
 import { HomeElevenComponent } from './components/defaults/home-eleven/home-eleven.component';
@@ -36,7 +36,7 @@ import { HomeTwentyNineComponent } from './components/defaults/home-twenty-nine/
 import { HomeThirtyComponent } from './components/defaults/home-thirty/home-thirty.component';
 import { HomeFortyComponent } from './components/defaults/home-forty/home-forty.component';
 import { HomeThirtyOneComponent } from './components/defaults/home-thirty-one/home-thirty-one.component';
-import { HomeThirtyTwoComponent } from './components/defaults/home-thirty-two/home-thirty-two.component';
+import { HomeThirtyTwoComponent } from './components/pages/home-thirty-two/home-thirty-two.component';
 import { HomeThirtyThreeComponent } from './components/defaults/home-thirty-three/home-thirty-three.component';
 import { HomeThirtyFourComponent } from './components/defaults/home-thirty-four/home-thirty-four.component';
 import { HomeThirtyFiveComponent } from './components/defaults/home-thirty-five/home-thirty-five.component';
@@ -47,6 +47,10 @@ import { HomeThirtyNineComponent } from './components/defaults/home-thirty-nine/
 import { BlogDetailsComponent } from './components/pages/blog-details/blog-details.component';
 import { WorksDetailsComponent } from './components/pages/works-details/works-details.component';
 import { ServicesDetailsComponent } from './components/pages/services-details/services-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {IvyCarouselModule} from "angular-responsive-carousel";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
@@ -96,10 +100,14 @@ import { ServicesDetailsComponent } from './components/pages/services-details/se
     WorksDetailsComponent,
     ServicesDetailsComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatTooltipModule,
+        IvyCarouselModule,
+        MatGridListModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
