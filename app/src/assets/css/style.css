@@ -77,7 +77,7 @@ a:hover {
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-  font-family: "Playfair Display", serif;
+  font-family: "Poppins", serif;
 }
 
 p {
@@ -1709,7 +1709,7 @@ About CSS
 
 .about-content .about-list-tab .tab-content .tabs-item .skills-area .skills-item {
   position: relative;
-  margin-bottom: 25px;
+  margin-bottom: 40px;
 }
 
 .about-content .about-list-tab .tab-content .tabs-item .skills-area .skills-item .skills-header {
@@ -1775,7 +1775,9 @@ About CSS
 }
 
 .about-content .about-list-tab .tab-content .tabs-item .experience-area .single-experience-box {
-  margin-bottom: 25px;
+  margin-bottom: 40px;
+    border: 1px solid;
+    padding: 8px;
 }
 
 .about-content .about-list-tab .tab-content .tabs-item .experience-area .single-experience-box span {
@@ -2911,9 +2913,12 @@ Works CSS
   transition: all 0.3s cubic-bezier(0.3, 0.58, 0.55, 1);
   position: relative;
   z-index: 1;
+    min-height: 250px;
 }
 
 .single-works-box .works-image img {
+    max-height: 300px;
+    min-height: 250px;
   border-radius: 5px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -3068,6 +3073,7 @@ Works CSS
 }
 
 .works-box .works-image a img {
+    min-height: 250px;
   border-radius: 5px;
   -webkit-transition: 0.5s;
   transition: 0.5s;

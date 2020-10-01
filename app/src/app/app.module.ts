@@ -51,6 +51,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {IvyCarouselModule} from "angular-responsive-carousel";
 import {MatGridListModule} from "@angular/material/grid-list";
+import { FooterComponent } from './components/pages/footer/footer.component';
+import { SidenavComponent } from './components/pages/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +100,9 @@ import {MatGridListModule} from "@angular/material/grid-list";
     HomeThirtyNineComponent,
     BlogDetailsComponent,
     WorksDetailsComponent,
-    ServicesDetailsComponent
+    ServicesDetailsComponent,
+    FooterComponent,
+    SidenavComponent
   ],
     imports: [
         BrowserModule,

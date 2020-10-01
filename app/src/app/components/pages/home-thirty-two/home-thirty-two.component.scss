@@ -1,20 +1,30 @@
 .single-clients img{
-    height: 100px;
-    width: auto;
+    height: auto;
+    max-height: 65px;
+    filter: invert(1) grayscale(100%);
 }
 
-mat-grid-tile img{
+.no-filter{
+    filter: invert(0) grayscale(0) !important;
+}
+
+mat-grid-tile a{
     height:inherit;
     width: inherit;
-    object-fit: cover;
-    filter: grayscale(100%) brightness(100%);
+    img {
+        height:inherit;
+        width: inherit;
+        object-fit: cover;
+        filter: invert(1) grayscale(1);
+    }
 }
 
 
-mat-grid-tile img:hover{
-    filter: grayscale(0);
+
+
+mat-grid-tile a img:hover{
+    filter: invert(0) grayscale(0);
     transition: 0.5s;
-    background-color: rgb(152, 133, 104);
 }
 
 /*================================================
@@ -60,4 +70,9 @@ ML Partner CSS
     opacity: 1;
     visibility: visible;
     top: 0;
+}
+
+
+.works-image a img{
+    height: 250px;
 }

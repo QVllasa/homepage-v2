@@ -280,7 +280,7 @@ $value_seven: 1550px;
             }
         }
     }
-    
+
     .about-content {
         padding-right: 0;
         text-align: center;
@@ -350,6 +350,7 @@ $value_seven: 1550px;
 
                         .single-education-box {
                             margin-bottom: 20px;
+                            border: 1px solid;
 
                             span {
                                 font-size: 13px;
@@ -1047,7 +1048,7 @@ $value_seven: 1550px;
                 ul {
                     li {
                         font-size: 13px;
-                        
+
                         &::before {
                             height: 12px;
                             top: 4px;
@@ -1294,7 +1295,7 @@ $value_seven: 1550px;
             line-height: 1.8;
         }
     }
-    
+
 }
 
 @media only #{$media} and ($feature_min : $value_one) and ($feature_max : $value_two) {
@@ -1486,7 +1487,7 @@ $value_seven: 1550px;
         height: 100vh;
         overflow-y: scroll;
         -ms-overflow-style: none;
-        
+
         &.active-placid-aside {
             left: 0;
             opacity: 1;
@@ -1629,7 +1630,7 @@ $value_seven: 1550px;
         .tab-content {
             .tabs-item {
                 padding-left: 30px;
-    
+
                 .about-inner-area {
                     .about-content {
                         .sub-title {
@@ -1953,7 +1954,7 @@ $value_seven: 1550px;
         text-align: center;
         margin-top: 25px;
     }
-    
+
     .single-funfacts {
         padding-left: 0;
         text-align: center;
@@ -2305,7 +2306,7 @@ $value_seven: 1550px;
         .tab-content {
             .tabs-item {
                 padding-left: 30px;
-    
+
                 .about-inner-area {
                     .about-image {
                         max-width: 100%;
@@ -2397,7 +2398,7 @@ $value_seven: 1550px;
         };
         .inner {
             padding: 30px;
-            
+
             h3 {
                 font-size: 28px;
             }
@@ -2421,7 +2422,7 @@ $value_seven: 1550px;
         };
         .inner {
             padding: 30px;
-            
+
             h3 {
                 font-size: 28px;
             }
@@ -2464,7 +2465,7 @@ $value_seven: 1550px;
             }
         }
     }
-    
+
     .single-funfacts {
         padding-left: 0;
         text-align: center;
@@ -2491,7 +2492,7 @@ $value_seven: 1550px;
             }
         }
     }
-    
+
     .blog-area {
         .col-lg-4 {
             flex: 0 0 50%;

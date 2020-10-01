@@ -42,7 +42,7 @@ This files table contents are outlined below>>>>>
 Default CSS
 =================================================*/
 $font-family1: 'Open Sans', sans-serif;
-$font-family2: 'Playfair Display', serif;
+$font-family2: 'Poppins', serif;
 $font-family3: 'Mrs Saint Delafield', cursive;
 $font-size: 16px;
 $main-color: #c9ab81;
@@ -1523,7 +1523,7 @@ About CSS
 
                     .skills-item {
                         position: relative;
-                        margin-bottom: 25px;
+                        margin-bottom: 40px;
 
                         .skills-header {
                             position: relative;
@@ -1589,7 +1589,9 @@ About CSS
                     margin-bottom: -25px;
 
                     .single-experience-box {
-                        margin-bottom: 25px;
+                        margin-bottom: 40px;
+                        border: 1px solid;
+                        padding: 8px;
 
                         span {
                             display: block;
@@ -1621,6 +1623,8 @@ About CSS
 
                     .single-education-box {
                         margin-bottom: 25px;
+                        border: 1px solid;
+                        padding: 8px;
 
                         span {
                             color: $main-color;
@@ -1820,7 +1824,7 @@ About CSS
 
                 .skills-item {
                     position: relative;
-                    margin-bottom: 25px;
+                    margin-bottom: 40px;
 
                     .skills-header {
                         position: relative;
@@ -2766,22 +2770,22 @@ Works CSS
             }
         }
     }
-    &:hover {
-        .works-image {
-            &::before, &::after {
-                opacity: 1;
-                top: 50%;
-                left: 50%;
-            }
-            img {
-                transform: scale(1.2) rotate(4deg);
-            }
-            .overlay {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
-    }
+    //&:hover {
+    //    .works-image {
+    //        &::before, &::after {
+    //            opacity: 1;
+    //            top: 50%;
+    //            left: 50%;
+    //        }
+    //        img {
+    //            transform: scale(1.2) rotate(4deg);
+    //        }
+    //        .overlay {
+    //            opacity: 0;
+    //            visibility: hidden;
+    //        }
+    //    }
+    //}
 }
 .works-box {
     margin-bottom: 30px;
@@ -2882,18 +2886,18 @@ Works CSS
             }
         }
     }
-    &:hover {
-        .works-image {
-            &::before, &::after {
-                opacity: 1;
-                top: 50%;
-                left: 50%;
-            }
-            img {
-                transform: scale(1.2) rotate(4deg);
-            }
-        }
-    }
+    //&:hover {
+    //    .works-image {
+    //        &::before, &::after {
+    //            opacity: 1;
+    //            top: 50%;
+    //            left: 50%;
+    //        }
+    //        img {
+    //            transform: scale(1.2) rotate(4deg);
+    //        }
+    //    }
+    //}
 }
 
 /*================================================
@@ -3302,7 +3306,6 @@ My Clients CSS
     a {
         display: block;
         padding: 20px;
-        border: 1px solid #3e3c32;
 
         img {
             transition: $transition;
