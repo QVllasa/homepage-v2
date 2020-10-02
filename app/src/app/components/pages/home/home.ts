@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 interface IProject{
     id: number;
     title: string;
-    image: string;
+    imagePath: string;
     description: string;
     keys: string[];
     client: string;

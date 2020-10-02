@@ -1,18 +1,20 @@
 version: '3.4'
 
-x-cache-from:
-  - &api-cache-from
-    cache_from:
-      - ${NGINX_IMAGE:-quay.io/api-platform/nginx}
-      - ${PHP_IMAGE:-quay.io/api-platform/php}
+#x-cache-from:
+#  - &api-cache-from
+#    cache_from:
+#      - ${NGINX_IMAGE:-quay.io/api-platform/nginx}
+#      - ${PHP_IMAGE:-quay.io/api-platform/php}
 
 services:
   php:
+    container_name: php
+    restart: always
     build:
       context: ./api
       target: api_platform_php
-      <<: *api-cache-from
-    image: ${PHP_IMAGE:-quay.io/api-platform/php}
+#      <<: *api-cache-from
+#    image: ${PHP_IMAGE:-quay.io/api-platform/php}
     healthcheck:
       interval: 10s
       timeout: 3s
@@ -29,17 +31,19 @@ services:
       - dev-certs:/certs:ro,nocopy
 
   api:
+    container_name: api
     build:
       context: ./api
       target: api_platform_nginx
-      <<: *api-cache-from
-    image: ${NGINX_IMAGE:-quay.io/api-platform/nginx}
+#      <<: *api-cache-from
+#    image: ${NGINX_IMAGE:-quay.io/api-platform/nginx}
     depends_on:
       - php
     volumes:
       - ./api/public:/srv/api/public:ro
 
   vulcain:
+    container_name: vulcain
     image: dunglas/vulcain
     environment:
       - CERT_FILE=/certs/localhost.crt
@@ -56,21 +60,24 @@ services:
         protocol: tcp
 
   db:
+    container_name: postgresql
+    restart: always
     image: postgres:12-alpine
     environment:
       - POSTGRES_DB=api
       - POSTGRES_PASSWORD=!ChangeMe!
       - POSTGRES_USER=api-platform
     volumes:
-      - db-data:/var/lib/postgresql/data:rw
+#      - db-data:/var/lib/postgresql/data:rw
       # you may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./api/docker/db/data:/var/lib/postgresql/data:rw
+       - ./api/docker/db/data:/var/lib/postgresql/data:rw
     ports:
       - target: 5432
         published: 5432
         protocol: tcp
 
   mercure:
+    container_name: mercure
     image: dunglas/mercure
     environment:
       - ALLOW_ANONYMOUS=1
@@ -90,12 +97,13 @@ services:
         protocol: tcp
 
   client:
+    container_name: client_dev
     build:
       context: ./client
       target: api_platform_client_development
-      cache_from:
-        - ${CLIENT_IMAGE:-quay.io/api-platform/client}
-    image: ${CLIENT_IMAGE:-quay.io/api-platform/client}
+#      cache_from:
+#        - ${CLIENT_IMAGE:-quay.io/api-platform/client}
+#    image: ${CLIENT_IMAGE:-quay.io/api-platform/client}
     tty: true # https://github.com/facebook/create-react-app/issues/8688
     environment:
       - API_PLATFORM_CLIENT_GENERATOR_ENTRYPOINT=http://api
@@ -110,25 +118,31 @@ services:
         published: 443
         protocol: tcp
 
-  admin:
+  app:
+    container_name: app
     build:
-      context: ./admin
-      target: api_platform_admin_development
-      cache_from:
-        - ${ADMIN_IMAGE:-quay.io/api-platform/admin}
-    image: ${ADMIN_IMAGE:-quay.io/api-platform/admin}
+      context: ./app
+      args:
+        - NODE_VERSION=13
+        - NGINX_VERSION=1.17
+      target: api_platform_app_development
+    #      Only for swarm mode
+    #      cache_from:
+    #        - ${ADMIN_IMAGE:-quay.io/api-platform/admin}
+    #    image: ${ADMIN_IMAGE:-quay.io/api-platform/admin}
     tty: true # https://github.com/facebook/create-react-app/issues/8688
     depends_on:
       - dev-tls
     volumes:
-      - ./admin:/usr/src/admin:rw,cached
-      - dev-certs:/usr/src/admin/node_modules/webpack-dev-server/ssl:rw,nocopy
+      - ./app:/usr/src/app:rw,cached
+      - dev-certs:/usr/src/app/node_modules/webpack-dev-server/ssl:rw,nocopy
     ports:
-      - target: 3000
-        published: 444
+      - target: 4200
+        published: 447
         protocol: tcp
 
   dev-tls:
+    container_name: START
     build:
       context: ./docker/dev-tls
     volumes:

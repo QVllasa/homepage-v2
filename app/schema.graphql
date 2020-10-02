@@ -1,0 +1,105 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+"A node, according to the Relay specification."
+interface Node {
+    "The id of this node."
+    id: ID!
+}
+
+"This is a dummy entity. Remove it!"
+type Greeting implements Node {
+    "The entity Id"
+    _id: Int!
+    id: ID!
+    "A nice person"
+    name: String!
+}
+
+"Connection for Greeting."
+type GreetingConnection {
+    edges: [GreetingEdge]
+    pageInfo: GreetingPageInfo!
+    totalCount: Int!
+}
+
+"Edge of Greeting."
+type GreetingEdge {
+    cursor: String!
+    node: Greeting
+}
+
+"Information about the current page."
+type GreetingPageInfo {
+    endCursor: String
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
+}
+
+type Mutation {
+    "Creates a Greeting."
+    createGreeting(input: createGreetingInput!): createGreetingPayload
+    "Deletes a Greeting."
+    deleteGreeting(input: deleteGreetingInput!): deleteGreetingPayload
+    "Updates a Greeting."
+    updateGreeting(input: updateGreetingInput!): updateGreetingPayload
+}
+
+type Query {
+    greeting(id: ID!): Greeting
+    greetings(
+        "Returns the elements in the list that come after the specified cursor."
+        after: String,
+        "Returns the elements in the list that come before the specified cursor."
+        before: String,
+        "Returns the first n elements from the list."
+        first: Int,
+        "Returns the last n elements from the list."
+        last: Int
+    ): GreetingConnection
+    node(id: ID!): Node
+}
+
+"This is a dummy entity. Remove it!"
+type createGreetingPayload {
+    clientMutationId: String
+    greeting: Greeting
+}
+
+"This is a dummy entity. Remove it!"
+type deleteGreetingPayload {
+    clientMutationId: String
+    greeting: Greeting
+}
+
+"This is a dummy entity. Remove it!"
+type updateGreetingPayload {
+    clientMutationId: String
+    greeting: Greeting
+}
+
+"This is a dummy entity. Remove it!"
+input createGreetingInput {
+    clientMutationId: String
+    "A nice person"
+    name: String!
+}
+
+"This is a dummy entity. Remove it!"
+input deleteGreetingInput {
+    clientMutationId: String
+    id: ID!
+}
+
+"This is a dummy entity. Remove it!"
+input updateGreetingInput {
+    clientMutationId: String
+    id: ID!
+    "A nice person"
+    name: String
+}
