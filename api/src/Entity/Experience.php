@@ -34,6 +34,16 @@ class Experience
      */
     private $date;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $companyUrl;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -71,6 +81,30 @@ class Experience
     public function setDate(string $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCompanyUrl(): ?string
+    {
+        return $this->companyUrl;
+    }
+
+    public function setCompanyUrl(string $companyUrl): self
+    {
+        $this->companyUrl = $companyUrl;
 
         return $this;
     }
