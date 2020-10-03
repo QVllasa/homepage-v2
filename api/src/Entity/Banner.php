@@ -8,7 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={"get"},
+ *     itemOperations={}
+ * )
  * @ORM\Entity(repositoryClass=BannerRepository::class)
  * @Vich\Uploadable()
  */

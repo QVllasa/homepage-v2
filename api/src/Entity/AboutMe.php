@@ -7,7 +7,10 @@ use App\Repository\AboutMeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={},
+ *     itemOperations={"get"}
+ * )
  * @ORM\Entity(repositoryClass=AboutMeRepository::class)
  */
 class AboutMe

@@ -1,3 +1,11 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+api_graphql_entrypoint:
+    path: /graphql
+    controller: api_platform.graphql.action.entrypoint
+
+swagger_ui:
+    path: /docs
+    controller: api_platform.swagger.action.ui

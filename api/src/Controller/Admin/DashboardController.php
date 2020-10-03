@@ -40,6 +40,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        yield MenuItem::section('Entities');
         yield MenuItem::linkToCrud('About Me', 'fa fa-dot-circle', AboutMe::class);
         yield MenuItem::linkToCrud('Services', 'fa fa-dot-circle', Service::class);
         yield MenuItem::linkToCrud('Skills', 'fa fa-dot-circle', Skill::class);
@@ -51,5 +52,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Profile Image', 'fa fa-dot-circle', ProfilImage::class);
         yield MenuItem::linkToCrud('Projects', 'fa fa-dot-circle', Project::class);
         yield MenuItem::linkToCrud('Stacks', 'fa fa-dot-circle', Stack::class);
+        yield MenuItem::section('Documentation');
+        yield MenuItem::linktoRoute('GraphQL', 'fa fa-dot-circle', 'api_graphql_entrypoint');
+        yield MenuItem::linktoRoute('API', 'fa fa-dot-circle', 'swagger_ui');
     }
 }

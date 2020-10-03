@@ -7,7 +7,10 @@ use App\Repository\SkillRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={"get"},
+ *     itemOperations={}
+ * )
  * @ORM\Entity(repositoryClass=SkillRepository::class)
  */
 class Skill

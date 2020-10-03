@@ -7,7 +7,10 @@ use App\Repository\ExperienceRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={"get"},
+ *     itemOperations={"get"}
+ * )
  * @ORM\Entity(repositoryClass=ExperienceRepository::class)
  */
 class Experience
