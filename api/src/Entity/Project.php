@@ -7,16 +7,22 @@ use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use App\Resolver\GetMediaObjectResolver;
+use App\Resolver\GetMediaObjectCollectionResolver;
 
 /**
  * @ApiResource(
  *     graphql={
- *     "item_query",
- *     "collection_query"
+ *      "collection_query"={"collection_query"=GetMediaObjectCollectionResolver::class},
+ *     "item_query"={"item_query"=GetMediaObjectResolver::class},
  *     },
  *     collectionOperations={"get"},
- *     itemOperations={"get"}
+ *     itemOperations={"get"},
+ *     normalizationContext={
+ *         "groups"={"project_read"}
+ *     },
  * )
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
  * @Vich\Uploadable()
@@ -27,42 +33,50 @@ class Project
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"project_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"project_read"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"project_read"})
      */
     private  $imagePath;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"project_read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="array", nullable=true)
+     * @Groups({"project_read"})
      */
     private array $keys = [];
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"project_read"})
      */
     private $createdAt;
 
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="projects")
+     * @Groups({"project_read"})
      */
     private $category;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"project_read"})
      */
     private $thumbnail;
 
@@ -78,18 +92,27 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"project_read"})
      */
     private $image;
 
     /**
      * @Vich\UploadableField(mapping="images", fileNameProperty="image")
+     * @Groups({"project_read"})
      */
     private $imageFile;
 
     /**
      * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="projects")
+     * @Groups({"project_read"})
      */
     private $client;
+
+    /**
+     * @var string|null
+     * @Groups({"project_read"})
+     */
+    public $contentUrl;
 
     public function __construct()
     {

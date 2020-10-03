@@ -6,15 +6,22 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\StackRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use App\Resolver\GetMediaObjectCollectionResolver;
+use App\Resolver\GetMediaObjectResolver;
 
 /**
  * @ApiResource(
  *     graphql={
- *     "collection_query"
+ *      "collection_query"={"collection_query"=GetMediaObjectCollectionResolver::class},
+ *     "item_query"={"item_query"=GetMediaObjectResolver::class},
  *     },
  *     collectionOperations={"get"},
- *     itemOperations={}
+ *     itemOperations={"get"},
+ *     normalizationContext={
+ *         "groups"={"stack_read"}
+ *     },
  * )
  * @ORM\Entity(repositoryClass=StackRepository::class)
  * @Vich\Uploadable()
@@ -30,12 +37,14 @@ class Stack
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"stack_read"})
      */
     private $title;
 
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"stack_read"})
      */
     private $url;
 
@@ -51,7 +60,14 @@ class Stack
     private $logoFile;
 
     /**
+     * @var string|null
+     * @Groups({"stack_read"})
+     */
+    public $contentUrl;
+
+    /**
      * @ORM\Column(type="datetime")
+     * @Groups({"stack_read"})
      */
     private $updatedAt;
 

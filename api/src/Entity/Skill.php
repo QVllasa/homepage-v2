@@ -9,10 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ApiResource(
  *     graphql={
- *     "collection_query"
+ *     "collection_query",
+ *     "item_query"
  *     },
  *     collectionOperations={"get"},
- *     itemOperations={}
+ *     itemOperations={"get"}
  * )
  * @ORM\Entity(repositoryClass=SkillRepository::class)
  */

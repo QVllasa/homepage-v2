@@ -1,16 +1,35 @@
 {
-    categories(first: 100){
+    aboutMe(id: "/about_mes/1"){
+        text
+        quote
+    }
+    skills{
         edges{
             node{
                 title
-                projects(first: 100){
-                    edges{
-                        node{
-                            title
-                        }
-                    }
-                }
+                value
             }
         }
     }
+    experiences{
+        edges{
+            node{
+                date
+                function
+                company
+                companyUrl
+                description
+            }
+        }
+    }
+    stacks{
+        edges{
+            node{
+                title
+                url
+                contentUrl
+            }
+        }
+    }
+
 }

@@ -6,15 +6,22 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ProfilImageRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use App\Resolver\GetMediaObjectCollectionResolver;
+use App\Resolver\GetMediaObjectResolver;
 
 /**
  * @ApiResource(
  *     graphql={
- *     "item_query"
+ *      "collection_query"={"collection_query"=GetMediaObjectCollectionResolver::class},
+ *     "item_query"={"item_query"=GetMediaObjectResolver::class},
  *     },
- *     collectionOperations={},
- *     itemOperations={"get"}
+ *     collectionOperations={"get"},
+ *     itemOperations={"get"},
+ *     normalizationContext={
+ *         "groups"={"profile_read"}
+ *     },
  * )
  * @ORM\Entity(repositoryClass=ProfilImageRepository::class)
  * @Vich\Uploadable()
@@ -30,6 +37,7 @@ class ProfilImage
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"profile_read"})
      */
     private $path;
 
@@ -40,8 +48,16 @@ class ProfilImage
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"profile_read"})
      */
     private $title;
+
+
+    /**
+     * @var string|null
+     * @Groups({"profile_read"})
+     */
+    public $contentUrl;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
