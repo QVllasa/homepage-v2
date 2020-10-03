@@ -3,7 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\ProfilImage;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ProfilImageCrudController extends AbstractCrudController
 {
@@ -12,14 +17,20 @@ class ProfilImageCrudController extends AbstractCrudController
         return ProfilImage::class;
     }
 
-    /*
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+        $fields = [
+            TextField::new('title')
         ];
+
+        if ($pageName === Crud::PAGE_EDIT || $pageName === Crud::PAGE_NEW ){
+            $fields []  = ImageField::new('pathFile')->setFormType(VichFileType::class);
+        } else{
+            $fields []  = ImageField::new('path')->setBasePath('/images');
+        }
+
+        return $fields;
     }
-    */
+
+
 }

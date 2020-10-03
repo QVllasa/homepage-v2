@@ -48,10 +48,6 @@ class Project
      */
     private $createdAt;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="projects")
-     */
-    private  $client;
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="projects")
@@ -82,6 +78,11 @@ class Project
      * @Vich\UploadableField(mapping="images", fileNameProperty="image")
      */
     private $imageFile;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="projects")
+     */
+    private $client;
 
     public function __construct()
     {
@@ -155,17 +156,7 @@ class Project
         return $this;
     }
 
-    public function getClient(): ?Client
-    {
-        return $this->client;
-    }
 
-    public function setClient(?Client $client): self
-    {
-        $this->client = $client;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Category[]
@@ -255,5 +246,17 @@ class Project
         if($imageFile){
             $this->updatedAt = new \DateTime();
         }
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        $this->client = $client;
+
+        return $this;
     }
 }

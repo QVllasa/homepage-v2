@@ -2,13 +2,22 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
+ * @UniqueEntity("email")
+ * @Vich\Uploadable()
  */
 class User implements UserInterface
 {
@@ -21,6 +30,11 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *
+     * )
+     *
      */
     private $email;
 
@@ -51,11 +65,19 @@ class User implements UserInterface
     private $avatar;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Vich\UploadableField(mapping="avatars", fileNameProperty="avatar")
      */
-    private $username;
+    private $avatarFile;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
 
+    public function __construct()
+    {
+        $this->updatedAt = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -171,12 +193,34 @@ class User implements UserInterface
         return $this;
     }
 
-    public function setUsername(string $username): self
+    /**
+     * @return mixed
+     */
+    public function getAvatarFile()
     {
-        $this->username = $username;
+        return $this->avatarFile;
+    }
 
-        return $this;
+    /**
+     * @param mixed $avatarFile
+     */
+    public function setAvatarFile($avatarFile): void
+    {
+        $this->avatarFile = $avatarFile;
+
+        if($avatarFile){
+            $this->updatedAt = new \DateTime();
+        }
     }
 
 
+/*    public function serialize()
+    {
+        return serialize($this->id);
+    }
+
+    public function unserialize($serialized)
+    {
+        $this->id = unserialize($serialized);
+    }*/
 }

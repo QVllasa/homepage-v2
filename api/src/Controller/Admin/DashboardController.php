@@ -2,14 +2,17 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\AboutMe;
 use App\Entity\Banner;
 use App\Entity\Category;
 use App\Entity\Client;
 use App\Entity\Experience;
 use App\Entity\ProfilImage;
 use App\Entity\Project;
+use App\Entity\Service;
 use App\Entity\Skill;
 use App\Entity\Stack;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -26,7 +29,7 @@ class DashboardController extends AbstractDashboardController
     {
         $routeBuilder = $this->get(CrudUrlGenerator::class)->build();
 
-        return $this->redirect($routeBuilder->setController(UserCrudController::class)->generateUrl());
+        return $this->redirect($routeBuilder->setController(SkillCrudController::class)->generateUrl());
     }
 
     public function configureDashboard(): Dashboard
@@ -37,8 +40,10 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linktoDashboard('Dashboard', 'fa fa-dot-circle');
-         yield MenuItem::linkToCrud('Skills', 'fa fa-dot-circle', Skill::class);
+        yield MenuItem::linkToCrud('About Me', 'fa fa-dot-circle', AboutMe::class);
+        yield MenuItem::linkToCrud('Services', 'fa fa-dot-circle', Service::class);
+        yield MenuItem::linkToCrud('Skills', 'fa fa-dot-circle', Skill::class);
+        yield MenuItem::linkToCrud('Users', 'fa fa-dot-circle', User::class);
         yield MenuItem::linkToCrud('Banners', 'fa fa-dot-circle', Banner::class);
         yield MenuItem::linkToCrud('Categories', 'fa fa-dot-circle', Category::class);
         yield MenuItem::linkToCrud('Clients', 'fa fa-dot-circle', Client::class);
