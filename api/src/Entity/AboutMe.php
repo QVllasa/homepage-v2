@@ -7,7 +7,9 @@ use App\Repository\AboutMeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource(
+ * @ApiResource(graphql={
+ *     "item_query",
+ *     },
  *     collectionOperations={},
  *     itemOperations={"get"}
  * )

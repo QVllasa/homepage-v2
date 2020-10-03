@@ -11,6 +11,10 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ApiResource(
+ *     graphql={
+ *     "item_query",
+ *     "collection_query"
+ *     },
  *     collectionOperations={"get"},
  *     itemOperations={"get"}
  * )

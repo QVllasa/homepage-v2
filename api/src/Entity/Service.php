@@ -8,6 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource(
+ *     graphql={
+ *     "item_query",
+ *     "collection_query"
+ *     },
  *     collectionOperations={"get"},
  *     itemOperations={"get"}
  * )

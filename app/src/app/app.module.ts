@@ -15,6 +15,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import { FooterComponent } from './components/pages/footer/footer.component';
 import { SidenavComponent } from './components/pages/sidenav/sidenav.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
         BrowserAnimationsModule,
         MatTooltipModule,
         IvyCarouselModule,
-        MatGridListModule
+        MatGridListModule,
+        GraphQLModule,
+        HttpClientModule
     ],
   providers: [],
   bootstrap: [AppComponent]

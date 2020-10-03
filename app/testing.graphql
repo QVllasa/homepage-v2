@@ -1,0 +1,16 @@
+{
+    categories(first: 100){
+        edges{
+            node{
+                title
+                projects(first: 100){
+                    edges{
+                        node{
+                            title
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

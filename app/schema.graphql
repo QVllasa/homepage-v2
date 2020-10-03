@@ -11,48 +11,66 @@ interface Node {
     id: ID!
 }
 
-"This is a dummy entity. Remove it!"
-type Greeting implements Node {
-    "The entity Id"
+type AboutMe implements Node {
     _id: Int!
     id: ID!
-    "A nice person"
-    name: String!
+    quote: String!
+    text: String!
 }
 
-"Connection for Greeting."
-type GreetingConnection {
-    edges: [GreetingEdge]
-    pageInfo: GreetingPageInfo!
+"Connection for AboutMe."
+type AboutMeConnection {
+    edges: [AboutMeEdge]
+    pageInfo: AboutMePageInfo!
     totalCount: Int!
 }
 
-"Edge of Greeting."
-type GreetingEdge {
+"Edge of AboutMe."
+type AboutMeEdge {
     cursor: String!
-    node: Greeting
+    node: AboutMe
 }
 
 "Information about the current page."
-type GreetingPageInfo {
+type AboutMePageInfo {
     endCursor: String
     hasNextPage: Boolean!
     hasPreviousPage: Boolean!
     startCursor: String
 }
 
-type Mutation {
-    "Creates a Greeting."
-    createGreeting(input: createGreetingInput!): createGreetingPayload
-    "Deletes a Greeting."
-    deleteGreeting(input: deleteGreetingInput!): deleteGreetingPayload
-    "Updates a Greeting."
-    updateGreeting(input: updateGreetingInput!): updateGreetingPayload
+type Banner implements Node {
+    _id: Int!
+    id: ID!
+    path: String!
+    title: String!
 }
 
-type Query {
-    greeting(id: ID!): Greeting
-    greetings(
+"Connection for Banner."
+type BannerConnection {
+    edges: [BannerEdge]
+    pageInfo: BannerPageInfo!
+    totalCount: Int!
+}
+
+"Edge of Banner."
+type BannerEdge {
+    cursor: String!
+    node: Banner
+}
+
+"Information about the current page."
+type BannerPageInfo {
+    endCursor: String
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
+}
+
+type Category implements Node {
+    _id: Int!
+    id: ID!
+    projects(
         "Returns the elements in the list that come after the specified cursor."
         after: String,
         "Returns the elements in the list that come before the specified cursor."
@@ -61,45 +79,803 @@ type Query {
         first: Int,
         "Returns the last n elements from the list."
         last: Int
-    ): GreetingConnection
-    node(id: ID!): Node
+    ): ProjectConnection
+    title: String!
 }
 
-"This is a dummy entity. Remove it!"
-type createGreetingPayload {
-    clientMutationId: String
-    greeting: Greeting
+"Connection for Category."
+type CategoryConnection {
+    edges: [CategoryEdge]
+    pageInfo: CategoryPageInfo!
+    totalCount: Int!
 }
 
-"This is a dummy entity. Remove it!"
-type deleteGreetingPayload {
-    clientMutationId: String
-    greeting: Greeting
+"Edge of Category."
+type CategoryEdge {
+    cursor: String!
+    node: Category
 }
 
-"This is a dummy entity. Remove it!"
-type updateGreetingPayload {
-    clientMutationId: String
-    greeting: Greeting
+"Information about the current page."
+type CategoryPageInfo {
+    endCursor: String
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
 }
 
-"This is a dummy entity. Remove it!"
-input createGreetingInput {
-    clientMutationId: String
-    "A nice person"
+type Client implements Node {
+    _id: Int!
+    cssClass: Iterable
+    homepage: String!
+    id: ID!
+    image: String
     name: String!
+    projects(
+        "Returns the elements in the list that come after the specified cursor."
+        after: String,
+        "Returns the elements in the list that come before the specified cursor."
+        before: String,
+        "Returns the first n elements from the list."
+        first: Int,
+        "Returns the last n elements from the list."
+        last: Int
+    ): ProjectConnection
 }
 
-"This is a dummy entity. Remove it!"
-input deleteGreetingInput {
+"Connection for Client."
+type ClientConnection {
+    edges: [ClientEdge]
+    pageInfo: ClientPageInfo!
+    totalCount: Int!
+}
+
+"Edge of Client."
+type ClientEdge {
+    cursor: String!
+    node: Client
+}
+
+"Information about the current page."
+type ClientPageInfo {
+    endCursor: String
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
+}
+
+type Experience implements Node {
+    _id: Int!
+    company: String!
+    companyUrl: String
+    date: String!
+    description: String!
+    function: String!
+    id: ID!
+}
+
+"Connection for Experience."
+type ExperienceConnection {
+    edges: [ExperienceEdge]
+    pageInfo: ExperiencePageInfo!
+    totalCount: Int!
+}
+
+"Edge of Experience."
+type ExperienceEdge {
+    cursor: String!
+    node: Experience
+}
+
+"Information about the current page."
+type ExperiencePageInfo {
+    endCursor: String
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
+}
+
+type Mutation {
+    "Creates a AboutMe."
+    createAboutMe(input: createAboutMeInput!): createAboutMePayload
+    "Creates a Banner."
+    createBanner(input: createBannerInput!): createBannerPayload
+    "Creates a Category."
+    createCategory(input: createCategoryInput!): createCategoryPayload
+    "Creates a Client."
+    createClient(input: createClientInput!): createClientPayload
+    "Creates a Experience."
+    createExperience(input: createExperienceInput!): createExperiencePayload
+    "Creates a ProfilImage."
+    createProfilImage(input: createProfilImageInput!): createProfilImagePayload
+    "Creates a Project."
+    createProject(input: createProjectInput!): createProjectPayload
+    "Creates a Service."
+    createService(input: createServiceInput!): createServicePayload
+    "Creates a Skill."
+    createSkill(input: createSkillInput!): createSkillPayload
+    "Creates a Stack."
+    createStack(input: createStackInput!): createStackPayload
+    "Deletes a AboutMe."
+    deleteAboutMe(input: deleteAboutMeInput!): deleteAboutMePayload
+    "Deletes a Banner."
+    deleteBanner(input: deleteBannerInput!): deleteBannerPayload
+    "Deletes a Category."
+    deleteCategory(input: deleteCategoryInput!): deleteCategoryPayload
+    "Deletes a Client."
+    deleteClient(input: deleteClientInput!): deleteClientPayload
+    "Deletes a Experience."
+    deleteExperience(input: deleteExperienceInput!): deleteExperiencePayload
+    "Deletes a ProfilImage."
+    deleteProfilImage(input: deleteProfilImageInput!): deleteProfilImagePayload
+    "Deletes a Project."
+    deleteProject(input: deleteProjectInput!): deleteProjectPayload
+    "Deletes a Service."
+    deleteService(input: deleteServiceInput!): deleteServicePayload
+    "Deletes a Skill."
+    deleteSkill(input: deleteSkillInput!): deleteSkillPayload
+    "Deletes a Stack."
+    deleteStack(input: deleteStackInput!): deleteStackPayload
+    "Updates a AboutMe."
+    updateAboutMe(input: updateAboutMeInput!): updateAboutMePayload
+    "Updates a Banner."
+    updateBanner(input: updateBannerInput!): updateBannerPayload
+    "Updates a Category."
+    updateCategory(input: updateCategoryInput!): updateCategoryPayload
+    "Updates a Client."
+    updateClient(input: updateClientInput!): updateClientPayload
+    "Updates a Experience."
+    updateExperience(input: updateExperienceInput!): updateExperiencePayload
+    "Updates a ProfilImage."
+    updateProfilImage(input: updateProfilImageInput!): updateProfilImagePayload
+    "Updates a Project."
+    updateProject(input: updateProjectInput!): updateProjectPayload
+    "Updates a Service."
+    updateService(input: updateServiceInput!): updateServicePayload
+    "Updates a Skill."
+    updateSkill(input: updateSkillInput!): updateSkillPayload
+    "Updates a Stack."
+    updateStack(input: updateStackInput!): updateStackPayload
+}
+
+type ProfilImage implements Node {
+    _id: Int!
+    id: ID!
+    path: String!
+    title: String!
+}
+
+"Connection for ProfilImage."
+type ProfilImageConnection {
+    edges: [ProfilImageEdge]
+    pageInfo: ProfilImagePageInfo!
+    totalCount: Int!
+}
+
+"Edge of ProfilImage."
+type ProfilImageEdge {
+    cursor: String!
+    node: ProfilImage
+}
+
+"Information about the current page."
+type ProfilImagePageInfo {
+    endCursor: String
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
+}
+
+type Project implements Node {
+    _id: Int!
+    category(
+        "Returns the elements in the list that come after the specified cursor."
+        after: String,
+        "Returns the elements in the list that come before the specified cursor."
+        before: String,
+        "Returns the first n elements from the list."
+        first: Int,
+        "Returns the last n elements from the list."
+        last: Int
+    ): CategoryConnection
+    client: Client
+    createdAt: String!
+    description: String!
+    id: ID!
+    image: String
+    imagePath: String
+    keys: Iterable
+    thumbnail: String
+    title: String!
+}
+
+"Connection for Project."
+type ProjectConnection {
+    edges: [ProjectEdge]
+    pageInfo: ProjectPageInfo!
+    totalCount: Int!
+}
+
+"Edge of Project."
+type ProjectEdge {
+    cursor: String!
+    node: Project
+}
+
+"Information about the current page."
+type ProjectPageInfo {
+    endCursor: String
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
+}
+
+type Query {
+    aboutMe(id: ID!): AboutMe
+    aboutMes(
+        "Returns the elements in the list that come after the specified cursor."
+        after: String,
+        "Returns the elements in the list that come before the specified cursor."
+        before: String,
+        "Returns the first n elements from the list."
+        first: Int,
+        "Returns the last n elements from the list."
+        last: Int
+    ): AboutMeConnection
+    banner(id: ID!): Banner
+    banners(
+        "Returns the elements in the list that come after the specified cursor."
+        after: String,
+        "Returns the elements in the list that come before the specified cursor."
+        before: String,
+        "Returns the first n elements from the list."
+        first: Int,
+        "Returns the last n elements from the list."
+        last: Int
+    ): BannerConnection
+    categories(
+        "Returns the elements in the list that come after the specified cursor."
+        after: String,
+        "Returns the elements in the list that come before the specified cursor."
+        before: String,
+        "Returns the first n elements from the list."
+        first: Int,
+        "Returns the last n elements from the list."
+        last: Int
+    ): CategoryConnection
+    category(id: ID!): Category
+    client(id: ID!): Client
+    clients(
+        "Returns the elements in the list that come after the specified cursor."
+        after: String,
+        "Returns the elements in the list that come before the specified cursor."
+        before: String,
+        "Returns the first n elements from the list."
+        first: Int,
+        "Returns the last n elements from the list."
+        last: Int
+    ): ClientConnection
+    experience(id: ID!): Experience
+    experiences(
+        "Returns the elements in the list that come after the specified cursor."
+        after: String,
+        "Returns the elements in the list that come before the specified cursor."
+        before: String,
+        "Returns the first n elements from the list."
+        first: Int,
+        "Returns the last n elements from the list."
+        last: Int
+    ): ExperienceConnection
+    node(id: ID!): Node
+    profilImage(id: ID!): ProfilImage
+    profilImages(
+        "Returns the elements in the list that come after the specified cursor."
+        after: String,
+        "Returns the elements in the list that come before the specified cursor."
+        before: String,
+        "Returns the first n elements from the list."
+        first: Int,
+        "Returns the last n elements from the list."
+        last: Int
+    ): ProfilImageConnection
+    project(id: ID!): Project
+    projects(
+        "Returns the elements in the list that come after the specified cursor."
+        after: String,
+        "Returns the elements in the list that come before the specified cursor."
+        before: String,
+        "Returns the first n elements from the list."
+        first: Int,
+        "Returns the last n elements from the list."
+        last: Int
+    ): ProjectConnection
+    service(id: ID!): Service
+    services(
+        "Returns the elements in the list that come after the specified cursor."
+        after: String,
+        "Returns the elements in the list that come before the specified cursor."
+        before: String,
+        "Returns the first n elements from the list."
+        first: Int,
+        "Returns the last n elements from the list."
+        last: Int
+    ): ServiceConnection
+    skill(id: ID!): Skill
+    skills(
+        "Returns the elements in the list that come after the specified cursor."
+        after: String,
+        "Returns the elements in the list that come before the specified cursor."
+        before: String,
+        "Returns the first n elements from the list."
+        first: Int,
+        "Returns the last n elements from the list."
+        last: Int
+    ): SkillConnection
+    stack(id: ID!): Stack
+    stacks(
+        "Returns the elements in the list that come after the specified cursor."
+        after: String,
+        "Returns the elements in the list that come before the specified cursor."
+        before: String,
+        "Returns the first n elements from the list."
+        first: Int,
+        "Returns the last n elements from the list."
+        last: Int
+    ): StackConnection
+}
+
+type Service implements Node {
+    _id: Int!
+    icon: String!
+    id: ID!
+    keys: Iterable
+    quote: String
+    shortText: String!
+    title: String!
+}
+
+"Connection for Service."
+type ServiceConnection {
+    edges: [ServiceEdge]
+    pageInfo: ServicePageInfo!
+    totalCount: Int!
+}
+
+"Edge of Service."
+type ServiceEdge {
+    cursor: String!
+    node: Service
+}
+
+"Information about the current page."
+type ServicePageInfo {
+    endCursor: String
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
+}
+
+type Skill implements Node {
+    _id: Int!
+    id: ID!
+    title: String!
+    value: Int!
+}
+
+"Connection for Skill."
+type SkillConnection {
+    edges: [SkillEdge]
+    pageInfo: SkillPageInfo!
+    totalCount: Int!
+}
+
+"Edge of Skill."
+type SkillEdge {
+    cursor: String!
+    node: Skill
+}
+
+"Information about the current page."
+type SkillPageInfo {
+    endCursor: String
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
+}
+
+type Stack implements Node {
+    _id: Int!
+    id: ID!
+    logo: String
+    title: String!
+    url: String!
+}
+
+"Connection for Stack."
+type StackConnection {
+    edges: [StackEdge]
+    pageInfo: StackPageInfo!
+    totalCount: Int!
+}
+
+"Edge of Stack."
+type StackEdge {
+    cursor: String!
+    node: Stack
+}
+
+"Information about the current page."
+type StackPageInfo {
+    endCursor: String
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
+}
+
+type createAboutMePayload {
+    aboutMe: AboutMe
+    clientMutationId: String
+}
+
+type createBannerPayload {
+    banner: Banner
+    clientMutationId: String
+}
+
+type createCategoryPayload {
+    category: Category
+    clientMutationId: String
+}
+
+type createClientPayload {
+    client: Client
+    clientMutationId: String
+}
+
+type createExperiencePayload {
+    clientMutationId: String
+    experience: Experience
+}
+
+type createProfilImagePayload {
+    clientMutationId: String
+    profilImage: ProfilImage
+}
+
+type createProjectPayload {
+    clientMutationId: String
+    project: Project
+}
+
+type createServicePayload {
+    clientMutationId: String
+    service: Service
+}
+
+type createSkillPayload {
+    clientMutationId: String
+    skill: Skill
+}
+
+type createStackPayload {
+    clientMutationId: String
+    stack: Stack
+}
+
+type deleteAboutMePayload {
+    aboutMe: AboutMe
+    clientMutationId: String
+}
+
+type deleteBannerPayload {
+    banner: Banner
+    clientMutationId: String
+}
+
+type deleteCategoryPayload {
+    category: Category
+    clientMutationId: String
+}
+
+type deleteClientPayload {
+    client: Client
+    clientMutationId: String
+}
+
+type deleteExperiencePayload {
+    clientMutationId: String
+    experience: Experience
+}
+
+type deleteProfilImagePayload {
+    clientMutationId: String
+    profilImage: ProfilImage
+}
+
+type deleteProjectPayload {
+    clientMutationId: String
+    project: Project
+}
+
+type deleteServicePayload {
+    clientMutationId: String
+    service: Service
+}
+
+type deleteSkillPayload {
+    clientMutationId: String
+    skill: Skill
+}
+
+type deleteStackPayload {
+    clientMutationId: String
+    stack: Stack
+}
+
+type updateAboutMePayload {
+    aboutMe: AboutMe
+    clientMutationId: String
+}
+
+type updateBannerPayload {
+    banner: Banner
+    clientMutationId: String
+}
+
+type updateCategoryPayload {
+    category: Category
+    clientMutationId: String
+}
+
+type updateClientPayload {
+    client: Client
+    clientMutationId: String
+}
+
+type updateExperiencePayload {
+    clientMutationId: String
+    experience: Experience
+}
+
+type updateProfilImagePayload {
+    clientMutationId: String
+    profilImage: ProfilImage
+}
+
+type updateProjectPayload {
+    clientMutationId: String
+    project: Project
+}
+
+type updateServicePayload {
+    clientMutationId: String
+    service: Service
+}
+
+type updateSkillPayload {
+    clientMutationId: String
+    skill: Skill
+}
+
+type updateStackPayload {
+    clientMutationId: String
+    stack: Stack
+}
+
+input createAboutMeInput {
+    clientMutationId: String
+    quote: String!
+    text: String!
+}
+
+input createBannerInput {
+    clientMutationId: String
+    path: String!
+    title: String!
+}
+
+input createCategoryInput {
+    clientMutationId: String
+    projects: [String]
+    title: String!
+}
+
+input createClientInput {
+    clientMutationId: String
+    cssClass: Iterable
+    homepage: String!
+    image: String
+    name: String!
+    projects: [String]
+}
+
+input createExperienceInput {
+    clientMutationId: String
+    company: String!
+    companyUrl: String
+    date: String!
+    description: String!
+    function: String!
+}
+
+input createProfilImageInput {
+    clientMutationId: String
+    path: String!
+    title: String!
+}
+
+input createProjectInput {
+    category: [String]
+    client: String
+    clientMutationId: String
+    createdAt: String!
+    description: String!
+    image: String
+    imagePath: String
+    keys: Iterable
+    thumbnail: String
+    title: String!
+}
+
+input createServiceInput {
+    clientMutationId: String
+    icon: String!
+    keys: Iterable
+    quote: String
+    shortText: String!
+    title: String!
+}
+
+input createSkillInput {
+    clientMutationId: String
+    title: String!
+    value: Int!
+}
+
+input createStackInput {
+    clientMutationId: String
+    logo: String
+    title: String!
+    url: String!
+}
+
+input deleteAboutMeInput {
     clientMutationId: String
     id: ID!
 }
 
-"This is a dummy entity. Remove it!"
-input updateGreetingInput {
+input deleteBannerInput {
     clientMutationId: String
     id: ID!
-    "A nice person"
+}
+
+input deleteCategoryInput {
+    clientMutationId: String
+    id: ID!
+}
+
+input deleteClientInput {
+    clientMutationId: String
+    id: ID!
+}
+
+input deleteExperienceInput {
+    clientMutationId: String
+    id: ID!
+}
+
+input deleteProfilImageInput {
+    clientMutationId: String
+    id: ID!
+}
+
+input deleteProjectInput {
+    clientMutationId: String
+    id: ID!
+}
+
+input deleteServiceInput {
+    clientMutationId: String
+    id: ID!
+}
+
+input deleteSkillInput {
+    clientMutationId: String
+    id: ID!
+}
+
+input deleteStackInput {
+    clientMutationId: String
+    id: ID!
+}
+
+input updateAboutMeInput {
+    clientMutationId: String
+    id: ID!
+    quote: String
+    text: String
+}
+
+input updateBannerInput {
+    clientMutationId: String
+    id: ID!
+    path: String
+    title: String
+}
+
+input updateCategoryInput {
+    clientMutationId: String
+    id: ID!
+    projects: [String]
+    title: String
+}
+
+input updateClientInput {
+    clientMutationId: String
+    cssClass: Iterable
+    homepage: String
+    id: ID!
+    image: String
     name: String
+    projects: [String]
 }
+
+input updateExperienceInput {
+    clientMutationId: String
+    company: String
+    companyUrl: String
+    date: String
+    description: String
+    function: String
+    id: ID!
+}
+
+input updateProfilImageInput {
+    clientMutationId: String
+    id: ID!
+    path: String
+    title: String
+}
+
+input updateProjectInput {
+    category: [String]
+    client: String
+    clientMutationId: String
+    createdAt: String
+    description: String
+    id: ID!
+    image: String
+    imagePath: String
+    keys: Iterable
+    thumbnail: String
+    title: String
+}
+
+input updateServiceInput {
+    clientMutationId: String
+    icon: String
+    id: ID!
+    keys: Iterable
+    quote: String
+    shortText: String
+    title: String
+}
+
+input updateSkillInput {
+    clientMutationId: String
+    id: ID!
+    title: String
+    value: Int
+}
+
+input updateStackInput {
+    clientMutationId: String
+    id: ID!
+    logo: String
+    title: String
+    url: String
+}
+
+
+"The `Iterable` scalar type represents an array or a Traversable with any kind of data."
+scalar Iterable
