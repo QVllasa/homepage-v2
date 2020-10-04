@@ -1,8 +1,4 @@
 {
-    aboutMe(id: "/about_mes/1"){
-        text
-        quote
-    }
     skills{
         edges{
             node{
@@ -31,5 +27,37 @@
             }
         }
     }
-
+    projects{
+        edges{
+            node{
+                _id
+                id
+                title
+                description
+                keys
+                createdAt
+                category{
+                    edges{
+                        node{
+                            title
+                        }
+                    }
+                }
+                client{
+                    name
+                }
+                contentUrl
+            }
+        }
+    }
+    clients{
+        edges{
+            node{
+                name
+                homepage
+                contentUrl
+                cssClass
+            }
+        }
+    }
 }

@@ -33,19 +33,19 @@ class Client
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"client_read"})
+     * @Groups({"client_read", "project_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"client_read"})
+     * @Groups({"client_read", "project_read"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"client_read"})
+     * @Groups({"client_read", "project_read"})
      */
     private $homepage;
 
@@ -53,7 +53,7 @@ class Client
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"client_read"})
+     * @Groups({"client_read", "project_read"})
      */
     private $image;
 
@@ -64,7 +64,7 @@ class Client
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Groups({"client_read"})
+     * @Groups({"client_read", "project_read"})
      */
     private $updatedAt;
 
@@ -75,13 +75,13 @@ class Client
 
     /**
      * @ORM\Column(type="array", nullable=true)
-     * @Groups({"client_read"})
+     * @Groups({"client_read", "project_read"})
      */
     private $cssClass = [''];
 
     /**
      * @var string|null
-     * @Groups({"client_read"})
+     * @Groups({"client_read", "project_read"})
      */
     public $contentUrl;
 
