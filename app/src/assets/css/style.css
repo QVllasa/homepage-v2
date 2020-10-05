@@ -2425,35 +2425,35 @@ Services CSS
   margin-bottom: 10px;
 }
 
-.single-services-box::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #0b1315;
-  -webkit-transition: .7s;
-  transition: .7s;
-  z-index: -1;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-}
+/*.single-services-box::after {*/
+/*  content: '';*/
+/*  position: absolute;*/
+/*  left: 0;*/
+/*  top: 0;*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  background-color: #0b1315;*/
+/*  -webkit-transition: .7s;*/
+/*  transition: .7s;*/
+/*  z-index: -1;*/
+/*  -webkit-transform: scaleX(0);*/
+/*          transform: scaleX(0);*/
+/*}*/
 
-.single-services-box::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #0b1315;
-  -webkit-transition: .7s;
-  transition: .7s;
-  z-index: -1;
-  -webkit-transform: scaleY(0);
-          transform: scaleY(0);
-}
+/*.single-services-box::before {*/
+/*  content: '';*/
+/*  position: absolute;*/
+/*  left: 0;*/
+/*  top: 0;*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  background-color: #0b1315;*/
+/*  -webkit-transition: .7s;*/
+/*  transition: .7s;*/
+/*  z-index: -1;*/
+/*  -webkit-transform: scaleY(0);*/
+/*          transform: scaleY(0);*/
+/*}*/
 
 .single-services-box .icon {
   color: #c9ab81;
@@ -2516,15 +2516,15 @@ Services CSS
   visibility: visible;
 }
 
-.single-services-box:hover::after {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-}
+/*.single-services-box:hover::after {*/
+/*  -webkit-transform: scaleX(1);*/
+/*          transform: scaleX(1);*/
+/*}*/
 
-.single-services-box:hover::before {
-  -webkit-transform: scaleY(1);
-          transform: scaleY(1);
-}
+/*.single-services-box:hover::before {*/
+/*  -webkit-transform: scaleY(1);*/
+/*          transform: scaleY(1);*/
+/*}*/
 
 .services-box {
   background-color: #0b1315;

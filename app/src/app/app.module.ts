@@ -17,13 +17,14 @@ import {NotFoundComponent} from './pages/not-found/not-found.component';
 import {GraphQLModule} from './graphql.module';
 import {HttpClientModule} from '@angular/common/http';
 import {TypeWriterComponent} from "./components/type-writer/type-writer.component";
-import {EducationComponent} from "./components/education/education.component";
-import {ExperienceComponent} from "./components/experience/experience.component";
 import {SkillsComponent} from "./components/skills/skills.component";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {ContactDialogComponent, HomeComponent} from "./pages/home/home.component";
+import {ExperienceItemComponent} from "./components/experience-item/experience-item.component";
+import {ServiceItemComponent} from "./components/service-item/service-item.component";
+// import {EducationItemComponent} from "./components/education-item/education-item.component";
 
 
 
@@ -33,15 +34,15 @@ import {ContactDialogComponent, HomeComponent} from "./pages/home/home.component
         PreloaderComponent,
         HomeComponent,
         BlogDetailsComponent,
-        ExperienceComponent,
         SkillsComponent,
         TypeWriterComponent,
-        EducationComponent,
         ContactDialogComponent,
         WorksDetailsComponent,
         ServicesDetailsComponent,
         FooterComponent,
+        ServiceItemComponent,
         SidenavComponent,
+        ExperienceItemComponent,
         NotFoundComponent
     ],
     imports: [

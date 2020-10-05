@@ -1,8 +1,8 @@
-import {IAboutMe, IClient, IExperience, IProfileImage, ISkill, IStack} from "../app/models/models";
+import {IAboutMe, IClient, IExperience, IProfileImage, IProject, IService, ISkill, IStack} from "../app/models/models";
 
 export const typeWriterText = [
-    "Technology Enthusiast 👨‍💻",
     "Developer by ❤️",
+    "Technology enthusiast 👨‍💻",
     "Dronepilot 🚁"
 ];
 
@@ -224,3 +224,32 @@ export const experiences: IExperience[] = [
 ]
 
 export const profileImg: IProfileImage = {path: './../assets/img/about-img2.jpg'};
+
+export const services: IService[] = [
+    {
+        id: 1,
+        title: 'Business Research & Analytics',
+        shortText: 'I use PowerBi and/or Tableau to give you a deeper insight in a predefined field. Your gain knowledge about your and other businesses and can make more precise decisions based on real data.',
+        contentUrl: 'assets/img/services/analytics.svg',
+        priority: 1
+
+    },
+    {
+        id: 0,
+        title: 'Web Application Development',
+        shortText: 'I use state of the art technologies and best practice workflows to deliver fast high quality products with consulting and support.',
+        contentUrl: 'assets/img/services/development.svg',
+        priority: 0
+
+    },
+    {
+        id: 2,
+        title: 'IT Consulting',
+        shortText: 'You have a process which needs to be optimized? I have the knowledge to tell you what software and tools you need to use in order to optimize your process and have more time for important things.',
+        contentUrl: 'assets/img/services/consulting.svg',
+        priority: 2
+
+    }
+];
+
+export const projects: IProject[] = [];

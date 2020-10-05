@@ -25,6 +25,11 @@ export interface IMainPage {
             node: IService
         }[]
     }
+    projects: {
+        edges: {
+           node: IProject
+        }[]
+    }
 }
 
 export interface IAboutMe {
@@ -68,6 +73,25 @@ export interface IService {
     shortText: string,
     contentUrl: string,
     priority: number,
+}
+
+export interface IProject {
+    _id: number,
+    id: string,
+    title: string
+    description: string,
+    keys: string[],
+    createdAt: Date,
+    category: {
+        edges: {
+            node: ICategory
+        }[]
+    }
+    contentUrl: string,
+}
+
+export interface ICategory {
+    title: string,
 }
 
 

@@ -1,0 +1,13 @@
+.service-container{
+    transform: scale(0.8);
+    border: 1px solid rgba(200, 171, 128, 0.5);
+    //background-position: bottom;
+    background-size: 100px !important;
+    //background-repeat: no-repeat;
+}
+
+.scale-12{
+    transform: scale(1.2);
+    background-size: 140px !important;
+    border: 2px solid rgba(200, 171, 128, 1);
+}

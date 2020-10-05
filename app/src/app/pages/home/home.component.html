@@ -29,7 +29,7 @@
         <div class="container">
             <div class="section-title">
                 <span class="sub-title">About Me</span>
-                <h2 style="line-height: 1.2" >{{aboutMe.quote}}</h2>
+                <h2 style="line-height: 1.2">{{aboutMe.quote}}</h2>
             </div>
 
             <div class="row align-items-center">
@@ -39,7 +39,7 @@
                         <div class="tab about-list-tab">
                             <ul class="tabs">
                                 <li (click)="onToggleTabs('top-skills')">Top Skills</li>
-                                <li (click)="onToggleTabs('experience')" >Experience</li>
+                                <li (click)="onToggleTabs('experience')">Experience</li>
                                 <li (click)="onToggleTabs('education')">Education</li>
                             </ul>
                             <div class="tab-content">
@@ -47,10 +47,10 @@
                                     <app-skills [skills]="skills"></app-skills>
                                 </div>
                                 <div class="tabs-item" *ngIf="activeTab === 'experience'">
-                                    <app-experience [experiences]="experiences" ></app-experience>
+                                    <app-experience-item [experiences]="experiences"></app-experience-item>
                                 </div>
                                 <div class="tabs-item" *ngIf="activeTab === 'education'">
-                                    <app-education></app-education>
+                                    <!--                                    <app-education-item></app-education-item>-->
                                 </div>
                             </div>
                         </div>
@@ -75,8 +75,8 @@
 
         <div class="container m-auto">
             <mat-grid-list gutterSize="12px" cols="3" rowHeight="3:1">
-                <mat-grid-tile *ngFor="let stack of stacks" >
-                    <a [href]="stack.url" >
+                <mat-grid-tile *ngFor="let stack of stacks">
+                    <a [href]="stack.url">
                         <img [matTooltip]="stack.title" [src]="stack.contentUrl" alt="image" style="max-height: 70px;">
                     </a>
                 </mat-grid-tile>
@@ -91,42 +91,7 @@
                 <span class="sub-title ">Services</span>
                 <h2>What I can do for you</h2>
             </div>
-
-            <div class="row">
-                <div class="col-lg-4 col-sm-6 col-md-6 service-container" style="transform: scale(0.8); border: 1px solid rgba(200, 171, 128, 0.5)">
-                    <div class="single-services-box">
-                        <h3>Business Research & Analytics</h3>
-                        <p>I use PowerBi and/or Tableau to give you a deeper insight in a predefined field. Your
-                            gain knowledge about your and other businesses and can make more precise decisions based
-                            on real data.</p>
-                        <a routerLink="/services-details" class="read-more-btn">Read More<i
-                            class="ri-arrow-right-s-line"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-sm-6 col-md-6 service-container">
-                    <div class="single-services-box">
-                        <h3>Web Application Development</h3>
-                        <p>I use state of the art technologies and best practice workflows to deliver fast high
-                            quality products with consulting and support.</p>
-                        <a routerLink="/services-details" class="read-more-btn">Read More<i
-                            class="ri-arrow-right-s-line"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-sm-6 col-md-6 service-container" style="transform: scale(0.8); border: 1px solid rgba(200, 171, 128, 0.5)">
-                    <div class="single-services-box">
-                        <h3>IT Consulting</h3>
-                        <p>You have a process which needs to be optimized? I have the knowledge to tell you what
-                            software and tools you need to use in order to optimize your process and have more time
-                            for important things.</p>
-                        <a routerLink="/services-details" class="read-more-btn">Read More<i
-                            class="ri-arrow-right-s-line"></i></a>
-                    </div>
-                </div>
-
-
-            </div>
+            <app-service-item [services]="services"></app-service-item>
         </div>
     </section>
 
@@ -138,7 +103,7 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="col-lg-4 col-md-4 col-sm-12" *ngFor="">
                     <div class="works-box">
                         <div class="works-image">
                             <a routerLink="/works-details">

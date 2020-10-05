@@ -5,7 +5,7 @@ import {
     IAboutMe, IClient,
     IExperience,
     IMainPage,
-    IProfileImage,
+    IProfileImage, IProject, IService,
     ISkill,
     IStack,
     Models
@@ -14,7 +14,7 @@ import {
     aboutMe,
     clients,
     experiences,
-    profileImg, skills, stacks,
+    profileImg, projects, services, skills, stacks,
     typeWriterText
 } from "../../../static/data";
 import {BASE_PATH} from "../../../environments/environment";
@@ -41,6 +41,8 @@ export class HomeComponent implements OnInit {
     clients: IClient[] = clients;
     stacks: IStack[] = stacks;
     skills: ISkill[] = skills;
+    services: IService[] = services;
+    projects: IProject[] = projects;
 
     serverPath = BASE_PATH;
 

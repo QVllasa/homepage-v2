@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {IExperience} from "../../models/models";
 
 @Component({
-  selector: 'app-experience-item',
-  templateUrl: './experience-item.component.html',
-  styleUrls: ['./experience-item.component.scss']
+    selector: 'app-experience-item',
+    templateUrl: './experience-item.component.html',
+    styleUrls: ['./experience-item.component.scss']
 })
 export class ExperienceItemComponent implements OnInit {
 
-  constructor() { }
+    experience: IExperience;
+    @Input() experiences: IExperience[];
 
-  ngOnInit(): void {
-  }
+    constructor() { }
+
+    ngOnInit(): void {
+    }
 
 }

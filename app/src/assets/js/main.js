@@ -2,7 +2,7 @@
 	"use strict";
 
 	// Scroll JS
-	$('.scroll-btn a, .placid-aside .navbar-nav .nav-item .nav-link, .navbar .navbar-nav .nav-item .nav-link, .about-content .default-btn, .others-option .default-btn, .aside-footer .default-btn, .hire-me-btn .default-btn, .book-trainer-content .default-btn, .about-content .default-btn, .home-banner-content .default-btn').on('click', function(e){
+	$('.scroll-btn a, .placid-aside .navbar-nav .nav-item .nav-link, .navbar .navbar-nav .nav-item .nav-link, .others-option .default-btn, .aside-footer .default-btn, .book-trainer-content .default-btn, .about-content .default-btn, .home-banner-content .default-btn').on('click', function(e){
 		var anchor = $(this);
 		$('html, body').stop().animate({
 			scrollTop: $(anchor.attr('href')).offset().top - 50

@@ -455,9 +455,9 @@
     margin-bottom: 30px;
     padding: 0;
   }
-  .single-services-box::before, .single-services-box::after {
-    display: none;
-  }
+  /*.single-services-box::before, .single-services-box::after {*/
+  /*  display: none;*/
+  /*}*/
   .single-services-box .icon {
     font-size: 35px;
     margin-top: -8px;

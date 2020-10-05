@@ -68,14 +68,7 @@ ML Partner CSS
     visibility: hidden;
 }
 
-.service-container{
-    transform: scale(1.2);
-    border: 2px solid rgba(200, 171, 128, 1);
-    background-image: url(../../../assets/img/services/development.svg);
-    background-position: bottom;
-    background-size: 140px;
-    background-repeat: no-repeat;
-}
+
 
 .single-ml-partner a:hover img:last-child, .single-ml-partner a:focus img:last-child {
     opacity: 1;
