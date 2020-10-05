@@ -1,0 +1,356 @@
+<div id="main-content" class="main-content">
+
+    <div class="responsive-burger-menu">
+        <span class="top-bar"></span>
+        <span class="middle-bar"></span>
+        <span class="bottom-bar"></span>
+    </div>
+
+
+    <div class="home-area">
+        <div class="home-slides owl-carousel owl-theme">
+            <div class="main-banner bg-dark"></div>
+        </div>
+
+        <div class="banner-content">
+            <span class="sub-title">Hi I'am</span>
+            <h1>Qendrim Vllasa</h1>
+            <app-type-writer [content]="typeWriterText"></app-type-writer>
+        </div>
+
+        <div class="lines">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+
+    <section id="about" class="about-area ptb-120">
+        <div class="container">
+            <div class="section-title">
+                <span class="sub-title">About Me</span>
+                <h2>{{aboutMe.quote}}</h2>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-lg-8 col-md-12">
+                    <div class="about-content">
+                        <p>{{aboutMe.text}}</p>
+                        <div class="tab about-list-tab">
+                            <ul class="tabs">
+                                <li (click)="onToggleTabs('top-skills')">Top Skills</li>
+                                <li (click)="onToggleTabs('experience')" >Experience</li>
+                                <li (click)="onToggleTabs('education')">Education</li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tabs-item" *ngIf="activeTab === 'top-skills'">
+                                    <app-skills [skills]="skills"></app-skills>
+                                </div>
+                                <div class="tabs-item" *ngIf="activeTab === 'experience'">
+                                    <app-experience [experiences]="experiences" ></app-experience>
+                                </div>
+                                <div class="tabs-item" *ngIf="activeTab === 'education'">
+                                    <app-education></app-education>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="about-image">
+                        <img [src]="profileImg" alt="image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stack" class="pt-120 pb-90 bg-0f1d22">
+        <div class="container">
+            <div class="section-title">
+                <span class="sub-title">Stack</span>
+                <h2>Technologies I regularly use</h2>
+            </div>
+        </div>
+
+        <div class="container m-auto">
+            <mat-grid-list gutterSize="12px" cols="3" rowHeight="3:1">
+                <mat-grid-tile *ngFor="let stack of stacks" [matTooltip]="stack.title">
+                    <a [href]="stack.url" >
+                        <img [src]="stack.contentUrl" alt="image" style="max-height: 70px;">
+                    </a>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+
+    </section>
+
+    <section id="services" class="services-area pt-120 pb-90">
+        <div class="container">
+            <div class="section-title">
+                <span class="sub-title">Services</span>
+                <h2>What I can do for you</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-md-6" style="transform: scale(0.8); border: 1px solid">
+                    <div class="single-services-box">
+                        <h3>Business Research & Analytics</h3>
+                        <p>I use PowerBi and/or Tableau to give you a deeper insight in a predefined field. Your
+                            gain knowledge about your and other businesses and can make more precise decisions based
+                            on real data.</p>
+                        <a routerLink="/services-details" class="read-more-btn">Read More<i
+                            class="ri-arrow-right-s-line"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-md-6" style="transform: scale(1.2); border: 1px solid">
+                    <div class="single-services-box">
+                        <h3>Web Application Development</h3>
+                        <p>I use state of the art technologies and best practice workflows to deliver fast high
+                            quality products with consulting and support.</p>
+                        <a routerLink="/services-details" class="read-more-btn">Read More<i
+                            class="ri-arrow-right-s-line"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-md-6" style="transform: scale(0.8); border: 1px solid">
+                    <div class="single-services-box">
+                        <h3>IT Consulting</h3>
+                        <p>You have a process which needs to be optimized? I have the knowledge to tell you what
+                            software and tools you need to use in order to optimize your process and have more time
+                            for important things.</p>
+                        <a routerLink="/services-details" class="read-more-btn">Read More<i
+                            class="ri-arrow-right-s-line"></i></a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="works-area pt-120 pb-90">
+        <div class="container">
+            <div class="section-title">
+                <span class="sub-title">Works</span>
+                <h2>Some of My Projects</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="works-box">
+                        <div class="works-image">
+                            <a routerLink="/works-details">
+                                <img src="../../../assets/img/riskmanagement.svg" alt="image">
+                            </a>
+                        </div>
+
+                        <div class="works-content">
+                            <h3><a routerLink="/works-details">Riskmanagement Tool for the automotive industry</a></h3>
+                            <ul>
+                                <li>Webdevelopment</li>
+                                <li>Analytics</li>
+                                <li>Consulting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="works-box">
+                        <div class="works-image">
+                            <a routerLink="/works-details" class="text-center">
+                                <img src="../../../assets/img/drone.svg" alt="image">
+                            </a>
+                        </div>
+
+                        <div class="works-content">
+                            <h3><a routerLink="/works-details">Dronegraphy Platform</a></h3>
+                            <ul>
+                                <li>Webdevelopment</li>
+                                <li>Design</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="works-box">
+                        <div class="works-image">
+                            <a routerLink="/works-details" class="text-center">
+                                <img src="../../../assets/img/worldwide.svg" alt="image">
+                            </a>
+                        </div>
+
+                        <div class="works-content">
+                            <h3><a routerLink="/works-details">Company-wide Intranet for Health, Safety &
+                                Environment</a></h3>
+                            <ul>
+                                <li>Webdevelopment</li>
+                                <li>Design</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="works-box">
+                        <div class="works-image">
+                            <a routerLink="/works-details">
+                                <img src="../../../assets/img/environmental.svg" alt="image">
+                            </a>
+                        </div>
+
+                        <div class="works-content">
+                            <h3><a routerLink="/works-details">Environmental Management Platform</a></h3>
+                            <ul>
+                                <li>Webdevelopment</li>
+                                <li>Analytics</li>
+                                <li>Consulting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="works-box">
+                        <div class="works-image">
+                            <a routerLink="/works-details">
+                                <img src="../../../assets/img/trainingmanagement.svg" alt="image">
+                            </a>
+                        </div>
+
+                        <div class="works-content">
+                            <h3><a routerLink="/works-details">Training Management Tool</a></h3>
+                            <ul>
+                                <li>Application Development</li>
+                                <li>Workflow</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="works-box">
+                        <div class="works-image">
+                            <a routerLink="/works-details">
+                                <img src="../../../assets/img/website.svg" alt="image">
+                            </a>
+                        </div>
+
+                        <div class="works-content">
+                            <h3><a routerLink="/works-details">Heat & Power Web Presence</a></h3>
+                            <ul>
+                                <li>Webdevelopment</li>
+                                <li>Design</li>
+                                <li>Consulting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="feedback-area">
+         <div class="container-fluid">
+             <div class="row">
+                 <div class="col-lg-5 col-md-12">
+                     <div class="feedback-content">
+                         <div class="d-table">
+                             <div class="d-table-cell">
+                                 <div class="section-title">
+                                     <span class="sub-title">Testimonials</span>
+                                     <h2>What my clients say about me</h2>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="col-lg-7 col-md-12">
+                     <div class="feedback-slides-content bg-0f1d22">
+                         <div class="feedback-slides owl-carousel owl-theme">
+                             <div class="single-feedback-item">
+                                 <i class="ri-double-quotes-r"></i>
+                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor incididunt
+                                     ut labore et dolore magna aliqua. eiusmod Quis ipsum suspendisse ultrices
+                                     gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
+
+                                 <div class="client-info">
+                                     <h3>Jason Statham</h3>
+                                     <span>Web Developer</span>
+                                 </div>
+                             </div>
+
+                             <div class="single-feedback-item">
+                                 <i class="ri-double-quotes-r"></i>
+                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor incididunt
+                                     ut labore et dolore magna aliqua. eiusmod Quis ipsum suspendisse ultrices
+                                     gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
+
+                                 <div class="client-info">
+                                     <h3>Sarah Taylor</h3>
+                                     <span>Web Designer</span>
+                                 </div>
+                             </div>
+
+                             <div class="single-feedback-item">
+                                 <i class="ri-double-quotes-r"></i>
+                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor incididunt
+                                     ut labore et dolore magna aliqua. eiusmod Quis ipsum suspendisse ultrices
+                                     gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
+
+                                 <div class="client-info">
+                                     <h3>David Warner</h3>
+                                     <span>PHP Developer</span>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </section>-->
+
+    <div class="my-clients-area ptb-120">
+        <div class="container">
+            <div class="section-title">
+                <span class="sub-title">Experience</span>
+                <h2>Companies I worked with</h2>
+            </div>
+
+            <div class="row justify-content-center">
+                <div *ngFor="let client of clients" class="col-lg-2 col-md-3 col-sm-5 col-5">
+                    <div class="single-clients">
+                        <a [href]="client.homepage">
+                            <img [src]="client.contentUrl" alt="image" [ngClass]="client.cssClass">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="hire-me-area bg-0f1d22 ptb-120">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 col-md-12">
+                    <div class="hire-me-content">
+                        <span class="sub-title">Project in mind? Let's talk!</span>
+                        <h2>I am Available for Freelance Hire</h2>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-12">
+                    <div class="hire-me-btn">
+                        <a class="default-btn" style="cursor: pointer" (click)="openDialog()">Hire Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <app-footer></app-footer>
+</div>

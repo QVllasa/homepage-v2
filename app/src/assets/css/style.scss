@@ -41,6 +41,8 @@ This files table contents are outlined below>>>>>
 /*================================================
 Default CSS
 =================================================*/
+
+
 $font-family1: 'Open Sans', sans-serif;
 $font-family2: 'Poppins', serif;
 $font-family3: 'Mrs Saint Delafield', cursive;
@@ -50,6 +52,14 @@ $white-color: #ffffff;
 $black-color: #0b1315;
 $dark-blue-color: #0f1d22;
 $transition: .5s;
+
+
+@import '~@angular/material/theming';
+
+$custom-typography: mat-typography-config(
+    $font-family: $font-family2
+);
+@include mat-core($custom-typography);
 
 body {
     padding: 0;

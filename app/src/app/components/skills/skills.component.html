@@ -1,0 +1,22 @@
+<div class="skills-area">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" *ngFor="let skill of skills">
+            <div class="skills-item">
+                <div class="skills-header">
+                    <h3 class="skills-title">{{skill.title}}</h3>
+
+                    <div class="skills-percentage">
+                        85%
+                    </div>
+                </div>
+
+                <div class="skills-bar">
+                    <div class="bar-inner">
+                        <div [ngStyle]="{'width': skill.value+'%'}" class="bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,6 +1,6 @@
 (function($){
 	"use strict";
-		
+
 	// Scroll JS
 	$('.scroll-btn a, .placid-aside .navbar-nav .nav-item .nav-link, .navbar .navbar-nav .nav-item .nav-link, .about-content .default-btn, .others-option .default-btn, .aside-footer .default-btn, .hire-me-btn .default-btn, .book-trainer-content .default-btn, .about-content .default-btn, .home-banner-content .default-btn').on('click', function(e){
 		var anchor = $(this);
@@ -96,7 +96,7 @@
 		$(".home-banner-content p").addClass("animated fadeInUp").css("opacity", "1");
 		$(".home-banner-content .default-btn").addClass("animated fadeInDown").css("opacity", "1");
 	});
-	
+
 	// Typewriter JS
 	var TxtType = function(el, toRotate, period) {
 		this.toRotate = toRotate;
@@ -151,7 +151,7 @@
 	(function ($) {
 		$('.tab ul.tabs').addClass('active').find('> li:eq(0)').addClass('current');
 		$('.tab ul.tabs li').on('click', function (g) {
-			var tab = $(this).closest('.tab'), 
+			var tab = $(this).closest('.tab'),
 			index = $(this).closest('li').index();
 			tab.find('ul.tabs > li').removeClass('current');
 			$(this).closest('li').addClass('current');
@@ -179,39 +179,39 @@
 	$('.water-ripple').ripples('show');
 
 	// Progress Bar
-	if($('.progress-line').length){
-		$('.progress-line').appear(function(){
-			var el = $(this);
-			var percent = el.data('width');
-			$(el).css('width',percent+'%');
-		},{accY: 0});
-	}
-	if($('.count-box').length){
-		$('.count-box').appear(function(){
-			var $t = $(this),
-				n = $t.find(".count-text").attr("data-stop"),
-				r = parseInt($t.find(".count-text").attr("data-speed"), 10);
-
-			if (!$t.hasClass("counted")) {
-				$t.addClass("counted");
-				$({
-					countNum: $t.find(".count-text").text()
-				}).animate({
-					countNum: n
-				}, {
-					duration: r,
-					easing: "linear",
-					step: function() {
-						$t.find(".count-text").text(Math.floor(this.countNum));
-					},
-					complete: function() {
-						$t.find(".count-text").text(this.countNum);
-					}
-				});
-			}
-			
-		},{accY: 0});
-	}
+	// if($('.progress-line').length){
+	// 	$('.progress-line').appear(function(){
+	// 		var el = $(this);
+	// 		var percent = el.data('width');
+	// 		$(el).css('width',percent+'%');
+	// 	},{accY: 0});
+	// }
+	// if($('.count-box').length){
+	// 	$('.count-box').appear(function(){
+	// 		var $t = $(this),
+	// 			n = $t.find(".count-text").attr("data-stop"),
+	// 			r = parseInt($t.find(".count-text").attr("data-speed"), 10);
+    //
+	// 		if (!$t.hasClass("counted")) {
+	// 			$t.addClass("counted");
+	// 			$({
+	// 				countNum: $t.find(".count-text").text()
+	// 			}).animate({
+	// 				countNum: n
+	// 			}, {
+	// 				duration: r,
+	// 				easing: "linear",
+	// 				step: function() {
+	// 					$t.find(".count-text").text(Math.floor(this.countNum));
+	// 				},
+	// 				complete: function() {
+	// 					$t.find(".count-text").text(this.countNum);
+	// 				}
+	// 			});
+	// 		}
+	//
+	// 	},{accY: 0});
+	// }
 
 	// Popup Video
 	$('.popup-youtube').magnificPopup({
@@ -231,7 +231,7 @@
 			$(this).html(countNumber);
 		});
 	});
-	
+
 	// Instagram Slides
 	$('.instagram-slides').owlCarousel({
 		loop: true,
@@ -258,7 +258,7 @@
 			}
 		}
 	});
-	
+
 	// Popup Image
 	$('.popup-btn').magnificPopup({
 		type: 'image',
@@ -267,14 +267,14 @@
 		}
 	});
 
-	// Count Time 
+	// Count Time
 	function makeTimer() {
-		var endTime = new Date("September 20, 2020 17:00:00 PDT");			
+		var endTime = new Date("September 20, 2020 17:00:00 PDT");
 		var endTime = (Date.parse(endTime)) / 1000;
 		var now = new Date();
 		var now = (Date.parse(now) / 1000);
 		var timeLeft = endTime - now;
-		var days = Math.floor(timeLeft / 86400); 
+		var days = Math.floor(timeLeft / 86400);
 		var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
 		var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
 		var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
@@ -433,7 +433,7 @@
 			}
 		}
 	});
-	
+
 	// Blog Slides
 	$('.blog-slides').owlCarousel({
 		loop: true,

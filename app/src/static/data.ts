@@ -1,105 +1,143 @@
-import {ISkill} from "../app/models/main-page";
+import {IAboutMe, IClient, IExperience, IProfileImage, ISkill, IStack} from "../app/models/models";
 
-export const icons: { path: string, link: string }[] = [
+export const typeWriterText = [
+    "Technology Enthusiast 👨‍💻",
+    "Developer by ❤️",
+    "Dronepilot 🚁"
+];
+
+export const aboutMe: IAboutMe = {
+    quote: 'Always turn a problem into an opportunity.',
+    text: 'With the experience of yesterday, the ambition and motivation of today, I am fascinated\n' +
+        '                            for tomorrow and look almost euphorically towards a future in which IoT is known to\n' +
+        '                            everyone, product development is no longer imaginable without Virtual Twins and\n' +
+        '                            networked machines learn independently.'
+}
+
+export const stacks: IStack[] = [
     {
-        path: 'assets/img/stack-icons/angular-icon.svg',
-        link: 'https://angular.io/'
+        title: 'Angular',
+        contentUrl: 'assets/img/stack-icons/angular-icon.svg',
+        url: 'https://angular.io/',
+
     },
     {
-        path: 'assets/img/stack-icons/azure.svg',
-        link: 'https://azure.microsoft.com/de-de/'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/azure.svg',
+        url: 'https://azure.microsoft.com/de-de/'
     },
     {
-        path: 'assets/img/stack-icons/docker.svg',
-        link: 'https://www.docker.com/'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/docker.svg',
+        url: 'https://www.docker.com/'
     },
     {
-        path: 'assets/img/stack-icons/git.svg',
-        link: 'https://git-scm.com/'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/git.svg',
+        url: 'https://git-scm.com/'
     },
     {
-        path: 'assets/img/stack-icons/html5.svg',
-        link: 'https://developer.mozilla.org/de/docs/Web/HTML/HTML5'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/html5.svg',
+        url: 'https://developer.mozilla.org/de/docs/Web/HTML/HTML5'
     },
     {
-        path: 'assets/img/stack-icons/mysql.svg',
-        link: 'https://www.mysql.com/de/'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/mysql.svg',
+        url: 'https://www.mysql.com/de/'
     },
     {
-        path: 'assets/img/stack-icons/nodejs.svg',
-        link: 'https://nodejs.org/en/'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/nodejs.svg',
+        url: 'https://nodejs.org/en/'
     },
     {
-        path: 'assets/img/stack-icons/php.svg',
-        link: 'https://www.php.net/manual/de/intro-whatis.php'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/php.svg',
+        url: 'https://www.php.net/manual/de/intro-whatis.php'
     },
     {
-        path: 'assets/img/stack-icons/postgresql.svg',
-        link: 'https://www.postgresql.org/'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/postgresql.svg',
+        url: 'https://www.postgresql.org/'
     },
     {
-        path: 'assets/img/stack-icons/python.svg',
-        link: 'https://www.python.org/'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/python.svg',
+        url: 'https://www.python.org/'
     },
     {
-        path: 'assets/img/stack-icons/sass.svg',
-        link: 'https://sass-lang.com/'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/sass.svg',
+        url: 'https://sass-lang.com/'
     },
     {
-        path: 'assets/img/stack-icons/symfony.svg',
-        link: 'https://symfony.com/'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/symfony.svg',
+        url: 'https://symfony.com/'
     },
     {
-        path: 'assets/img/stack-icons/tailwindcss.svg',
-        link: 'https://tailwindcss.com/'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/tailwindcss.svg',
+        url: 'https://tailwindcss.com/'
     },
     {
-        path: 'assets/img/stack-icons/typescript.svg',
-        link: 'https://www.typescriptlang.org/'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/typescript.svg',
+        url: 'https://www.typescriptlang.org/'
     },
     {
-        path: 'assets/img/stack-icons/graphql.svg',
-        link: 'https://graphql.org/'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/graphql.svg',
+        url: 'https://graphql.org/'
     },
     {
-        path: 'assets/img/stack-icons/adobe-xd.svg',
-        link: 'https://www.adobe.com/de/products/xd.html'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/adobe-xd.svg',
+        url: 'https://www.adobe.com/de/products/xd.html'
     },
     {
-        path: 'assets/img/stack-icons/phpstorm.svg',
-        link: 'https://www.jetbrains.com/de-de/phpstorm/'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/phpstorm.svg',
+        url: 'https://www.jetbrains.com/de-de/phpstorm/'
     },
     {
-        path: 'assets/img/stack-icons/javascript.svg',
-        link: 'https://developer.mozilla.org/de/docs/Web/JavaScript'
+        title: '',
+        contentUrl: 'assets/img/stack-icons/javascript.svg',
+        url: 'https://developer.mozilla.org/de/docs/Web/JavaScript'
     },
 ]
 
-export const companies: { path: string, link: string, class?: string[] }[] = [
+export const clients: IClient[] = [
     {
-        path: 'assets/img/clients/rrps.svg',
-        link: 'https://www.mtu-solutions.com/eu/de/about-us/about-rolls-royce-power-systems.html',
-        class: ['']
+        name: '',
+        contentUrl: 'assets/img/clients/rrps.svg',
+        homepage: 'https://www.mtu-solutions.com/eu/de/about-us/about-rolls-royce-power-systems.html',
+        cssClass: ['']
     },
     {
-        path: 'assets/img/clients/pec.svg',
-        link: 'https://www.project-engineers.de/',
-        class: ['no-filter']
+        name: '',
+        contentUrl: 'assets/img/clients/pec.svg',
+        homepage: 'https://www.project-engineers.de/',
+        cssClass: ['no-filter']
     },
     {
-        path: 'assets/img/clients/siemens.svg',
-        link: 'https://siemens.mindsphere.io/en',
-        class: ['']
+        name: '',
+        contentUrl: 'assets/img/clients/siemens.svg',
+        homepage: 'https://siemens.mindsphere.io/en',
+        cssClass: ['']
     },
     {
-        path: 'assets/img/clients/kit.svg',
-        link: 'https://www.imi.kit.edu/index.php',
-        class: ['']
+        name: '',
+        contentUrl: 'assets/img/clients/kit.svg',
+        homepage: 'https://www.imi.kit.edu/index.php',
+        cssClass: ['']
     },
     {
-        path: 'assets/img/clients/translake.png',
-        link: 'https://www.translake.org/',
-        class: ['no-filter']
+        name: '',
+        contentUrl: 'assets/img/clients/translake.png',
+        homepage: 'https://www.translake.org/',
+        cssClass: ['no-filter']
     },
 ]
 
@@ -138,3 +176,51 @@ export const skills: ISkill[] = [
     },
 
 ];
+
+export const experiences: IExperience[] = [
+    {
+        date: '01/2020 - TODAY',
+        function: 'Software Engineer | IT Consulting',
+        company: 'PEC - Project Engineers & Consultants',
+        companyUrl: 'https://www.project-engineers.de/',
+        description: 'As an IT Consultant I develop software tools used in the automotive industry and consult clients.',
+    },
+    {
+        date: '09/2018 - 12/2019',
+        function: 'Technical Operations Coordinator',
+        company: 'SIEMENS Industry Software GmbH',
+        companyUrl: 'https://siemens.mindsphere.io/de',
+        description: 'As part of the MindSphere Academy Team, I optimized workflows and gained practical knowledge in the use of IoT Technologies.',
+    },
+
+    {
+        date: '04/2018 - 08/2018',
+        function: 'Core Developer',
+        company: 'Institute of Informationmanagement in Engineering',
+        companyUrl: 'https://www.imi.kit.edu/index.php',
+        description: 'As part of the Core Developer Team, I worked on the implementation of the game Factorio within a Virtual Reality environment.'
+    },
+    {
+        date: '09/2017 - 09/2018',
+        function: 'Business Administration',
+        company: 'SIEMENS AG',
+        companyUrl: 'https://new.siemens.com/de/de.html',
+        description: 'In the Power Generation and Service Division I was responsible for the analysis of cost trends and the maintenance of service contracts using SAP.'
+    },
+    {
+        date: '06/2016 - 11/2016',
+        function: 'Business Development',
+        company: 'M-A-U-S Seminare gGmbH',
+        companyUrl: 'https://www.erstehilfe.de/startseite',
+        description: 'In a Team with other Students, I helped MAUS to a rapid expansion in the entire German area.'
+    },
+    {
+        date: '08/2014 - 02/2015',
+        function: 'Projectmanagement | Marketing',
+        company: 'translake GmbH',
+        companyUrl: 'https://www.erstehilfe.de/startseite',
+        description: 'Intern in projectmanagement where I work on EU funded projects.'
+    }
+]
+
+export const profileImg: IProfileImage = {path: './../assets/img/about-img2.jpg'};

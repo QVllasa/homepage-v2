@@ -1,0 +1,11 @@
+<div class="experience-area">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" *ngFor="let exp of experiences">
+            <div class="single-experience-box">
+                <span>{{exp.date}} <br> {{exp.function}}</span>
+                <h3>{{exp.company}}</h3>
+                <p>{{exp.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
