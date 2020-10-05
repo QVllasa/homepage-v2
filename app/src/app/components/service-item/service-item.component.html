@@ -1,11 +1,11 @@
 <div class="row">
     <div *ngFor="let service of services" class="col-lg-4 col-sm-6 col-md-6 service-container"
-         [ngStyle]="{background: 'url('+service.contentUrl+') bottom right no-repeat'}"
-         [ngClass]="service.priority === 0 ? 'scale-12':''">
+         [ngStyle]="{background: 'url('+serverPath+service.contentUrl+') bottom right no-repeat'}"
+         [ngClass]="service.priority === 1 ? 'scale-12':''">
         <div class="single-services-box">
             <h3>{{service.title}}</h3>
             <p>{{service.shortText}}</p>
-            <a [routerLink]="['/services-details', service.id]" class="read-more-btn">Read More<i
+            <a [routerLink]="['/services-details', service._id]" class="read-more-btn">Read More<i
                 class="ri-arrow-right-s-line"></i></a>
         </div>
     </div>

@@ -1,5 +1,5 @@
 
-<div id="main-content" class="main-content">
+<div id="main-content" class="main-content" *ngIf="!isLoading">
 
     <div class="responsive-burger-menu">
         <span class="top-bar"></span>
@@ -9,55 +9,27 @@
 
     <section class="services-details-area bg-0f1d22 ptb-120">
         <div class="container">
-            <div class="services-details-overview">
+            <div  class="section-title pb-90">
+                <h2 *ngIf="service.service.title === 'IT Consulting'" >I know a loooot of tools. <br> Really.</h2>
+                <h2 *ngIf="service.service.title === 'Web Application Development'" >I solve your problem and help you grow.</h2>
+                <h2 *ngIf="service.service.title === 'Business Research & Analytics'" >I show you things you never knew before.</h2>
+            </div>
+            <div class="services-details-overview" *ngFor="let section of sections; index as i">
+                <div *ngIf="isEven(i)" class="services-details-image">
+                    <img  [src]="serverPath+section.contentUrl" alt="image">
+                </div>
                 <div class="services-details-desc">
-                    <h3>Business Research</h3>
-                    <p>We believe brand interaction is key in communication. Real innovations and a positive customer
-                        experience are the heart of successful communication. No fake products and services. The
-                        customer is king, their lives and needs are the inspiration.</p>
-
-                    <div class="features-text">
-                        <h4><i class="ri-check-line"></i> Core Development</h4>
-                        <p>No fake products and services. The customer is king, their lives and needs are the
-                            inspiration.</p>
-                    </div>
-
-                    <div class="features-text">
-                        <h4><i class="ri-check-line"></i> Define Your Choices</h4>
-                        <p>No fake products and services. The customer is king, their lives and needs are the
-                            inspiration.</p>
+                    <h3>{{section.title}}</h3>
+                    <p *ngIf="section.description" >{{section.description}}</p>
+                    <div class="features-text" *ngFor="let key of section.keys" >
+                        <h4><i class="ri-check-line"></i>{{key}}</h4>
                     </div>
                 </div>
-
-                <div class="services-details-image">
-                    <img src="../../../assets/img/blog/img9.jpg" alt="image">
+                <div *ngIf="!isEven(i)" class="services-details-image">
+                    <img [src]="serverPath+section.contentUrl" alt="image">
                 </div>
             </div>
 
-            <div class="services-details-overview">
-                <div class="services-details-image">
-                    <img src="../../../assets/img/blog/img1.jpg" alt="image">
-                </div>
-
-                <div class="services-details-desc">
-                    <h3>Email Marketing</h3>
-                    <p>We believe brand interaction is key in communication. Real innovations and a positive customer
-                        experience are the heart of successful communication. No fake products and services. The
-                        customer is king, their lives and needs are the inspiration.</p>
-
-                    <div class="features-text">
-                        <h4><i class="ri-check-line"></i> Core Development</h4>
-                        <p>No fake products and services. The customer is king, their lives and needs are the
-                            inspiration.</p>
-                    </div>
-
-                    <div class="features-text">
-                        <h4><i class="ri-check-line"></i> Define Your Choices</h4>
-                        <p>No fake products and services. The customer is king, their lives and needs are the
-                            inspiration.</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 

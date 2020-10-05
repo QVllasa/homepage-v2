@@ -1481,9 +1481,10 @@ About CSS
         color: $white-color;
         margin-bottom: 0;
         line-height: 1.9;
+        font-size: 20px;
     }
     .about-list-tab {
-        margin-top: 20px;
+        margin-top: 70px;
 
         .tabs {
             padding-left: 0;
@@ -1497,7 +1498,7 @@ About CSS
                 color: $white-color;
                 position: relative;
                 margin-right: 24px;
-                padding-bottom: 2px;
+                padding-bottom: 20px;
                 transition: $transition;
                 font: {
                     size: 28px;
@@ -1600,8 +1601,7 @@ About CSS
 
                     .single-experience-box {
                         margin-bottom: 40px;
-                        border: 1px solid;
-                        padding: 8px;
+
 
                         span {
                             display: block;
@@ -3296,7 +3296,6 @@ Countdown CSS
 My Clients CSS
 =================================================*/
 .my-clients-area {
-    background-color: #0F1E21;
     .row {
         margin: {
             left: 0;

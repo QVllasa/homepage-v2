@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IService} from "../../models/models";
+import {BASE_PATH} from "../../../environments/environment";
 
 @Component({
   selector: 'app-service-item',
@@ -9,6 +10,7 @@ import {IService} from "../../models/models";
 export class ServiceItemComponent implements OnInit {
 
     @Input() services: IService[];
+    serverPath = BASE_PATH
 
   constructor() { }
 

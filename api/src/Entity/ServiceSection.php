@@ -31,38 +31,38 @@ class ServiceSection
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"service_section_read"})
+     * @Groups({"service_section_read", "service_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"service_section_read"})
+     * @Groups({"service_section_read", "service_read"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"service_section_read"})
+     * @Groups({"service_section_read", "service_read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="array", nullable=true)
      *
-     * @Groups({"service_section_read"})
+     * @Groups({"service_section_read", "service_read"})
      */
     private $keys = [];
 
     /**
      * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="serviceSections")
-     * @Groups({"service_section_read"})
+     * @Groups({"service_section_read", "service_read"})
      */
     private $service;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"service_section_read"})
+     * @Groups({"service_section_read", "service_read"})
      */
     private $image;
 
@@ -73,7 +73,7 @@ class ServiceSection
 
     /**
      * @var string|null
-     * @Groups({"service_section_read"})
+     * @Groups({"service_section_read", "service_read"})
      */
     public $contentUrl;
 

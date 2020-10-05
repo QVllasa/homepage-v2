@@ -14,7 +14,7 @@ import {
     aboutMe,
     clients,
     experiences,
-    profileImg, projects, services, skills, stacks,
+    profileImg, projects, skills, stacks,
     typeWriterText
 } from "../../../static/data";
 import {BASE_PATH} from "../../../environments/environment";
@@ -37,12 +37,12 @@ export class HomeComponent implements OnInit {
 
     aboutMe: IAboutMe = aboutMe;
     profileImg: IProfileImage = profileImg;
-    experiences: IExperience[] = experiences;
-    clients: IClient[] = clients;
-    stacks: IStack[] = stacks;
-    skills: ISkill[] = skills;
-    services: IService[] = services;
-    projects: IProject[] = projects;
+    experiences: IExperience[] = [];
+    clients: IClient[] = [];
+    stacks: IStack[] = [];
+    skills: ISkill[] = [];
+    services: IService[] = [];
+    projects: IProject[] = [];
 
     serverPath = BASE_PATH;
 
@@ -55,39 +55,51 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         this.activeTab = 'top-skills';
-        // this.isLoading = true;
-        // this.querySubscription = this.apollo.watchQuery<IMainPage>({query: this.query}).valueChanges
-        //     .subscribe(({data, error, loading}) => {
-        //         this.aboutMe = data.aboutMe;
-        //         this.experiences = [];
-        //         this.skills = [];
-        //         this.stacks = [];
-        //         this.clients = [];
-        //
-        //         for (let exp of data.experiences.edges){
-        //             this.experiences.push(exp.node)
-        //         }
-        //
-        //         for (let skill of data.skills.edges){
-        //             this.skills.push(skill.node);
-        //         }
-        //
-        //         for (let stack of data.stacks.edges){
-        //             this.stacks.push(stack.node);
-        //         }
-        //
-        //         for (let company of data.clients.edges){
-        //             this.clients.push(company.node);
-        //         }
-        //
-        //         this.isLoading = loading;
-        //         console.log(error);
-        //         console.log(data);
-        //     });
+        this.isLoading = true;
+        this.querySubscription = this.apollo.watchQuery<IMainPage>({query: this.query}).valueChanges
+            .subscribe(({data, error, loading}) => {
+                this.aboutMe = data.aboutMe;
+                this.experiences = [];
+                this.skills = [];
+                this.stacks = [];
+                this.clients = [];
+                this.projects = [];
+                this.services = [];
+
+                for (let exp of data.experiences.edges){
+                    this.experiences.push(exp.node)
+                }
+
+                for (let skill of data.skills.edges){
+                    this.skills.push(skill.node);
+                }
+
+                for (let stack of data.stacks.edges){
+                    this.stacks.push(stack.node);
+                }
+
+                for (let company of data.clients.edges){
+                    this.clients.push(company.node);
+                }
+
+                for (let service of data.services.edges){
+                    this.services.push(service.node);
+                }
+
+                this.services = this.services.sort((a, b) => a.priority - b.priority);
+
+                for (let project of data.projects.edges){
+                    this.projects.push(project.node)
+                }
+
+                this.isLoading = loading;
+                if (error){
+                    console.log(error);
+                }
+            });
     }
 
     onToggleTabs(tab) {
-        console.log(tab);
         this.activeTab = tab;
     }
 
@@ -100,9 +112,7 @@ export class HomeComponent implements OnInit {
             }
         );
 
-        dialogRef.afterClosed().subscribe(result => {
-            console.log(`Dialog result: ${result}`);
-        });
+        dialogRef.afterClosed().subscribe();
 
     }
 

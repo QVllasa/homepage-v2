@@ -1,0 +1,9 @@
+.single-clients img{
+    height: auto;
+    max-height: 65px;
+    filter: invert(1) grayscale(100%);
+}
+
+.no-filter{
+    filter: invert(0) grayscale(0) !important;
+}

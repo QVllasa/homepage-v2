@@ -32,17 +32,19 @@ class ProfilImage
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"profile_read"})
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"profile_read"})
      */
     private $path;
 
     /**
      * @Vich\UploadableField(mapping="images", fileNameProperty="path")
+     * @Groups({"project_read"})
      */
     private $pathFile;
 
@@ -61,6 +63,7 @@ class ProfilImage
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"project_read"})
      */
     private $updatedAt;
 

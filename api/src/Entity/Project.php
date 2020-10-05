@@ -50,7 +50,7 @@ class Project
     private  $imagePath;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      * @Groups({"project_read"})
      */
     private $description;

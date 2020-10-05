@@ -1,0 +1,9 @@
+<div class="row justify-content-center">
+    <div *ngFor="let client of clients" class="col-lg-2 col-md-3 col-sm-5 col-5">
+        <div class="single-clients">
+            <a [href]="client.homepage">
+                <img [src]="serverPath+client.contentUrl" alt="image" [ngClass]="client.cssClass">
+            </a>
+        </div>
+    </div>
+</div>

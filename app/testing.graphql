@@ -1,66 +1,20 @@
+query Service($id: ID! = "services/5")
 {
-    aboutMe(id: "/about_mes/1"){
-        quote
-        text
-    }
-    skills{
-        edges{
-            node{
-                title
-                value
-            }
-        }
-    }
-    experiences{
-        edges{
-            node{
-                date
-                function
-                company
-                companyUrl
-                description
-            }
-        }
-    }
-    stacks{
-        edges{
-            node{
-                title
-                url
-                contentUrl
-            }
-        }
-    }
-    projects{
-        edges{
-            node{
-                _id
-                id
-                title
-                description
-                keys
-                createdAt
-                category{
-                    edges{
-                        node{
-                            title
-                        }
-                    }
+    service(id: $id){
+        _id
+        id
+        title
+        shortText
+        contentUrl
+        priority
+        serviceSections{
+            edges{
+                node{
+                    title
+                    description
+                    contentUrl
+                    keys
                 }
-                client{
-                    name
-                }
-                contentUrl
-            }
-        }
-    }
-    clients{
-        edges{
-            node{
-                name
-                homepage
-                contentUrl
-                cssClass
             }
         }
     }

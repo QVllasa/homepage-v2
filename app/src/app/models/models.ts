@@ -27,7 +27,7 @@ export interface IMainPage {
     }
     projects: {
         edges: {
-           node: IProject
+            node: IProject
         }[]
     }
 }
@@ -68,11 +68,21 @@ export interface IStack {
 }
 
 export interface IService {
-    id: number,
+    _id: number,
+    id: string,
     title: string,
     shortText: string,
     contentUrl: string,
     priority: number,
+    serviceSections: {
+        edges: {
+            node: IServiceSection
+        }[]
+    }
+}
+
+export interface TService {
+    service: IService
 }
 
 export interface IProject {
@@ -92,6 +102,14 @@ export interface IProject {
 
 export interface ICategory {
     title: string,
+}
+
+export interface IServiceSection {
+    id: string,
+    title: string,
+    description: string,
+    keys: string[],
+    contentUrl: string,
 }
 
 
@@ -167,6 +185,7 @@ export const Models = gql`
         services{
             edges{
                 node{
+                    _id
                     id
                     title
                     shortText
@@ -177,3 +196,29 @@ export const Models = gql`
         }
     }
 `;
+
+
+export const ServiceModel = gql`
+    query Service($id: ID!)
+    {
+        service(id: $id){
+            _id
+            id
+            title
+            shortText
+            contentUrl
+            priority
+            serviceSections{
+                edges{
+                    node{
+                        title
+                        description
+                        contentUrl
+                        keys
+                    }
+                }
+            }
+        }
+    }
+`;
+

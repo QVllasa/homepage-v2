@@ -38,9 +38,9 @@
                         <p>{{aboutMe.text}}</p>
                         <div class="tab about-list-tab">
                             <ul class="tabs">
-                                <li (click)="onToggleTabs('top-skills')">Top Skills</li>
-                                <li (click)="onToggleTabs('experience')">Experience</li>
-                                <li (click)="onToggleTabs('education')">Education</li>
+                                <li [ngClass]="activeTab === 'top-skills' ? 'about-list-tab tabs li current' : ''" (click)="onToggleTabs('top-skills')">Top Skills</li>
+                                <li [ngClass]="activeTab === 'experience' ? 'about-list-tab tabs li current' : ''" (click)="onToggleTabs('experience')">Experience</li>
+                                <li [ngClass]="activeTab === 'education' ? 'about-list-tab tabs li current' : ''" (click)="onToggleTabs('education')">Education</li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tabs-item" *ngIf="activeTab === 'top-skills'">
@@ -64,7 +64,6 @@
             </div>
         </div>
     </section>
-
     <section id="stack" class="pt-120 pb-90 bg-0f1d22">
         <div class="container">
             <div class="section-title">
@@ -72,20 +71,17 @@
                 <h2>Technologies I regularly use</h2>
             </div>
         </div>
-
         <div class="container m-auto">
             <mat-grid-list gutterSize="12px" cols="3" rowHeight="3:1">
                 <mat-grid-tile *ngFor="let stack of stacks">
                     <a [href]="stack.url">
-                        <img [matTooltip]="stack.title" [src]="stack.contentUrl" alt="image" style="max-height: 70px;">
+                        <img [matTooltip]="stack.title" [src]="serverPath+stack.contentUrl" alt="image" style="max-height: 70px;">
                     </a>
                 </mat-grid-tile>
             </mat-grid-list>
         </div>
-
     </section>
-
-    <section id="services" class="services-area pt-120 pb-90">
+    <section id="services" class="services-area pt-120 pb-120">
         <div class="container">
             <div class="section-title pb-90">
                 <span class="sub-title ">Services</span>
@@ -95,126 +91,13 @@
         </div>
     </section>
 
-    <section id="portfolio" class="works-area pt-120 pb-90">
+    <section id="portfolio" class="works-area pt-120 pb-90 bg-0f1d22">
         <div class="container">
             <div class="section-title">
                 <span class="sub-title">Works</span>
-                <h2>Some of My Projects</h2>
+                <h2>Some of My latest Projects</h2>
             </div>
-
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12" *ngFor="">
-                    <div class="works-box">
-                        <div class="works-image">
-                            <a routerLink="/works-details">
-                                <img src="../../../assets/img/riskmanagement.svg" alt="image">
-                            </a>
-                        </div>
-
-                        <div class="works-content">
-                            <h3><a routerLink="/works-details">Riskmanagement Tool for the automotive industry</a></h3>
-                            <ul>
-                                <li>Webdevelopment</li>
-                                <li>Analytics</li>
-                                <li>Consulting</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="works-box">
-                        <div class="works-image">
-                            <a routerLink="/works-details" class="text-center">
-                                <img src="../../../assets/img/drone.svg" alt="image">
-                            </a>
-                        </div>
-
-                        <div class="works-content">
-                            <h3><a routerLink="/works-details">Dronegraphy Platform</a></h3>
-                            <ul>
-                                <li>Webdevelopment</li>
-                                <li>Design</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="works-box">
-                        <div class="works-image">
-                            <a routerLink="/works-details" class="text-center">
-                                <img src="../../../assets/img/worldwide.svg" alt="image">
-                            </a>
-                        </div>
-
-                        <div class="works-content">
-                            <h3><a routerLink="/works-details">Company-wide Intranet for Health, Safety &
-                                Environment</a></h3>
-                            <ul>
-                                <li>Webdevelopment</li>
-                                <li>Design</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="works-box">
-                        <div class="works-image">
-                            <a routerLink="/works-details">
-                                <img src="../../../assets/img/environmental.svg" alt="image">
-                            </a>
-                        </div>
-
-                        <div class="works-content">
-                            <h3><a routerLink="/works-details">Environmental Management Platform</a></h3>
-                            <ul>
-                                <li>Webdevelopment</li>
-                                <li>Analytics</li>
-                                <li>Consulting</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="works-box">
-                        <div class="works-image">
-                            <a routerLink="/works-details">
-                                <img src="../../../assets/img/trainingmanagement.svg" alt="image">
-                            </a>
-                        </div>
-
-                        <div class="works-content">
-                            <h3><a routerLink="/works-details">Training Management Tool</a></h3>
-                            <ul>
-                                <li>Application Development</li>
-                                <li>Workflow</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="works-box">
-                        <div class="works-image">
-                            <a routerLink="/works-details">
-                                <img src="../../../assets/img/website.svg" alt="image">
-                            </a>
-                        </div>
-
-                        <div class="works-content">
-                            <h3><a routerLink="/works-details">Heat & Power Web Presence</a></h3>
-                            <ul>
-                                <li>Webdevelopment</li>
-                                <li>Design</li>
-                                <li>Consulting</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <app-project-item [projects]="projects"></app-project-item>
         </div>
     </section>
 
@@ -286,19 +169,11 @@
                 <h2>Companies I worked with</h2>
             </div>
 
-            <div class="row justify-content-center">
-                <div *ngFor="let client of clients" class="col-lg-2 col-md-3 col-sm-5 col-5">
-                    <div class="single-clients">
-                        <a [href]="client.homepage">
-                            <img [src]="client.contentUrl" alt="image" [ngClass]="client.cssClass">
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <app-client-item [clients]="clients" ></app-client-item>
         </div>
     </div>
 
-    <section class="hire-me-area bg-0f1d22 ptb-120">
+    <section class="hire-me-area bg-0f1d22 ptb-120 bg-0f1d22">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7 col-md-12">

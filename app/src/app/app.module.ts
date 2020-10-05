@@ -24,6 +24,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {ContactDialogComponent, HomeComponent} from "./pages/home/home.component";
 import {ExperienceItemComponent} from "./components/experience-item/experience-item.component";
 import {ServiceItemComponent} from "./components/service-item/service-item.component";
+import {ProjectItemComponent} from "./components/project-item/project-item.component";
+import {ClientItemComponent} from "./components/client-item/client-item.component";
 // import {EducationItemComponent} from "./components/education-item/education-item.component";
 
 
@@ -32,12 +34,14 @@ import {ServiceItemComponent} from "./components/service-item/service-item.compo
     declarations: [
         AppComponent,
         PreloaderComponent,
+        ClientItemComponent,
         HomeComponent,
         BlogDetailsComponent,
         SkillsComponent,
         TypeWriterComponent,
         ContactDialogComponent,
         WorksDetailsComponent,
+        ProjectItemComponent,
         ServicesDetailsComponent,
         FooterComponent,
         ServiceItemComponent,
