@@ -1,4 +1,4 @@
-<div id="main-content" class="main-content">
+<div id="main-content" class="main-content" *ngIf="!isLoading">
 
     <div class="responsive-burger-menu">
         <span class="top-bar"></span>
@@ -34,196 +34,28 @@
         <div class="container">
             <div class="section-title">
                 <span class="sub-title">About Me</span>
-                <h2>Always turn a problem into an opportunity.</h2>
+                <h2>{{aboutMe.quote}}</h2>
             </div>
 
             <div class="row align-items-center">
                 <div class="col-lg-8 col-md-12">
                     <div class="about-content">
-                        <p>With the experience of yesterday, the ambition and motivation of today, I am fascinated
-                            for tomorrow and look almost euphorically towards a future in which IoT is known to
-                            everyone, product development is no longer imaginable without Virtual Twins and
-                            networked machines learn independently.</p>
+                        <p>{{aboutMe.text}}</p>
 
                         <div class="tab about-list-tab">
                             <ul class="tabs">
                                 <li>Top Skills</li>
                                 <li>Experience</li>
                                 <li>Education</li>
-
                             </ul>
-
                             <div class="tab-content">
                                 <div class="tabs-item">
                                     <div class="skills-area">
                                         <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="skills-item">
-                                                    <div class="skills-header">
-                                                        <h3 class="skills-title">TypeScript | JavaScript</h3>
-
-                                                        <div class="skills-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                                         data-speed="2000"
-                                                                                         data-stop="85">0</span>%
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="skills-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="85"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6" *ngFor="let skill of skills">
+                                                <app-skill-item [skill]="skill" ></app-skill-item>
                                             </div>
 
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="skills-item">
-                                                    <div class="skills-header">
-                                                        <h3 class="skills-title">Python</h3>
-
-                                                        <div class="skills-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                                         data-speed="2000"
-                                                                                         data-stop="90">0</span>%
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="skills-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="90"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="skills-item">
-                                                    <div class="skills-header">
-                                                        <h3 class="skills-title">PHP</h3>
-
-                                                        <div class="skills-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                                         data-speed="2000"
-                                                                                         data-stop="80">0</span>%
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="skills-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="80"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="skills-item">
-                                                    <div class="skills-header">
-                                                        <h3 class="skills-title">HTML5 | CSS3 | SASS</h3>
-
-                                                        <div class="skills-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                                         data-speed="2000"
-                                                                                         data-stop="90">0</span>%
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="skills-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="90"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="skills-item">
-                                                    <div class="skills-header">
-                                                        <h3 class="skills-title">MySQL | PostgreSQL</h3>
-
-                                                        <div class="skills-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                                         data-speed="2000"
-                                                                                         data-stop="80">0</span>%
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="skills-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="80"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="skills-item">
-                                                    <div class="skills-header">
-                                                        <h3 class="skills-title">C#</h3>
-
-                                                        <div class="skills-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                                         data-speed="2000"
-                                                                                         data-stop="40">0</span>%
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="skills-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="40"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="skills-item">
-                                                    <div class="skills-header">
-                                                        <h3 class="skills-title">Adobe XD | Final Cut Pro X</h3>
-
-                                                        <div class="skills-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                                         data-speed="2000"
-                                                                                         data-stop="95">0</span>%
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="skills-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="95"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="skills-item">
-                                                    <div class="skills-header">
-                                                        <h3 class="skills-title">RESTful API | GraphQL</h3>
-
-                                                        <div class="skills-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                                         data-speed="2000"
-                                                                                         data-stop="85">0</span>%
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="skills-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="85"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -1,4 +1,8 @@
 {
+    aboutMe(id: "/about_mes/1"){
+        quote
+        text
+    }
     skills{
         edges{
             node{

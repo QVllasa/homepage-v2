@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router';
+import {Router, NavigationStart, NavigationCancel, NavigationEnd, RouterEvent} from '@angular/router';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { filter } from 'rxjs/operators';
 declare let $: any;
@@ -23,7 +23,9 @@ export class AppComponent implements OnInit {
 
     ngOnInit(){
         this.recallJsFuntions();
+
     }
+
 
     recallJsFuntions() {
         this.router.events

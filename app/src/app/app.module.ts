@@ -17,6 +17,7 @@ import { SidenavComponent } from './components/pages/sidenav/sidenav.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import {SkillItemComponent} from "./components/pages/skill-item/skill-item.component";
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     PreloaderComponent,
     Home,
     BlogDetailsComponent,
+      SkillItemComponent,
     WorksDetailsComponent,
     ServicesDetailsComponent,
     FooterComponent,

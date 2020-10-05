@@ -1,4 +1,6 @@
-export const icons: {path: string, link: string}[] = [
+import {ISkill} from "../app/models/main-page";
+
+export const icons: { path: string, link: string }[] = [
     {
         path: 'assets/img/stack-icons/angular-icon.svg',
         link: 'https://angular.io/'
@@ -60,7 +62,7 @@ export const icons: {path: string, link: string}[] = [
         link: 'https://graphql.org/'
     },
     {
-        path:  'assets/img/stack-icons/adobe-xd.svg',
+        path: 'assets/img/stack-icons/adobe-xd.svg',
         link: 'https://www.adobe.com/de/products/xd.html'
     },
     {
@@ -73,7 +75,7 @@ export const icons: {path: string, link: string}[] = [
     },
 ]
 
-export const companies: {path: string, link: string, class?: string[]}[] = [
+export const companies: { path: string, link: string, class?: string[] }[] = [
     {
         path: 'assets/img/clients/rrps.svg',
         link: 'https://www.mtu-solutions.com/eu/de/about-us/about-rolls-royce-power-systems.html',
@@ -100,3 +102,39 @@ export const companies: {path: string, link: string, class?: string[]}[] = [
         class: ['no-filter']
     },
 ]
+
+export const skills: ISkill[] = [
+    {
+        title: 'TypeScript | JavaScript',
+        value: 85
+    },
+    {
+        title: 'Python',
+        value: 85
+    },
+    {
+        title: 'PHP',
+        value: 85
+    },
+    {
+        title: 'HTML5 | CSS3 | SASS',
+        value: 85
+    },
+    {
+        title: 'MySQL | PostgreSQL',
+        value: 85
+    },
+    {
+        title: 'C#',
+        value: 85
+    },
+    {
+        title: 'Adobe XD | Final Cut Pro X',
+        value: 85
+    },
+    {
+        title: 'RESTful API | GraphQL',
+        value: 85
+    },
+
+];
