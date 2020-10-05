@@ -2,30 +2,30 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Service;
+use App\Entity\ServiceSection;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 
-class ServiceCrudController extends AbstractCrudController
+class ServiceSectionCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Service::class;
+        return ServiceSection::class;
     }
+
 
     public function configureFields(string $pageName): iterable
     {
         $fields = [
             TextField::new('title'),
-            TextField::new('shortText'),
-            IntegerField::new('priority'),
-            AssociationField::new('serviceSections')
+            TextField::new('description'),
+            ArrayField::new('keys'),
+            AssociationField::new('service'),
         ];
 
         if ($pageName === Crud::PAGE_EDIT || $pageName === Crud::PAGE_NEW ){

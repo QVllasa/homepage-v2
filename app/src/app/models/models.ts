@@ -20,6 +20,11 @@ export interface IMainPage {
             node: IClient
         }[]
     }
+    services: {
+        edges: {
+            node: IService
+        }[]
+    }
 }
 
 export interface IAboutMe {
@@ -55,6 +60,14 @@ export interface IStack {
     title: string,
     url: string,
     contentUrl: string
+}
+
+export interface IService {
+    id: number,
+    title: string,
+    shortText: string,
+    contentUrl: string,
+    priority: number,
 }
 
 
@@ -124,6 +137,17 @@ export const Models = gql`
                     homepage
                     contentUrl
                     cssClass
+                }
+            }
+        }
+        services{
+            edges{
+                node{
+                    id
+                    title
+                    shortText
+                    contentUrl
+                    priority
                 }
             }
         }

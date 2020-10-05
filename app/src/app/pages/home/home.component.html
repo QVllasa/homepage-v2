@@ -29,7 +29,7 @@
         <div class="container">
             <div class="section-title">
                 <span class="sub-title">About Me</span>
-                <h2>{{aboutMe.quote}}</h2>
+                <h2 style="line-height: 1.2" >{{aboutMe.quote}}</h2>
             </div>
 
             <div class="row align-items-center">
@@ -75,9 +75,9 @@
 
         <div class="container m-auto">
             <mat-grid-list gutterSize="12px" cols="3" rowHeight="3:1">
-                <mat-grid-tile *ngFor="let stack of stacks" [matTooltip]="stack.title">
+                <mat-grid-tile *ngFor="let stack of stacks" >
                     <a [href]="stack.url" >
-                        <img [src]="stack.contentUrl" alt="image" style="max-height: 70px;">
+                        <img [matTooltip]="stack.title" [src]="stack.contentUrl" alt="image" style="max-height: 70px;">
                     </a>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -87,13 +87,13 @@
 
     <section id="services" class="services-area pt-120 pb-90">
         <div class="container">
-            <div class="section-title">
-                <span class="sub-title">Services</span>
+            <div class="section-title pb-90">
+                <span class="sub-title ">Services</span>
                 <h2>What I can do for you</h2>
             </div>
 
             <div class="row">
-                <div class="col-lg-4 col-sm-6 col-md-6" style="transform: scale(0.8); border: 1px solid">
+                <div class="col-lg-4 col-sm-6 col-md-6 service-container" style="transform: scale(0.8); border: 1px solid rgba(200, 171, 128, 0.5)">
                     <div class="single-services-box">
                         <h3>Business Research & Analytics</h3>
                         <p>I use PowerBi and/or Tableau to give you a deeper insight in a predefined field. Your
@@ -104,7 +104,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-sm-6 col-md-6" style="transform: scale(1.2); border: 1px solid">
+                <div class="col-lg-4 col-sm-6 col-md-6 service-container">
                     <div class="single-services-box">
                         <h3>Web Application Development</h3>
                         <p>I use state of the art technologies and best practice workflows to deliver fast high
@@ -114,7 +114,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-sm-6 col-md-6" style="transform: scale(0.8); border: 1px solid">
+                <div class="col-lg-4 col-sm-6 col-md-6 service-container" style="transform: scale(0.8); border: 1px solid rgba(200, 171, 128, 0.5)">
                     <div class="single-services-box">
                         <h3>IT Consulting</h3>
                         <p>You have a process which needs to be optimized? I have the knowledge to tell you what
@@ -345,7 +345,7 @@
 
                 <div class="col-lg-5 col-md-12">
                     <div class="hire-me-btn">
-                        <a class="default-btn" style="cursor: pointer" (click)="openDialog()">Hire Me</a>
+                        <a class="default-btn" style="cursor: pointer" (click)="openDialog()">Contact</a>
                     </div>
                 </div>
             </div>

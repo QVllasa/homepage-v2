@@ -286,6 +286,17 @@ type Query {
         last: Int
     ): ProjectConnection
     service(id: ID!): Service
+    serviceSection(id: ID!): ServiceSection
+    serviceSections(
+        "Returns the elements in the list that come after the specified cursor."
+        after: String,
+        "Returns the elements in the list that come before the specified cursor."
+        before: String,
+        "Returns the first n elements from the list."
+        first: Int,
+        "Returns the last n elements from the list."
+        last: Int
+    ): ServiceSectionConnection
     services(
         "Returns the elements in the list that come after the specified cursor."
         after: String,
@@ -322,10 +333,20 @@ type Query {
 
 type Service implements Node {
     _id: Int!
-    icon: String!
+    contentUrl: String
     id: ID!
-    keys: Iterable
-    quote: String
+    image: String
+    priority: Int
+    serviceSections(
+        "Returns the elements in the list that come after the specified cursor."
+        after: String,
+        "Returns the elements in the list that come before the specified cursor."
+        before: String,
+        "Returns the first n elements from the list."
+        first: Int,
+        "Returns the last n elements from the list."
+        last: Int
+    ): ServiceSectionConnection
     shortText: String!
     title: String!
 }
@@ -345,6 +366,38 @@ type ServiceEdge {
 
 "Information about the current page."
 type ServicePageInfo {
+    endCursor: String
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
+}
+
+type ServiceSection implements Node {
+    _id: Int!
+    contentUrl: String
+    description: String
+    id: ID!
+    image: String
+    keys: Iterable
+    service: Service
+    title: String
+}
+
+"Connection for ServiceSection."
+type ServiceSectionConnection {
+    edges: [ServiceSectionEdge]
+    pageInfo: ServiceSectionPageInfo!
+    totalCount: Int!
+}
+
+"Edge of ServiceSection."
+type ServiceSectionEdge {
+    cursor: String!
+    node: ServiceSection
+}
+
+"Information about the current page."
+type ServiceSectionPageInfo {
     endCursor: String
     hasNextPage: Boolean!
     hasPreviousPage: Boolean!
