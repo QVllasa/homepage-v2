@@ -25,7 +25,8 @@ class ServiceCrudController extends AbstractCrudController
             TextField::new('title'),
             TextField::new('shortText'),
             IntegerField::new('priority'),
-            AssociationField::new('serviceSections')
+            AssociationField::new('serviceSections'),
+            TextField::new('pageTitle')
         ];
 
         if ($pageName === Crud::PAGE_EDIT || $pageName === Crud::PAGE_NEW ){

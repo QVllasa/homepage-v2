@@ -9,23 +9,21 @@
 
     <section class="services-details-area bg-0f1d22 ptb-120">
         <div class="container">
-            <div  class="section-title pb-90">
-                <h2 *ngIf="service.service.title === 'IT Consulting'" >I know a loooot of tools. <br> Really.</h2>
-                <h2 *ngIf="service.service.title === 'Web Application Development'" >I solve your problem and help you grow.</h2>
-                <h2 *ngIf="service.service.title === 'Business Research & Analytics'" >I show you things you never knew before.</h2>
+            <div @scaleFadeIn class="section-title pb-90">
+                <h2 >{{service.service.pageTitle}}</h2>
             </div>
             <div class="services-details-overview" *ngFor="let section of sections; index as i">
-                <div *ngIf="isEven(i)" class="services-details-image">
+                <div @fadeInRight *ngIf="isEven(i)" class="services-details-image">
                     <img  [src]="serverPath+section.contentUrl" alt="image">
                 </div>
-                <div class="services-details-desc">
+                <div  class="services-details-desc">
                     <h3>{{section.title}}</h3>
                     <p *ngIf="section.description" >{{section.description}}</p>
                     <div class="features-text" *ngFor="let key of section.keys" >
                         <h4><i class="ri-check-line"></i>{{key}}</h4>
                     </div>
                 </div>
-                <div *ngIf="!isEven(i)" class="services-details-image">
+                <div @fadeInLeft *ngIf="!isEven(i)" class="services-details-image">
                     <img [src]="serverPath+section.contentUrl" alt="image">
                 </div>
             </div>

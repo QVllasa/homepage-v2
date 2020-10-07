@@ -26,7 +26,12 @@ import {ExperienceItemComponent} from "./components/experience-item/experience-i
 import {ServiceItemComponent} from "./components/service-item/service-item.component";
 import {ProjectItemComponent} from "./components/project-item/project-item.component";
 import {ClientItemComponent} from "./components/client-item/client-item.component";
-// import {EducationItemComponent} from "./components/education-item/education-item.component";
+import {TestimonialItemComponent} from "./components/testimonial-item/testimonial-item.component";
+import {CarouselModule} from "ngx-owl-carousel-o";
+import {CarouselHolderComponent} from "./components/carousel-holder/carousel-holder.component";
+import {EducationItemComponent} from "./components/education-item/education-item.component";
+import {PrivacyComponent} from "./pages/privacy/privacy.component";
+import {LegalComponent} from "./pages/legal/legal.component";
 
 
 
@@ -38,6 +43,7 @@ import {ClientItemComponent} from "./components/client-item/client-item.componen
         HomeComponent,
         BlogDetailsComponent,
         SkillsComponent,
+        TestimonialItemComponent,
         TypeWriterComponent,
         ContactDialogComponent,
         WorksDetailsComponent,
@@ -46,8 +52,12 @@ import {ClientItemComponent} from "./components/client-item/client-item.componen
         FooterComponent,
         ServiceItemComponent,
         SidenavComponent,
+        CarouselHolderComponent,
         ExperienceItemComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        EducationItemComponent,
+        LegalComponent,
+        PrivacyComponent
     ],
     imports: [
         BrowserModule,
@@ -60,7 +70,8 @@ import {ClientItemComponent} from "./components/client-item/client-item.componen
         HttpClientModule,
         MatTabsModule,
         MatDialogModule,
-        MatButtonModule
+        MatButtonModule,
+        CarouselModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -27,11 +27,10 @@
 
     <section id="about" class="about-area ptb-120">
         <div class="container">
-            <div class="section-title">
+            <div @fadeInUp  class="section-title">
                 <span class="sub-title">About Me</span>
-                <h2 style="line-height: 1.2">{{aboutMe.quote}}</h2>
+                <h2  style="line-height: 1.2">{{aboutMe.quote}}</h2>
             </div>
-
             <div class="row align-items-center">
                 <div class="col-lg-8 col-md-12">
                     <div class="about-content">
@@ -43,15 +42,16 @@
                                 <li [ngClass]="activeTab === 'education' ? 'about-list-tab tabs li current' : ''" (click)="onToggleTabs('education')">Education</li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tabs-item" *ngIf="activeTab === 'top-skills'">
+                                <ng-container *ngIf="activeTab === 'top-skills'">
                                     <app-skills [skills]="skills"></app-skills>
-                                </div>
-                                <div class="tabs-item" *ngIf="activeTab === 'experience'">
+                                </ng-container>
+                                <ng-container *ngIf="activeTab === 'experience'">
                                     <app-experience-item [experiences]="experiences"></app-experience-item>
-                                </div>
-                                <div class="tabs-item" *ngIf="activeTab === 'education'">
-                                    <!--                                    <app-education-item></app-education-item>-->
-                                </div>
+                                </ng-container>
+                                <ng-container *ngIf="activeTab === 'education'">
+                                    <app-education-item></app-education-item>
+                                </ng-container>
+
                             </div>
                         </div>
                     </div>
@@ -101,67 +101,6 @@
         </div>
     </section>
 
-    <!-- <section class="feedback-area">
-         <div class="container-fluid">
-             <div class="row">
-                 <div class="col-lg-5 col-md-12">
-                     <div class="feedback-content">
-                         <div class="d-table">
-                             <div class="d-table-cell">
-                                 <div class="section-title">
-                                     <span class="sub-title">Testimonials</span>
-                                     <h2>What my clients say about me</h2>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-
-                 <div class="col-lg-7 col-md-12">
-                     <div class="feedback-slides-content bg-0f1d22">
-                         <div class="feedback-slides owl-carousel owl-theme">
-                             <div class="single-feedback-item">
-                                 <i class="ri-double-quotes-r"></i>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor incididunt
-                                     ut labore et dolore magna aliqua. eiusmod Quis ipsum suspendisse ultrices
-                                     gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-
-                                 <div class="client-info">
-                                     <h3>Jason Statham</h3>
-                                     <span>Web Developer</span>
-                                 </div>
-                             </div>
-
-                             <div class="single-feedback-item">
-                                 <i class="ri-double-quotes-r"></i>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor incididunt
-                                     ut labore et dolore magna aliqua. eiusmod Quis ipsum suspendisse ultrices
-                                     gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-
-                                 <div class="client-info">
-                                     <h3>Sarah Taylor</h3>
-                                     <span>Web Designer</span>
-                                 </div>
-                             </div>
-
-                             <div class="single-feedback-item">
-                                 <i class="ri-double-quotes-r"></i>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor incididunt
-                                     ut labore et dolore magna aliqua. eiusmod Quis ipsum suspendisse ultrices
-                                     gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-
-                                 <div class="client-info">
-                                     <h3>David Warner</h3>
-                                     <span>PHP Developer</span>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </section>-->
-
     <div class="my-clients-area ptb-120">
         <div class="container">
             <div class="section-title">
@@ -172,6 +111,11 @@
             <app-client-item [clients]="clients" ></app-client-item>
         </div>
     </div>
+
+<!--     <section class="feedback-area">
+         <app-testimonial-item [testimonials]="testimonials"></app-testimonial-item>
+     </section>-->
+
 
     <section class="hire-me-area bg-0f1d22 ptb-120 bg-0f1d22">
         <div class="container">

@@ -13,6 +13,7 @@ use App\Entity\Service;
 use App\Entity\ServiceSection;
 use App\Entity\Skill;
 use App\Entity\Stack;
+use App\Entity\Testimonial;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -54,6 +55,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Profile Image', 'fa fa-dot-circle', ProfilImage::class);
         yield MenuItem::linkToCrud('Projects', 'fa fa-dot-circle', Project::class);
         yield MenuItem::linkToCrud('Stacks', 'fa fa-dot-circle', Stack::class);
+        yield MenuItem::linkToCrud('Testimonials', 'fa fa-dot-circle', Testimonial::class);
         yield MenuItem::section('Documentation');
         yield MenuItem::linktoRoute('GraphQL', 'fa fa-dot-circle', 'api_graphql_entrypoint');
         yield MenuItem::linktoRoute('API', 'fa fa-dot-circle', 'swagger_ui');

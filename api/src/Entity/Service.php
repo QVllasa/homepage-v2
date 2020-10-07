@@ -86,6 +86,12 @@ class Service
      */
     private $priority;
 
+    /**
+     * @ORM\Column(type="string", length=255,   nullable=true)
+     * @Groups({"service_read"})
+     */
+    private $pageTitle;
+
 
 
     public function __construct()
@@ -204,6 +210,18 @@ class Service
     public function setPriority(?int $priority): self
     {
         $this->priority = $priority;
+
+        return $this;
+    }
+
+    public function getPageTitle(): ?string
+    {
+        return $this->pageTitle;
+    }
+
+    public function setPageTitle(string $pageTitle): self
+    {
+        $this->pageTitle = $pageTitle;
 
         return $this;
     }

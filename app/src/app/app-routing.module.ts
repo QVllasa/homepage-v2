@@ -5,6 +5,8 @@ import {ServicesDetailsComponent} from './pages/services-details/services-detail
 import {WorksDetailsComponent} from './pages/works-details/works-details.component';
 import {BlogDetailsComponent} from './pages/blog-details/blog-details.component';
 import {NotFoundComponent} from "./pages/not-found/not-found.component";
+import {LegalComponent} from "./pages/legal/legal.component";
+import {PrivacyComponent} from "./pages/privacy/privacy.component";
 
 
 const routes: Routes = [
@@ -15,6 +17,8 @@ const routes: Routes = [
     {path: 'services-details/:id', component: ServicesDetailsComponent},
     {path: 'works-details/:id', component: WorksDetailsComponent},
     {path: 'blog-details/:id', component: BlogDetailsComponent},
+    {path: 'legal', component: LegalComponent},
+    {path: 'privacy', component: PrivacyComponent},
     {path: '**', component: NotFoundComponent},
 ];
 

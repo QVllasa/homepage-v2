@@ -1,7 +1,7 @@
 <!-- Start Main Container Area -->
 
 
-<div id="main-content" class="main-content">
+<div id="main-content" class="main-content" *ngIf="!isLoading">
 
     <div class="responsive-burger-menu">
         <span class="top-bar"></span>
@@ -12,55 +12,48 @@
     <section class="works-details-area bg-0f1d22 ptb-120">
         <div class="container">
             <div class="row">
+                <div class="col-lg-5 col-md-12 ">
+                    <div class="contact-content">
+                        <div class="d-table bg-0f1d22">
+                            <div class="d-table-cell">
+                                <div @scaleFadeIn class="section-title">
+                                    <h2>{{project.title}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="works-details-image">
-                        <img src="../../../assets/img/blog/img2.jpg" alt="projects">
+                        <img [src]="serverPath+project.contentUrl" alt="projects">
 
-                        <a href="../../../assets/img/blog/img2.jpg" class="popup-btn"><i class="ri-add-line"></i></a>
+                        <!--<a href="../../../assets/img/blog/img2.jpg" class="popup-btn"><i class="ri-add-line"></i></a>-->
                     </div>
                 </div>
 
                 <div class="col-lg-12 col-md-12">
                     <div class="works-details-desc">
-                        <h3>Top Emerging Modes of Home</h3>
+                        <p>{{project.description}}</p>
 
-                        <p>Lorem ipsum dolor sit amet, conse cte tuer adipiscing elit, sed diam no nu m nibhie eui smod.
-                            Facil isis atve eros et accumsan etiu sto odi dignis sim qui blandit praesen lup ta de er.
-                            At molestiae appellantur pro. Vis wisi oportere per ic ula ad, ei latine prop riae na, mea
-                            cu purto debitis.</p>
-
-                        <div class="features-text">
-                            <h4><i class="ri-check-line"></i> Core Development</h4>
-                            <p>No fake products and services. The customer is king, their lives and needs are the
-                                inspiration.</p>
+                        <div class="features-text" *ngFor="let key of project.keys">
+                            <h4><i class="ri-check-line"></i> {{key}}</h4>
                         </div>
-
-                        <div class="features-text">
-                            <h4><i class="ri-check-line"></i> Define Your Choices</h4>
-                            <p>No fake products and services. The customer is king, their lives and needs are the
-                                inspiration.</p>
-                        </div>
-
-                        <p>Nost rud no eos, no impedit dissenti as mea, ea vide labor amus neglegentur vix. Ancillae
-                            intellegat vix et. Sit causae laoreet nolu ise. Ad po exerci nusquam eos te. Cu altera expet
-                            enda qui, munere oblique theo phrastu ea vix. Ne nec modus civibus modera tius, sit ei lorem
-                            doctus. Ne docen di verterem reformidans eos. Cu altera expetenda qui, munere oblique
-                            theophr astus ea vix modus civiu mod eratius.</p>
 
                         <div class="works-details-info">
                             <div class="single-info-box">
                                 <h4>Client</h4>
-                                <span>James Anderson</span>
+                                <span *ngIf="!project.client">My own Project</span>
+                                <span *ngIf="project.client">{{project.client.name}}</span>
                             </div>
 
                             <div class="single-info-box">
                                 <h4>Category</h4>
-                                <span>Marketing, Email</span>
+                                <span *ngFor="let cat of project.category.edges" >{{cat.node.title}}</span>
                             </div>
 
                             <div class="single-info-box">
                                 <h4>Date</h4>
-                                <span>February 28, 2020</span>
+                                <span>{{project.createdAt}}</span>
                             </div>
 
                             <div class="single-info-box">

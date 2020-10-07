@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-5 col-md-12">
+            <div class="feedback-content">
+                <div class="d-table">
+                    <div class="d-table-cell">
+                        <div class="section-title">
+                            <span class="sub-title">Testimonials</span>
+                            <h2>What clients & partners say about me</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-7 col-md-12">
+            <div class="feedback-slides-content bg-0f1d22">
+                <div class="feedback-slides owl-carousel owl-theme">
+                    <owl-carousel-o [options]="customOptions">
+                        <ng-template carouselSlide>Slide 1</ng-template>
+                        <ng-template carouselSlide>Slide 2</ng-template>
+                        <ng-template carouselSlide>Slide 3</ng-template>
+                    </owl-carousel-o>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!--
+<div class="single-feedback-item" *ngFor="let testimonial of testimonials">
+    <i class="ri-double-quotes-r"></i>
+    <p>{{testimonial.text}}</p>
+    <div class="client-info">
+        <h3>{{testimonial.client}}</h3>
+        <span>{{testimonial.function}}</span>
+    </div>
+</div>-->

@@ -1,21 +1,20 @@
-query Service($id: ID! = "services/5")
 {
-    service(id: $id){
-        _id
+    project(id: "projects/1"){
         id
+        _id
         title
-        shortText
-        contentUrl
-        priority
-        serviceSections{
+        description
+        category{
             edges{
                 node{
                     title
-                    description
-                    contentUrl
-                    keys
                 }
             }
         }
+        client{
+            name
+            homepage
+        }
+        contentUrl
     }
 }

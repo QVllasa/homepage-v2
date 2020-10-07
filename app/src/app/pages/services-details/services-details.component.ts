@@ -1,23 +1,34 @@
 import {Component, OnInit} from '@angular/core';
 import {Apollo} from "apollo-angular";
-import {IService, IServiceSection, ServiceModel, TService} from "../../models/models";
+import {IServiceSection, ServiceModel, TService} from "../../models/models";
 import {ActivatedRoute} from "@angular/router";
 import {map, mergeMap} from "rxjs/operators";
 import {BASE_PATH} from "../../../environments/environment";
+import {scaleFadeIn800ms} from "../../components/animations/scale-fade-in.animation";
+import {fadeInLeft800ms} from "../../components/animations/fade-in-left.animation";
+import {fadeInRight800ms} from "../../components/animations/fade-in-right.animation";
+import {scaleInOutAnimation} from "../../components/animations/scale-in-out.animation";
+import {scaleIn400ms} from "../../components/animations/scale-in.animation";
 
 
 @Component({
     selector: 'app-services-details',
     templateUrl: './services-details.component.html',
-    styleUrls: ['./services-details.component.scss']
+    styleUrls: ['./services-details.component.scss'],
+    animations: [
+        scaleFadeIn800ms,
+        fadeInLeft800ms,
+        fadeInRight800ms,
+        scaleIn400ms
+    ]
 })
 export class ServicesDetailsComponent implements OnInit {
 
     service: TService;
     sections: IServiceSection[] = [];
     serverPath = BASE_PATH;
-    query = ServiceModel;
     isLoading: boolean;
+    query = ServiceModel;
 
 
     constructor(private apollo: Apollo,
@@ -25,11 +36,7 @@ export class ServicesDetailsComponent implements OnInit {
     }
 
     isEven(value) {
-        if (value % 2 == 0){
-            return true;
-        }else {
-            return false;
-        }
+        return value % 2 == 0;
     }
 
     ngOnInit(): void {

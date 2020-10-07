@@ -30,6 +30,11 @@ export interface IMainPage {
             node: IProject
         }[]
     }
+    testimonials: {
+        edges: {
+            node: ITestimonial
+        }[]
+    }
 }
 
 export interface IAboutMe {
@@ -70,6 +75,7 @@ export interface IStack {
 export interface IService {
     _id: number,
     id: string,
+    pageTitle: string,
     title: string,
     shortText: string,
     contentUrl: string,
@@ -97,6 +103,7 @@ export interface IProject {
             node: ICategory
         }[]
     }
+    client: IClient
     contentUrl: string,
 }
 
@@ -110,6 +117,16 @@ export interface IServiceSection {
     description: string,
     keys: string[],
     contentUrl: string,
+}
+
+export interface ITestimonial{
+    text: string,
+    client: string,
+    function: string,
+}
+
+export interface TProject{
+    project: IProject;
 }
 
 
@@ -194,6 +211,15 @@ export const Models = gql`
                 }
             }
         }
+        testimonials{
+            edges{
+                node{
+                    text
+                    function
+                    client
+                }
+            }
+        }
     }
 `;
 
@@ -202,6 +228,7 @@ export const ServiceModel = gql`
     query Service($id: ID!)
     {
         service(id: $id){
+            pageTitle
             _id
             id
             title
@@ -218,6 +245,30 @@ export const ServiceModel = gql`
                     }
                 }
             }
+        }
+    }
+`;
+
+export const ProjectModel = gql `
+    query Project($id: ID!)
+    {
+        project(id: $id){
+            id
+            _id
+            title
+            description
+            category{
+                edges{
+                    node{
+                        title
+                    }
+                }
+            }
+            client{
+                name
+                homepage
+            }
+            contentUrl
         }
     }
 `;

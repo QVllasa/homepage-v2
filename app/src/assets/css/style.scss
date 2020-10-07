@@ -1484,11 +1484,10 @@ About CSS
         font-size: 20px;
     }
     .about-list-tab {
-        margin-top: 70px;
 
         .tabs {
             padding-left: 0;
-            margin-bottom: 40px;
+            margin-bottom: 0;
             list-style-type: none;
 
             li {
@@ -3072,12 +3071,6 @@ Feeback CSS
     height: 100%;
     position: relative;
     z-index: 1;
-    background: {
-        image: url(../../assets/img/business_background_600x400_png8.png);
-        position: center center;
-        size: cover;
-        repeat: no-repeat;
-    };
     &::before {
         position: absolute;
         left: 0;
