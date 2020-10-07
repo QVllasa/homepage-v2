@@ -42,19 +42,21 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::section('Entities');
+        yield MenuItem::section('Sections');
         yield MenuItem::linkToCrud('About Me', 'fa fa-dot-circle', AboutMe::class);
         yield MenuItem::linkToCrud('Services', 'fa fa-dot-circle', Service::class);
-        yield MenuItem::linkToCrud('Service Sections', 'fa fa-dot-circle', ServiceSection::class);
         yield MenuItem::linkToCrud('Skills', 'fa fa-dot-circle', Skill::class);
+        yield MenuItem::linkToCrud('Experiences', 'fa fa-dot-circle', Experience::class);
+        yield MenuItem::linkToCrud('Projects', 'fa fa-dot-circle', Project::class);
+        yield MenuItem::linkToCrud('Stacks', 'fa fa-dot-circle', Stack::class);
+        yield MenuItem::section('Sites');
+        yield MenuItem::linkToCrud('Service Sections', 'fa fa-dot-circle', ServiceSection::class);
+        yield MenuItem::section('Options');
+        yield MenuItem::linkToCrud('Profile Image', 'fa fa-dot-circle', ProfilImage::class);
         yield MenuItem::linkToCrud('Users', 'fa fa-dot-circle', User::class);
         yield MenuItem::linkToCrud('Banners', 'fa fa-dot-circle', Banner::class);
         yield MenuItem::linkToCrud('Categories', 'fa fa-dot-circle', Category::class);
         yield MenuItem::linkToCrud('Clients', 'fa fa-dot-circle', Client::class);
-        yield MenuItem::linkToCrud('Experiences', 'fa fa-dot-circle', Experience::class);
-        yield MenuItem::linkToCrud('Profile Image', 'fa fa-dot-circle', ProfilImage::class);
-        yield MenuItem::linkToCrud('Projects', 'fa fa-dot-circle', Project::class);
-        yield MenuItem::linkToCrud('Stacks', 'fa fa-dot-circle', Stack::class);
         yield MenuItem::linkToCrud('Testimonials', 'fa fa-dot-circle', Testimonial::class);
         yield MenuItem::section('Documentation');
         yield MenuItem::linktoRoute('GraphQL', 'fa fa-dot-circle', 'api_graphql_entrypoint');
