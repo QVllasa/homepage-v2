@@ -19,6 +19,7 @@ import {BASE_PATH} from "../../../environments/environment";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {fadeInUp400ms} from "../../components/animations/fade-in-up.animation";
 import {stagger60ms} from "../../components/animations/stagger.animation";
+import {OwlOptions} from "ngx-owl-carousel-o";
 
 
 @Component({
@@ -30,6 +31,43 @@ import {stagger60ms} from "../../components/animations/stagger.animation";
     ]
 })
 export class HomeComponent implements OnInit {
+
+    customOptions: OwlOptions = {
+        animateOut: 'fadeOut',
+        items: 1,
+        mouseDrag: false,
+        touchDrag: false,
+        loop: true,
+        autoplay: true,
+        center: true,
+        dots: false,
+        autoHeight: true,
+        rewind: true,
+        autoWidth: true,
+        navSpeed: 700,
+        autoplayTimeout: 7000,
+        responsive: {
+            0: {
+                items: 1,
+                autoplay: false,
+                loop: false,
+            },
+            960: {
+                items: 1,
+            },
+            1000: {
+                items: 1,
+            }
+        }
+    }
+
+    vjsOptions = {
+        fluid: false,
+        loop: true,
+        controls: false,
+        autoplay: true,
+        sources: [{ src: '/assets/mov/index.m3u8', type: 'application/x-mpegURL'}]
+    }
 
     activeTab: 'top-skills' | 'experience' | 'education';
 

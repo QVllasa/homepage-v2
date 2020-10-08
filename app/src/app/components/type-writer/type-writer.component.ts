@@ -30,7 +30,7 @@ export class TypeWriterComponent implements OnInit, AfterViewInit {
         const target = this.typewriterElement.nativeElement;
         const writer = new Typewriter(target, {
             loop: true,
-            typeColor: '#c8ab80',
+            typeColor: '#ffffff',
             strings: this.content,
             autoStart: true,
             stringSplitter

@@ -8,28 +8,32 @@
 
 
     <div class="home-area">
-        <div class="home-slides owl-carousel owl-theme">
-            <div class="main-banner bg-dark"></div>
+        <div class="main-banner">
+            <owl-carousel-o [options]="customOptions">
+                <ng-template carouselSlide>
+                    <img class="banner-image" src="assets/img/banner.webp" alt="">
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div fxHide.lt-md="true">
+                        <app-vjs-player [options]="vjsOptions"></app-vjs-player>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
         </div>
-
         <div class="banner-content">
             <span class="sub-title">Hi I'am</span>
             <h1>Qendrim Vllasa</h1>
             <app-type-writer [content]="typeWriterText"></app-type-writer>
         </div>
 
-        <div class="lines">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
+
     </div>
 
     <section id="about" class="about-area ptb-120">
         <div class="container">
-            <div @fadeInUp  class="section-title">
+            <div @fadeInUp class="section-title">
                 <span class="sub-title">About Me</span>
-                <h2  style="line-height: 1.2">{{aboutMe.quote}}</h2>
+                <h2 style="line-height: 1.2">{{aboutMe.quote}}</h2>
             </div>
             <div class="row align-items-center">
                 <div class="col-lg-8 col-md-12">
@@ -37,9 +41,15 @@
                         <p>{{aboutMe.text}}</p>
                         <div class="tab about-list-tab">
                             <ul class="tabs">
-                                <li [ngClass]="activeTab === 'top-skills' ? 'about-list-tab tabs li current' : ''" (click)="onToggleTabs('top-skills')">Top Skills</li>
-                                <li [ngClass]="activeTab === 'experience' ? 'about-list-tab tabs li current' : ''" (click)="onToggleTabs('experience')">Experience</li>
-                                <li [ngClass]="activeTab === 'education' ? 'about-list-tab tabs li current' : ''" (click)="onToggleTabs('education')">Education</li>
+                                <li [ngClass]="activeTab === 'top-skills' ? 'about-list-tab tabs li current' : ''"
+                                    (click)="onToggleTabs('top-skills')">Top Skills
+                                </li>
+                                <li [ngClass]="activeTab === 'experience' ? 'about-list-tab tabs li current' : ''"
+                                    (click)="onToggleTabs('experience')">Experience
+                                </li>
+                                <li [ngClass]="activeTab === 'education' ? 'about-list-tab tabs li current' : ''"
+                                    (click)="onToggleTabs('education')">Education
+                                </li>
                             </ul>
                             <div class="tab-content">
                                 <ng-container *ngIf="activeTab === 'top-skills'">
@@ -51,7 +61,6 @@
                                 <ng-container *ngIf="activeTab === 'education'">
                                     <app-education-item></app-education-item>
                                 </ng-container>
-
                             </div>
                         </div>
                     </div>
@@ -75,7 +84,8 @@
             <mat-grid-list gutterSize="12px" cols="3" rowHeight="3:1">
                 <mat-grid-tile *ngFor="let stack of stacks">
                     <a [href]="stack.url">
-                        <img [matTooltip]="stack.title" [src]="serverPath+stack.contentUrl" alt="image" style="max-height: 70px;">
+                        <img [matTooltip]="stack.title" [src]="serverPath+stack.contentUrl" alt="image"
+                             style="max-height: 70px;">
                     </a>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -108,13 +118,13 @@
                 <h2>Companies I worked with</h2>
             </div>
 
-            <app-client-item [clients]="clients" ></app-client-item>
+            <app-client-item [clients]="clients"></app-client-item>
         </div>
     </div>
 
-<!--     <section class="feedback-area">
-         <app-testimonial-item [testimonials]="testimonials"></app-testimonial-item>
-     </section>-->
+    <!--     <section class="feedback-area">
+             <app-testimonial-item [testimonials]="testimonials"></app-testimonial-item>
+         </section>-->
 
 
     <section class="hire-me-area bg-0f1d22 ptb-120 bg-0f1d22">

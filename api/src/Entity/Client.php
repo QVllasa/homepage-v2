@@ -49,8 +49,6 @@ class Client
      */
     private $homepage;
 
-
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"client_read", "project_read"})

@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
+import {FlexLayoutModule} from "@angular/flex-layout";
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {PreloaderComponent} from './components/preloader/preloader.component';
@@ -32,6 +32,9 @@ import {CarouselHolderComponent} from "./components/carousel-holder/carousel-hol
 import {EducationItemComponent} from "./components/education-item/education-item.component";
 import {PrivacyComponent} from "./pages/privacy/privacy.component";
 import {LegalComponent} from "./pages/legal/legal.component";
+import {VjsPlayerComponent} from "./components/vjs-player/vjs-player.component";
+
+
 
 
 
@@ -57,10 +60,12 @@ import {LegalComponent} from "./pages/legal/legal.component";
         NotFoundComponent,
         EducationItemComponent,
         LegalComponent,
-        PrivacyComponent
+        PrivacyComponent,
+        VjsPlayerComponent
     ],
     imports: [
         BrowserModule,
+        FlexLayoutModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         MatTooltipModule,

@@ -138,10 +138,10 @@ $value_seven: 1550px;
     }
 
     .main-banner {
-        height: 100%;
+        //height: 100%;
         padding: {
-            top: 165px;
-            bottom: 180px;
+            //top: 165px;
+            //bottom: 180px;
         };
     }
     .main-banner-content {
@@ -190,7 +190,8 @@ $value_seven: 1550px;
         }
     }
     .banner-image {
-        margin-top: 30px;
+        margin-top: 0;
+        object-fit: cover;
     }
     .scroll-btn {
         .mouse {
@@ -200,17 +201,18 @@ $value_seven: 1550px;
     }
     .home-area {
         .main-banner {
+            height: 100vh;
             padding: {
-                top: 200px;
-                bottom: 200px;
+                //top: 200px;
+                //bottom: 200px;
             };
         }
         .banner-content {
-            max-width: 100%;
-            top: auto;
-            bottom: 50px;
-            transform: unset;
-            left: 6%;
+            //max-width: 100%;
+            //top: auto;
+            //bottom: 50px;
+            //transform: unset;
+            //left: 6%;
         }
         .hero-content {
             max-width: 100%;
@@ -1534,7 +1536,8 @@ $value_seven: 1550px;
         }
     }
     .banner-image {
-        margin-top: 30px;
+        margin-top: 0;
+        object-fit: cover;
     }
     .hero-content {
         h1 {
@@ -1542,18 +1545,18 @@ $value_seven: 1550px;
         }
     }
     .home-area {
-        .hero-content {
-            bottom: 40px;
-            left: 6%;
-            max-width: 485px;
-        }
-        &.home-area-two {
-            .banner-content {
-                left: 6%;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-        }
+        //.hero-content {
+        //    bottom: 40px;
+        //    left: 6%;
+        //    max-width: 485px;
+        //}
+        //&.home-area-two {
+        //    .banner-content {
+        //        left: 6%;
+        //        top: 50%;
+        //        transform: translateY(-50%);
+        //    }
+        //}
     }
     .home-content {
         .sub-title {
@@ -2217,8 +2220,8 @@ $value_seven: 1550px;
     }
     .home-area {
         .banner-content {
-            left: 5%;
-            max-width: 575px;
+            //left: 5%;
+            //max-width: 575px;
         }
         .hero-content {
             left: 5%;
@@ -2570,7 +2573,7 @@ $value_seven: 1550px;
 
     .home-area {
         .banner-content {
-            left: 12.5%;
+            //left: 12.5%;
         }
         .hero-content {
             left: 12.5%;
