@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Vich\UploaderBundle\Form\Type\VichFileType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ClientCrudController extends AbstractCrudController
 {
@@ -23,14 +24,11 @@ class ClientCrudController extends AbstractCrudController
         $fields = [
             TextField::new('name'),
             TextField::new('homepage'),
-        ArrayField::new('cssClass'),
+            ArrayField::new('cssClass'),
+            ImageField::new('image')->setBasePath('/images/logos')->hideOnForm(),
+            ImageField::new('imageFile')->setFormType(VichImageType::class)->hideOnIndex(),
         ];
 
-        if ($pageName === Crud::PAGE_EDIT || $pageName === Crud::PAGE_NEW ){
-            $fields []  = ImageField::new('imageFile')->setFormType(VichFileType::class);
-        } else{
-            $fields []  = ImageField::new('image')->setBasePath('/images/logos');
-        }
 
         return $fields;
     }

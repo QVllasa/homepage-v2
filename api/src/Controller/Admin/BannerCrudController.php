@@ -19,14 +19,11 @@ class BannerCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         $fields = [
-            TextField::new('title')
+            TextField::new('title'),
+            ImageField::new('path')->setBasePath('/images')->hideOnForm(),
+            ImageField::new('pathFile')->setFormType(VichFileType::class)->hideOnIndex()
         ];
 
-        if ($pageName === Crud::PAGE_EDIT || $pageName === Crud::PAGE_NEW ){
-            $fields []  = ImageField::new('pathFile')->setFormType(VichFileType::class);
-        } else{
-            $fields []  = ImageField::new('path')->setBasePath('/images');
-        }
 
         return $fields;
     }

@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ProfileImageRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use App\Resolver\GetMediaObjectCollectionResolver;
@@ -46,7 +47,7 @@ class ProfileImage
      * @Vich\UploadableField(mapping="images", fileNameProperty="image")
      * @Groups({"project_read"})
      */
-    private $imageFile;
+    public File $imageFile;
 
     /**
      * @ORM\Column(type="string", length=255)

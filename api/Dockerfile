@@ -21,6 +21,17 @@ RUN apk add --no-cache \
 		git \
 	;
 
+#install gd
+RUN apk add --no-cache freetype libpng libwebp libjpeg-turbo freetype-dev libwebp-dev libpng-dev libjpeg-turbo-dev && \
+  docker-php-ext-configure gd \
+  --enable-gd \
+  --with-webp \
+    --with-freetype \
+    --with-jpeg \
+  NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
+  docker-php-ext-install -j$(nproc) gd && \
+  apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
+
 ARG APCU_VERSION=5.1.18
 RUN set -eux; \
 	apk add --no-cache --virtual .build-deps \

@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Vich\UploaderBundle\Form\Type\VichFileType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class StackCrudController extends AbstractCrudController
 {
@@ -20,7 +21,9 @@ class StackCrudController extends AbstractCrudController
     {
         $fields = [
             TextField::new('title'),
-            TextField::new('url')
+            TextField::new('url'),
+            ImageField::new('logo')->setBasePath('/images/logos')->hideOnForm(),
+            ImageField::new('logoFile')->setFormType(VichImageType::class)->hideOnIndex(),
         ];
 
         if ($pageName === Crud::PAGE_EDIT || $pageName === Crud::PAGE_NEW ){

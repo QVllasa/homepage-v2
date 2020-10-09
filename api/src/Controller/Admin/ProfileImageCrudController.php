@@ -21,16 +21,11 @@ class ProfileImageCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         $fields = [
-            TextField::new('title')
+            TextField::new('title'),
+            ImageField::new('image')->setBasePath('/images')->hideOnForm(),
+            ImageField::new('imageFile')->setFormType(VichImageType::class)->hideOnIndex(),
         ];
 
-
-        if ($pageName === Crud::PAGE_EDIT || $pageName === Crud::PAGE_NEW ){
-            $fields []  = ImageField::new('imageFile')
-                ->setFormType(VichImageType::class);
-        } else{
-            $fields []  = ImageField::new('image')->setBasePath('/images');
-        }
 
         return $fields;
     }
