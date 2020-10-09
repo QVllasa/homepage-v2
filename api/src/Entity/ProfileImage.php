@@ -41,7 +41,7 @@ class ProfileImage
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"profile_read"})
      */
-    private ?string $image = null;
+    private ?string $image = '';
 
     /**
      * @Vich\UploadableField(mapping="images", fileNameProperty="image")
@@ -59,7 +59,7 @@ class ProfileImage
      * @var string|null
      * @Groups({"profile_read"})
      */
-    public ?string $contentUrl;
+    public ?string $contentUrl = '';
 
     /**
      * @ORM\Column(type="datetime", nullable=true)

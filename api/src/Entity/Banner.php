@@ -4,15 +4,25 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\BannerRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use App\Resolver\GetMediaObjectCollectionResolver;
+use App\Resolver\GetMediaObjectResolver;
 
 /**
- * @ApiResource(graphql={
- *     "collection_query"
- *    },
+ * @ApiResource(
+ *     graphql={
+ *      "collection_query"={"collection_query"=GetMediaObjectCollectionResolver::class},
+ *     "item_query"={"item_query"=GetMediaObjectResolver::class},
+ *     },
  *     collectionOperations={"get"},
- *     itemOperations={}
+ *     itemOperations={"get"},
+ *     normalizationContext={
+ *         "groups"={"banner_read"}
+ *     },
  * )
  * @ORM\Entity(repositoryClass=BannerRepository::class)
  * @Vich\Uploadable()
@@ -23,28 +33,36 @@ class Banner
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"banner_read"})
      */
-    private $id;
+    private ?int $id = null;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"banner_read"})
      */
-    private $path;
+    private ?string $path = '';
 
     /**
      * @Vich\UploadableField(mapping="images", fileNameProperty="path")
+     * @Groups({"banner_read"})
      */
-    private $pathFile;
+    private ?File $pathFile;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"banner_read"})
      */
-    private $title;
+    private ?string $title;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $updatedAt;
+
+    private DateTime $updatedAt;
+
+    public function __construct()
+    {
+        $this->updatedAt = new DateTime();
+    }
+
 
     public function getId(): ?int
     {
@@ -68,7 +86,7 @@ class Banner
         return $this->path;
     }
 
-    public function setPath(string $path): self
+    public function setPath(?string $path): self
     {
         $this->path = $path;
 
@@ -91,7 +109,7 @@ class Banner
         $this->pathFile = $pathFile;
 
         if($pathFile){
-            $this->updatedAt = new \DateTime();
+            $updatedAt = new \DateTime();
         }
     }
 }
