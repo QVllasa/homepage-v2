@@ -3,19 +3,12 @@
 
 namespace App\EventSubscriber;
 
-
-
-use App\Entity\Banner;
 use App\Entity\ProfileImage;
-use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
-use Twig\Profiler\Profile;
 use Vich\UploaderBundle\Event\Event;
 use Vich\UploaderBundle\Event\Events;
-use Vich\UploaderBundle\Mapping\PropertyMapping;
 use WebPConvert\WebPConvert;
 
 class ImageToWebPSubscriber implements EventSubscriberInterface

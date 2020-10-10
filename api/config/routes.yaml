@@ -9,3 +9,6 @@ api_graphql_entrypoint:
 swagger_ui:
     path: /docs
     controller: api_platform.swagger.action.ui
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.yaml"

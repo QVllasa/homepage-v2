@@ -17,7 +17,6 @@ final class GetMediaObjectCollectionResolver implements QueryCollectionResolverI
 
     public function __construct(StorageInterface $storage)
     {
-
         $this->storage = $storage;
     }
 
