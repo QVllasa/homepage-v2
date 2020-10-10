@@ -17,7 +17,7 @@ class ImageToWebPSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            Events::POST_UPLOAD => ['convertImageToWebP'],
+            Events::PRE_UPLOAD => ['convertImageToWebP'],
         ];
     }
 

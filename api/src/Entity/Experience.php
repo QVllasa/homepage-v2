@@ -24,32 +24,32 @@ class Experience
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $company;
+    private ?string $company;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $function;
+    private ?string $function;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $date;
+    private ?string $date;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $description;
+    private ?string $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $companyUrl;
+    private $url;
 
     public function getId(): ?int
     {
@@ -104,15 +104,20 @@ class Experience
         return $this;
     }
 
-    public function getCompanyUrl(): ?string
+
+    /**
+     * @return mixed
+     */
+    public function getUrl()
     {
-        return $this->companyUrl;
+        return $this->url;
     }
 
-    public function setCompanyUrl(string $companyUrl): self
+    /**
+     * @param mixed $url
+     */
+    public function setUrl($url): void
     {
-        $this->companyUrl = $companyUrl;
-
-        return $this;
+        $this->url = $url;
     }
 }

@@ -7,6 +7,7 @@ use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use App\Resolver\GetMediaObjectCollectionResolver;
@@ -35,53 +36,53 @@ class Client
      * @ORM\Column(type="integer")
      * @Groups({"client_read", "project_read"})
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"client_read", "project_read"})
      */
-    private $name;
+    private ?string $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"client_read", "project_read"})
      */
-    private $homepage;
+    private ?string $url = '';
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"client_read", "project_read"})
      */
-    private $image;
+    private ?string $filename = '';
 
     /**
      * @Vich\UploadableField(mapping="logos", fileNameProperty="image")
      */
-    private $imageFile;
+    private File $file;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      * @Groups({"client_read", "project_read"})
      */
-    private $updatedAt;
+    private \DateTime $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity=Project::class, mappedBy="client")
      */
-    private $projects;
+    private ArrayCollection $projects;
 
     /**
      * @ORM\Column(type="array", nullable=true)
      * @Groups({"client_read", "project_read"})
      */
-    private $cssClass = [''];
+    private ?array $cssClass = [''];
 
     /**
      * @var string|null
      * @Groups({"client_read", "project_read"})
      */
-    public $contentUrl;
+    public ?string $contentUrl;
 
     public function __construct()
     {
@@ -107,17 +108,7 @@ class Client
         return $this;
     }
 
-    public function getHomepage(): ?string
-    {
-        return $this->homepage;
-    }
 
-    public function setHomepage(string $homepage): self
-    {
-        $this->homepage = $homepage;
-
-        return $this;
-    }
 
 
 
@@ -126,40 +117,6 @@ class Client
         return $this->name;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param mixed $image
-     */
-    public function setImage($image): void
-    {
-        $this->image = $image;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param mixed $imageFile
-     */
-    public function setImageFile($imageFile): void
-    {
-        $this->imageFile = $imageFile;
-        if($imageFile){
-            $this->updatedAt = new \DateTime();
-        }
-    }
 
     /**
      * @return Collection|Project[]
@@ -202,5 +159,56 @@ class Client
         $this->cssClass = $cssClass;
 
         return $this;
+    }
+
+    /**
+     * @return File
+     */
+    public function getFile(): File
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param File $file
+     */
+    public function setFile(File $file): void
+    {
+        $this->file = $file;
+        if($file){
+            $this->updatedAt = new \DateTime();
+        }
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFilename(): ?string
+    {
+        return $this->filename;
+    }
+
+    /**
+     * @param string|null $filename
+     */
+    public function setFilename(?string $filename): void
+    {
+        $this->filename = $filename;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string|null $url
+     */
+    public function setUrl(?string $url): void
+    {
+        $this->url = $url;
     }
 }

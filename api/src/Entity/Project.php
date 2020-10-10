@@ -35,19 +35,14 @@ class Project
      * @ORM\Column(type="integer")
      * @Groups({"project_read"})
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"project_read"})
      */
-    private $title;
+    private ?string $title;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"project_read"})
-     */
-    private  $imagePath;
 
     /**
      * @ORM\Column(type="text", nullable=true)

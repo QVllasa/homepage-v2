@@ -41,13 +41,13 @@ class ProfileImage
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"profile_read"})
      */
-    private ?string $image = '';
+    private ?string $filename = '';
 
     /**
      * @Vich\UploadableField(mapping="images", fileNameProperty="image")
      * @Groups({"project_read"})
      */
-    public File $imageFile;
+    public File $file;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -94,34 +94,34 @@ class ProfileImage
     /**
      * @return string|null
      */
-    public function getImage(): ?string
+    public function getFilename(): ?string
     {
-        return $this->image;
+        return $this->filename;
     }
 
     /**
-     * @param string|null $image
+     * @param string|null $filename
      */
-    public function setImage(?string $image): void
+    public function setFilename(?string $filename): void
     {
-        $this->image = $image;
+        $this->filename = $filename;
     }
 
     /**
-     * @return mixed
+     * @return File
      */
-    public function getImageFile()
+    public function getFile(): File
     {
-        return $this->imageFile;
+        return $this->file;
     }
 
     /**
-     * @param mixed $imageFile
+     * @param File $file
      */
-    public function setImageFile($imageFile): void
+    public function setFile(File $file): void
     {
-        $this->imageFile = $imageFile;
-        if($imageFile){
+        $this->file = $file;
+        if($file){
             $this->updatedAt = new \DateTime();
         }
     }

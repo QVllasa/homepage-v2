@@ -41,13 +41,13 @@ class Banner
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"banner_read"})
      */
-    private ?string $path = '';
+    private ?string $filename = '';
 
     /**
-     * @Vich\UploadableField(mapping="images", fileNameProperty="path")
+     * @Vich\UploadableField(mapping="images", fileNameProperty="filename")
      * @Groups({"banner_read"})
      */
-    private ?File $pathFile;
+    private ?File $file;
 
     /**
      * @ORM\Column(type="string", length=255)
