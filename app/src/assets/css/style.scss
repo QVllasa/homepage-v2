@@ -953,7 +953,8 @@ Main Container CSS
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: $white-color;
+    border: 1px solid $white-color;
+    background-color: $dark-blue-color;
     padding: {
         top: 12px;
         left: 12px;
@@ -962,7 +963,7 @@ Main Container CSS
     span {
         height: 2px;
         width: 25px;
-        background: $black-color;
+        background: $white-color;
         display: block;
         margin: 5px 0;
         transition: all .50s ease-in-out;
@@ -970,8 +971,10 @@ Main Container CSS
 
     &.active {
         padding-left: 16px;
+        background-color: $white-color;
 
         span {
+            background-color: $dark-blue-color;
             &.top-bar {
                 transform: rotate(45deg);
                 transform-origin: 10% 10%;
@@ -1820,6 +1823,7 @@ About CSS
 }
 
 .about-image {
+    max-height: 450px;
     text-align: center;
     position: relative;
     z-index: 1;

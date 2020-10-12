@@ -34,6 +34,7 @@ import {PrivacyComponent} from "./pages/privacy/privacy.component";
 import {LegalComponent} from "./pages/legal/legal.component";
 import {VjsPlayerComponent} from "./components/vjs-player/vjs-player.component";
 import {AboutMeComponent} from "./components/about-me/about-me.component";
+import {BurgerMenuComponent} from "./components/burger-menu/burger-menu.component";
 
 
 
@@ -50,6 +51,7 @@ import {AboutMeComponent} from "./components/about-me/about-me.component";
         SkillsComponent,
         TestimonialItemComponent,
         TypeWriterComponent,
+        BurgerMenuComponent,
         ContactDialogComponent,
         WorksDetailsComponent,
         ProjectItemComponent,
@@ -64,7 +66,8 @@ import {AboutMeComponent} from "./components/about-me/about-me.component";
         LegalComponent,
         PrivacyComponent,
         VjsPlayerComponent,
-        AboutMeComponent
+        AboutMeComponent,
+
     ],
     imports: [
         BrowserModule,

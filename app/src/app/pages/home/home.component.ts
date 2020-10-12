@@ -169,7 +169,6 @@ export class HomeComponent implements OnInit {
                 console.log(event.target.src);
             }
         }
-
     }
 
 }
