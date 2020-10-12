@@ -1,8 +1,8 @@
 <div fxLayout="row" fxLayout.lt-lg="column" fxLayoutGap="12px" >
-    <div *ngFor="let service of services" fxLayout="column" fxFlex="100"  class="service-container"
+    <div  *ngFor="let service of services" fxLayout="column" fxFlex="100"  class="service-container"
          [ngStyle]="{background: 'url('+serverPath+service.contentUrl+') bottom right no-repeat'}"
          [ngClass]="service.priority === 1 ? 'scale-12':''">
-        <div class="single-services-box">
+        <div class="single-services-box" >
             <h3>{{service.title}}</h3>
             <p>{{service.shortText}}</p>
             <a [routerLink]="['/services-details', service._id]" class="read-more-btn">Read More<i

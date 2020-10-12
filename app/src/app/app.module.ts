@@ -35,6 +35,7 @@ import {LegalComponent} from "./pages/legal/legal.component";
 import {VjsPlayerComponent} from "./components/vjs-player/vjs-player.component";
 import {AboutMeComponent} from "./components/about-me/about-me.component";
 import {BurgerMenuComponent} from "./components/burger-menu/burger-menu.component";
+import {AnimateModule} from "@wizdm/animate";
 
 
 
@@ -82,7 +83,8 @@ import {BurgerMenuComponent} from "./components/burger-menu/burger-menu.componen
         MatTabsModule,
         MatDialogModule,
         MatButtonModule,
-        CarouselModule
+        CarouselModule,
+        AnimateModule
     ],
     providers: [],
     bootstrap: [AppComponent]
