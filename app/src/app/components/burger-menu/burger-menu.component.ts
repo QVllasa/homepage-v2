@@ -13,7 +13,7 @@ export class BurgerMenuComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.open = false;
+
     }
 
 

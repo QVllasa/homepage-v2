@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~9.0.2",
     "@angular/router": "~9.0.2",
     "@apollo/client": "^3.0.0",
+    "@wizdm/animate": "^2.0.1",
     "angular-material": "^1.2.1",
     "angular-responsive-carousel": "^1.5.11",
     "apollo-angular": "^2.0.4",

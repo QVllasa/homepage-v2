@@ -9,7 +9,23 @@ $value_five: 992px;
 $value_six: 1199px;
 $value_seven: 1550px;
 
+
+
 @media only #{$media} and ($feature_max : $value_two) {
+
+    .service-container{
+        transform: scale(1);
+        border: 1px solid rgba(200, 171, 128, 0.5);
+        //background-position: bottom;
+        background-size: 0px !important;
+        //background-repeat: no-repeat;
+    }
+
+    .scale-12{
+        transform: scale(1);
+        background-size: 0px !important;
+        border: 1px solid rgba(200, 171, 128, 0.5);
+    }
 
     body {
         font-size: 14px;
@@ -1308,6 +1324,21 @@ $value_seven: 1550px;
         right: 25px;
     }
 
+    .service-container{
+        transform: scale(1);
+        border: 1px solid rgba(200, 171, 128, 0.5);
+        //background-position: bottom;
+        background-size: 0px !important;
+        //background-repeat: no-repeat;
+    }
+
+    .scale-12{
+        transform: scale(1);
+        background-size: 0px !important;
+        border: 1px solid rgba(200, 171, 128, 0.5);
+    }
+
+
     .main-banner-content {
         h1 {
             margin-bottom: 15px;
@@ -1418,12 +1449,29 @@ $value_seven: 1550px;
 
 @media only #{$media} and ($feature_min : $value_three) and ($feature_max : $value_four) {
 
+    .service-container{
+        transform: scale(1);
+        border: 1px solid rgba(200, 171, 128, 0.5);
+        //background-position: bottom;
+        background-size: 0px !important;
+        //background-repeat: no-repeat;
+    }
+
+    .scale-12{
+        transform: scale(1);
+        background-size: 0px !important;
+        border: 1px solid rgba(200, 171, 128, 0.5);
+    }
+
     body {
         font-size: 14px;
     }
     p {
         font-size: 14px;
     }
+
+
+
     .ptb-120 {
         padding: {
             top: 100px;
@@ -2124,6 +2172,20 @@ $value_seven: 1550px;
 
 @media only #{$media} and ($feature_min : $value_five) and ($feature_max : $value_six) {
 
+    .service-container{
+        transform: scale(1);
+        border: 1px solid rgba(200, 171, 128, 0.5);
+        //background-position: bottom;
+        background-size: 0px !important;
+        //background-repeat: no-repeat;
+    }
+
+    .scale-12{
+        transform: scale(1);
+        background-size: 0px !important;
+        border: 1px solid rgba(200, 171, 128, 0.5);
+    }
+
     body {
         font-size: 15px;
 
@@ -2134,6 +2196,10 @@ $value_seven: 1550px;
     p {
         font-size: 15px;
     }
+
+
+
+
     .ptb-120 {
         padding: {
             top: 100px;
@@ -2561,6 +2627,8 @@ $value_seven: 1550px;
             max-width: 1200px;
         }
     }
+
+
 
     .feedback-slides-content {
         padding: {
