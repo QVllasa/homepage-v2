@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ServiceSectionRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\Resolver\GetMediaObjectResolver;
 use App\Resolver\GetMediaObjectCollectionResolver;
@@ -33,55 +34,55 @@ class ServiceSection
      * @ORM\Column(type="integer")
      * @Groups({"service_section_read", "service_read"})
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"service_section_read", "service_read"})
      */
-    private $title;
+    private ?string $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      * @Groups({"service_section_read", "service_read"})
      */
-    private $description;
+    private ?string $description;
 
     /**
      * @ORM\Column(type="array", nullable=true)
      *
      * @Groups({"service_section_read", "service_read"})
      */
-    private $keys = [];
+    private ?array $keys = [];
 
     /**
      * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="serviceSections")
      * @Groups({"service_section_read", "service_read"})
      */
-    private $service;
+    private ?Service $service;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"service_section_read", "service_read"})
      */
-    private $image;
+    private ?string $filename = '';
 
     /**
-     * @Vich\UploadableField(mapping="logos", fileNameProperty="image")
+     * @Vich\UploadableField(mapping="media", fileNameProperty="filename")
      */
-    private $imageFile;
+    private File $file;
 
     /**
      * @var string|null
      * @Groups({"service_section_read", "service_read"})
      */
-    public $contentUrl;
+    public ?string $contentUrl;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      * @Groups({"service_section_read"})
      */
-    private $updatedAt;
+    private \DateTime $updatedAt;
 
     public function __construct()
     {
@@ -141,43 +142,44 @@ class ServiceSection
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param mixed $image
-     */
-    public function setImage($image): void
-    {
-        $this->image = $image;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param mixed $imageFile
-     */
-    public function setImageFile($imageFile): void
-    {
-        $this->imageFile = $imageFile;
-        if($imageFile){
-            $this->updatedAt = new \DateTime();
-        }
-    }
 
     public function __toString()
     {
         return $this->title;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFilename(): ?string
+    {
+        return $this->filename;
+    }
+
+    /**
+     * @param string|null $filename
+     */
+    public function setFilename(?string $filename): void
+    {
+        $this->filename = $filename;
+    }
+
+    /**
+     * @return File
+     */
+    public function getFile(): File
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param File $file
+     */
+    public function setFile(File $file): void
+    {
+        $this->file = $file;
+        if($file){
+            $this->updatedAt = new \DateTime();
+        }
     }
 }

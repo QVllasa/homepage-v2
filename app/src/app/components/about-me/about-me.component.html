@@ -1,0 +1,45 @@
+<div class="container">
+    <div @fadeInUp class="section-title">
+        <span class="sub-title">About Me</span>
+        <h2 style="line-height: 1.2">{{aboutMe.quote}}</h2>
+    </div>
+    <div class="row align-items-center">
+        <div class="col-lg-8 col-md-12">
+            <div class="about-content">
+                <p>{{aboutMe.text}}</p>
+                <div class="tab about-list-tab">
+                    <ul class="tabs">
+                        <li [ngClass]="activeTab === 'top-skills' ? 'about-list-tab tabs li current' : ''"
+                            (click)="onToggleTabs('top-skills')">Top Skills
+                        </li>
+                        <li [ngClass]="activeTab === 'experience' ? 'about-list-tab tabs li current' : ''"
+                            (click)="onToggleTabs('experience')">Experience
+                        </li>
+                        <li [ngClass]="activeTab === 'education' ? 'about-list-tab tabs li current' : ''"
+                            (click)="onToggleTabs('education')">Education
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <ng-container *ngIf="activeTab === 'top-skills'">
+                            <app-skills [skills]="skills"></app-skills>
+                        </ng-container>
+                        <ng-container *ngIf="activeTab === 'experience'">
+                            <app-experience-item [experiences]="experiences"></app-experience-item>
+                        </ng-container>
+                        <ng-container *ngIf="activeTab === 'education'">
+                            <app-education-item></app-education-item>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-12">
+            <div class="about-image">
+                <img
+                    [src]="serverPath+profileImages[0].contentUrl"
+                    (error)="errorHandler($event)"
+                    alt="">
+            </div>
+        </div>
+    </div>
+</div>

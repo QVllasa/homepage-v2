@@ -6,6 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/api/src" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/alchemy/binary-driver" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/aminyazdanpanah/php-ffmpeg-video-streaming" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/api-platform/core" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/api-platform/schema-generator" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/composer" />
@@ -27,6 +29,7 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/sql-formatter" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/easycorp/easyadmin-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/easyrdf/easyrdf" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/evenement/evenement" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/fig/link-util" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/friendsofphp/php-cs-fixer" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/guzzlehttp/guzzle" />
@@ -43,10 +46,12 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/liip/imagine-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/nelmio/cors-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/neutron/temporary-filesystem" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/ocramius/proxy-manager" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/oneup/flysystem-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/php-cs-fixer/diff" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/php-ffmpeg/php-ffmpeg" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/phpdocumentor/reflection-common" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/phpdocumentor/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/phpdocumentor/type-resolver" />

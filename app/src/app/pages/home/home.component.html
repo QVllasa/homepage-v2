@@ -1,4 +1,4 @@
-<div id="main-content" class="main-content">
+<div id="main-content" class="main-content" *ngIf="!isLoading">
 
     <div class="responsive-burger-menu">
         <span class="top-bar"></span>
@@ -10,14 +10,16 @@
     <div class="home-area">
         <div class="main-banner">
             <owl-carousel-o [options]="customOptions">
-                <ng-template carouselSlide>
-                    <img class="banner-image" src="assets/img/banner.webp" alt="">
-                </ng-template>
-                <ng-template carouselSlide>
-                    <div fxHide.lt-md="true">
-                        <app-vjs-player [options]="vjsOptions"></app-vjs-player>
-                    </div>
-                </ng-template>
+                <ng-container *ngFor="let banner of banners; let i=index">
+                    <ng-template *ngIf="banner.mimeType === 'image/webp'" carouselSlide>
+                        <img  class="banner-image" [src]="serverPath+banner.contentUrl" alt="profile_banner" (error)="errorHandler($event, banner)">
+                    </ng-template>
+                </ng-container>
+<!--                <ng-template carouselSlide>-->
+<!--                    <div fxHide.lt-md="true">-->
+<!--                        <app-vjs-player [options]="vjsOptions"></app-vjs-player>-->
+<!--                    </div>-->
+<!--                </ng-template>-->
             </owl-carousel-o>
         </div>
         <div class="banner-content">
@@ -25,53 +27,14 @@
             <h1>Qendrim Vllasa</h1>
             <app-type-writer [content]="typeWriterText"></app-type-writer>
         </div>
-
-
     </div>
 
     <section id="about" class="about-area ptb-120">
-        <div class="container">
-            <div @fadeInUp class="section-title">
-                <span class="sub-title">About Me</span>
-                <h2 style="line-height: 1.2">{{aboutMe.quote}}</h2>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-8 col-md-12">
-                    <div class="about-content">
-                        <p>{{aboutMe.text}}</p>
-                        <div class="tab about-list-tab">
-                            <ul class="tabs">
-                                <li [ngClass]="activeTab === 'top-skills' ? 'about-list-tab tabs li current' : ''"
-                                    (click)="onToggleTabs('top-skills')">Top Skills
-                                </li>
-                                <li [ngClass]="activeTab === 'experience' ? 'about-list-tab tabs li current' : ''"
-                                    (click)="onToggleTabs('experience')">Experience
-                                </li>
-                                <li [ngClass]="activeTab === 'education' ? 'about-list-tab tabs li current' : ''"
-                                    (click)="onToggleTabs('education')">Education
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <ng-container *ngIf="activeTab === 'top-skills'">
-                                    <app-skills [skills]="skills"></app-skills>
-                                </ng-container>
-                                <ng-container *ngIf="activeTab === 'experience'">
-                                    <app-experience-item [experiences]="experiences"></app-experience-item>
-                                </ng-container>
-                                <ng-container *ngIf="activeTab === 'education'">
-                                    <app-education-item></app-education-item>
-                                </ng-container>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                    <div class="about-image">
-                        <img [src]="profileImg" alt="image">
-                    </div>
-                </div>
-            </div>
-        </div>
+       <app-about-me
+           [aboutMe]="aboutMe"
+           [skills]="skills"
+           [profileImages]="profileImages"
+           [experiences]="experiences"></app-about-me>
     </section>
     <section id="stack" class="pt-120 pb-90 bg-0f1d22">
         <div class="container">

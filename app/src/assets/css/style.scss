@@ -1065,17 +1065,6 @@ Main Banner CSS
         repeat: no-repeat;
     };
 
-    &.banner-bg1 {
-        background: {
-            image: url(../../assets/img/main-banner1.jpg);
-        };
-    }
-
-    &.banner-bg2 {
-        background: {
-            image: url(../../assets/img/main-banner2.jpg);
-        };
-    }
 }
 
 .main-banner-content {
@@ -1133,7 +1122,8 @@ Main Banner CSS
 
     .sub-title {
         display: block;
-        color: $white-color;
+        //color: $white-color;
+        color: rgb(255, 255, 255);
         margin-bottom: 12px;
         font: {
             weight: 300;
@@ -1142,7 +1132,9 @@ Main Banner CSS
     }
 
     h1 {
-        color: $white-color;
+        color: rgb(255, 255, 255);
+        backdrop-filter: contrast(0.6);
+        //color: $white-color;
         margin-bottom: 28px;
         line-height: 1;
         font: {
@@ -1152,7 +1144,8 @@ Main Banner CSS
     }
 
     h6 {
-        color: $white-color;
+        color: rgba(15, 30, 33, 0.8);
+        //color: $white-color;
         margin-bottom: 0;
         font: {
             size: 26px;
@@ -1162,7 +1155,7 @@ Main Banner CSS
 
         span {
             display: inline-block;
-            color: $main-color;
+            color: #fff;
         }
     }
 
@@ -1243,6 +1236,7 @@ Main Banner CSS
     height: 100vh;
     width: auto;
     object-fit: cover;
+    object-position: right;
 }
 
 .hero-content {
@@ -2742,7 +2736,6 @@ Funfacts CSS
     position: relative;
     z-index: 1;
     background: {
-        image: url(../../assets/img/funfacts-bg.jpg);
         position: center center;
         size: cover;
         repeat: no-repeat;
@@ -2800,7 +2793,6 @@ Funfacts CSS
     position: relative;
     z-index: 1;
     background: {
-        image: url(../../assets/img/funfacts-bg2.jpg);
         position: center center;
         size: cover;
         repeat: no-repeat;
@@ -3721,21 +3713,6 @@ Training CSS
         repeat: no-repeat;
     };
 
-    &.bg1 {
-        background-image: url(../../assets/img/training-bg1.jpg);
-    }
-
-    &.bg2 {
-        background-image: url(../../assets/img/training-bg2.jpg);
-    }
-
-    &.bg3 {
-        background-image: url(../../assets/img/training-bg3.jpg);
-    }
-
-    &.bg4 {
-        background-image: url(../../assets/img/training-bg4.jpg);
-    }
 
     img {
         display: none;
@@ -3970,21 +3947,7 @@ Shop CSS
         repeat: no-repeat;
     };
 
-    &.bg1 {
-        background-image: url(../../assets/img/shop/shop-bg1.jpg);
-    }
 
-    &.bg2 {
-        background-image: url(../../assets/img/shop/shop-bg2.jpg);
-    }
-
-    &.bg3 {
-        background-image: url(../../assets/img/shop/shop-bg3.jpg);
-    }
-
-    &.bg4 {
-        background-image: url(../../assets/img/shop/shop-bg4.jpg);
-    }
 
     img {
         display: none;
@@ -4102,7 +4065,6 @@ Book Trainer CSS
         text-transform: capitalize;
         margin-bottom: 20px;
         background: {
-            image: url(../../assets/img/text-bg.jpg);
             position: center 50%;
         };
         font: {

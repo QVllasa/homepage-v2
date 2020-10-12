@@ -1,5 +1,15 @@
 export interface IMainPage {
+    banners: {
+        edges: {
+            node: IBanner
+        }[]
+    }
     aboutMe: IAboutMe
+    profileImages: {
+        edges: {
+            node: IProfileImage
+        }[]
+    }
     skills: {
         edges: {
             node: ISkill
@@ -51,20 +61,17 @@ export interface IExperience {
     date: string;
     function: string;
     company: string;
-    companyUrl: string;
+    url: string;
     description: string;
 }
 
 export interface IClient {
     name: string,
-    homepage: string,
+    url: string,
     contentUrl: string,
     cssClass?: string[],
 }
 
-export interface IProfileImage {
-    path: string,
-}
 
 export interface IStack {
     title: string,
@@ -119,14 +126,29 @@ export interface IServiceSection {
     contentUrl: string,
 }
 
-export interface ITestimonial{
+export interface ITestimonial {
     text: string,
     client: string,
     function: string,
 }
 
-export interface TProject{
+export interface TProject {
     project: IProject;
+}
+
+export interface IProfileImage {
+    id: string;
+    filename: string;
+    mimeType: string,
+    contentUrl: string;
+}
+
+export interface IBanner {
+    id: string,
+    filename: string,
+    priority: number,
+    contentUrl: string,
+    mimeType: string,
 }
 
 
@@ -134,9 +156,30 @@ import gql from 'graphql-tag';
 
 export const Models = gql`
     {
+        banners{
+            edges{
+                node{
+                    title
+                    filename
+                    priority
+                    contentUrl
+                    mimeType
+                }
+            }
+        }
         aboutMe(id: "/about_mes/1"){
             text
             quote
+        }
+        profileImages{
+            edges{
+                node{
+                    id
+                    filename
+                    contentUrl
+                    mimeType
+                }
+            }
         }
         skills{
             edges{
@@ -152,7 +195,7 @@ export const Models = gql`
                     date
                     function
                     company
-                    companyUrl
+                    url
                     description
                 }
             }
@@ -193,7 +236,7 @@ export const Models = gql`
             edges{
                 node{
                     name
-                    homepage
+                    url
                     contentUrl
                     cssClass
                 }
@@ -208,15 +251,6 @@ export const Models = gql`
                     shortText
                     contentUrl
                     priority
-                }
-            }
-        }
-        testimonials{
-            edges{
-                node{
-                    text
-                    function
-                    client
                 }
             }
         }
@@ -249,7 +283,7 @@ export const ServiceModel = gql`
     }
 `;
 
-export const ProjectModel = gql `
+export const ProjectModel = gql`
     query Project($id: ID!)
     {
         project(id: $id){
@@ -266,7 +300,7 @@ export const ProjectModel = gql `
             }
             client{
                 name
-                homepage
+                url
             }
             contentUrl
         }

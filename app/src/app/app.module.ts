@@ -33,6 +33,8 @@ import {EducationItemComponent} from "./components/education-item/education-item
 import {PrivacyComponent} from "./pages/privacy/privacy.component";
 import {LegalComponent} from "./pages/legal/legal.component";
 import {VjsPlayerComponent} from "./components/vjs-player/vjs-player.component";
+import {AboutMeComponent} from "./components/about-me/about-me.component";
+
 
 
 
@@ -61,7 +63,8 @@ import {VjsPlayerComponent} from "./components/vjs-player/vjs-player.component";
         EducationItemComponent,
         LegalComponent,
         PrivacyComponent,
-        VjsPlayerComponent
+        VjsPlayerComponent,
+        AboutMeComponent
     ],
     imports: [
         BrowserModule,

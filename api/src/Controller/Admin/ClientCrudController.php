@@ -23,10 +23,10 @@ class ClientCrudController extends AbstractCrudController
     {
         $fields = [
             TextField::new('name'),
-            TextField::new('homepage'),
+            TextField::new('url'),
             ArrayField::new('cssClass'),
-            ImageField::new('image')->setBasePath('/images/logos')->hideOnForm(),
-            ImageField::new('imageFile')->setFormType(VichImageType::class)->hideOnIndex(),
+            ImageField::new('filename')->setBasePath('/media')->hideOnForm(),
+            ImageField::new('file')->setFormType(VichImageType::class)->hideOnIndex(),
         ];
 
 

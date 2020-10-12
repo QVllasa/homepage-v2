@@ -6,6 +6,7 @@ use App\Entity\ProfileImage;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Vich\UploaderBundle\Form\Type\VichFileType;
@@ -22,8 +23,10 @@ class ProfileImageCrudController extends AbstractCrudController
     {
         $fields = [
             TextField::new('title'),
-            ImageField::new('image')->setBasePath('/images')->hideOnForm(),
-            ImageField::new('imageFile')->setFormType(VichImageType::class)->hideOnIndex(),
+            BooleanField::new('convert')->hideOnIndex(),
+            TextField::new('mimeType')->hideOnForm(),
+            ImageField::new('filename')->setBasePath('/media')->hideOnForm(),
+            ImageField::new('file')->setFormType(VichImageType::class)->hideOnIndex(),
         ];
 
 

@@ -7,15 +7,4 @@ vich_uploader:
             upload_destination: '%kernel.project_dir%/public/media'
             # Will rename uploaded files using a uniqueid as a prefix.
             namer: Vich\UploaderBundle\Naming\OrignameNamer
-        thumbnails:
-            uri_prefix: /images/thumbnails
-            upload_destination: '%kernel.project_dir%/public/images/thumbnails'
-        images:
-            uri_prefix: /images
-            upload_destination: '%kernel.project_dir%/public/images'
-        avatars:
-            uri_prefix: /images/avatars
-            upload_destination: '%kernel.project_dir%/public/images/avatars'
-        logos:
-            uri_prefix: /images/logos
-            upload_destination: '%kernel.project_dir%/public/images/logos'
+        

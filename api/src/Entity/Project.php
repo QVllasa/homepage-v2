@@ -7,6 +7,7 @@ use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use App\Resolver\GetMediaObjectResolver;
@@ -48,60 +49,48 @@ class Project
      * @ORM\Column(type="text", nullable=true)
      * @Groups({"project_read"})
      */
-    private $description;
+    private ?string $description;
 
     /**
      * @ORM\Column(type="array", nullable=true)
      * @Groups({"project_read"})
      */
-    private array $keys = [];
+    private ?array $keys = [];
 
     /**
      * @ORM\Column(type="datetime")
      * @Groups({"project_read"})
      */
-    private $createdAt;
-
+    private \DateTime $createdAt;
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="projects")
      * @Groups({"project_read"})
      */
-    private $category;
+    private  $category;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"project_read"})
      */
-    private $thumbnail;
+    private ?string $filename;
 
     /**
-     * @Vich\UploadableField(mapping="thumbnails", fileNameProperty="thumbnail")
+     * @Vich\UploadableField(mapping="media", fileNameProperty="filename")
      */
-    private $thumbnailFile;
+    private File $file;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $updatedAt;
+    private \DateTime $updatedAt;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"project_read"})
-     */
-    private $image;
-
-    /**
-     * @Vich\UploadableField(mapping="images", fileNameProperty="image")
-     * @Groups({"project_read"})
-     */
-    private $imageFile;
 
     /**
      * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="projects")
      * @Groups({"project_read"})
      */
-    private $client;
+    private ?Client $client;
 
     /**
      * @var string|null
@@ -133,17 +122,7 @@ class Project
         return $this;
     }
 
-    public function getImagePath(): ?string
-    {
-        return $this->imagePath;
-    }
 
-    public function setImagePath(string $imagePath): self
-    {
-        $this->imagePath = $imagePath;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -169,12 +148,12 @@ class Project
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    public function setCreatedAt(\DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -209,69 +188,7 @@ class Project
         return $this;
     }
 
-    public function getThumbnail(): ?string
-    {
-        return $this->thumbnail;
-    }
 
-    public function setThumbnail(?string $thumbnail): self
-    {
-        $this->thumbnail = $thumbnail;
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getThumbnailFile()
-    {
-        return $this->thumbnailFile;
-    }
-
-    /**
-     * @param mixed $thumbnailFile
-     */
-    public function setThumbnailFile($thumbnailFile): void
-    {
-        $this->thumbnailFile = $thumbnailFile;
-
-        if($thumbnailFile){
-            $this->updatedAt = new \DateTime();
-        }
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param mixed $imageFile
-     */
-    public function setImageFile($imageFile): void
-    {
-        $this->imageFile = $imageFile;
-
-        if($imageFile){
-            $this->updatedAt = new \DateTime();
-        }
-    }
 
     public function getClient(): ?Client
     {
@@ -283,5 +200,40 @@ class Project
         $this->client = $client;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param mixed $file
+     */
+    public function setFile($file): void
+    {
+        $this->file = $file;
+        if($file){
+            $this->updatedAt = new \DateTime();
+        }
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFilename(): ?string
+    {
+        return $this->filename;
+    }
+
+    /**
+     * @param string|null $filename
+     */
+    public function setFilename(?string $filename): void
+    {
+        $this->filename = $filename;
     }
 }

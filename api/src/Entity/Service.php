@@ -7,6 +7,7 @@ use App\Repository\ServiceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use App\Resolver\GetMediaObjectCollectionResolver;
@@ -35,19 +36,19 @@ class Service
      * @ORM\Column(type="integer")
      * @Groups({"service_read"})
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"service_read"})
      */
-    private $title;
+    private ?string $title;
 
     /**
      * @ORM\Column(type="text")
      * @Groups({"service_read"})
      */
-    private $shortText;
+    private ?string $shortText;
 
 
 
@@ -55,42 +56,42 @@ class Service
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"service_read"})
      */
-    private $image;
+    private ?string $filename = '';
 
     /**
-     * @Vich\UploadableField(mapping="logos", fileNameProperty="image")
+     * @Vich\UploadableField(mapping="media", fileNameProperty="filename")
      */
-    private $imageFile;
+    private File $file;
 
     /**
      * @var string|null
      * @Groups({"service_read"})
      */
-    public $contentUrl;
+    public ?string $contentUrl;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      * @Groups({"service_read"})
      */
-    private $updatedAt;
+    private \DateTime $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity=ServiceSection::class, mappedBy="service")
      * @Groups({"service_read"})
      */
-    private $serviceSections;
+    private  $serviceSections;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      * @Groups({"service_read"})
      */
-    private $priority;
+    private ?int $priority;
 
     /**
      * @ORM\Column(type="string", length=255,   nullable=true)
      * @Groups({"service_read"})
      */
-    private $pageTitle;
+    private ?string $pageTitle;
 
 
 
@@ -130,41 +131,6 @@ class Service
     }
 
 
-
-    /**
-     * @return mixed
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param mixed $image
-     */
-    public function setImage($image): void
-    {
-        $this->image = $image;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param mixed $imageFile
-     */
-    public function setImageFile($imageFile): void
-    {
-        $this->imageFile = $imageFile;
-        if($imageFile){
-            $this->updatedAt = new \DateTime();
-        }
-    }
 
     /**
      * @return Collection|ServiceSection[]
@@ -224,6 +190,41 @@ class Service
         $this->pageTitle = $pageTitle;
 
         return $this;
+    }
+
+    /**
+     * @return File
+     */
+    public function getFile(): File
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param File $file
+     */
+    public function setFile(File $file): void
+    {
+        $this->file = $file;
+        if($file){
+            $this->updatedAt = new \DateTime();
+        }
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFilename(): ?string
+    {
+        return $this->filename;
+    }
+
+    /**
+     * @param string|null $filename
+     */
+    public function setFilename(?string $filename): void
+    {
+        $this->filename = $filename;
     }
 
 }

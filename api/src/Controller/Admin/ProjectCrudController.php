@@ -32,10 +32,8 @@ class ProjectCrudController extends AbstractCrudController
             AssociationField::new('category'),
             AssociationField::new('client'),
             ArrayField::new('keys'),
-            ImageField::new('image')->setBasePath('/images')->hideOnForm(),
-            ImageField::new('imageFile')->setFormType(VichImageType::class)->hideOnIndex(),
-            ImageField::new('thumbnailFile')->setFormType(VichFileType::class)->hideOnIndex(),
-            ImageField::new('thumbnail')->setBasePath('/images/thumbnails')->hideOnForm()
+            ImageField::new('filename')->setBasePath('/media')->hideOnForm(),
+            ImageField::new('file')->setFormType(VichImageType::class)->hideOnIndex(),
         ];
 
         return $fields;

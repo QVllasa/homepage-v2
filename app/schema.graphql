@@ -19,8 +19,11 @@ type AboutMe implements Node {
 
 type Banner implements Node {
     _id: Int!
+    contentUrl: String
+    filename: String
     id: ID!
-    path: String!
+    mimeType: String
+    priority: Int
     title: String!
 }
 
@@ -86,10 +89,10 @@ type Client implements Node {
     _id: Int!
     contentUrl: String
     cssClass: Iterable
-    homepage: String!
+    filename: String
     id: ID!
-    image: String
     name: String!
+    url: String!
 }
 
 "Connection for Client."
@@ -116,11 +119,11 @@ type ClientPageInfo {
 type Experience implements Node {
     _id: Int!
     company: String!
-    companyUrl: String
     date: String!
     description: String!
     function: String!
     id: ID!
+    url: String
 }
 
 "Connection for Experience."
@@ -144,29 +147,30 @@ type ExperiencePageInfo {
     startCursor: String
 }
 
-type ProfilImage implements Node {
+type ProfileImage implements Node {
     _id: Int!
     contentUrl: String
+    filename: String
     id: ID!
-    path: String
+    mimeType: String
     title: String!
 }
 
-"Connection for ProfilImage."
-type ProfilImageConnection {
-    edges: [ProfilImageEdge]
-    pageInfo: ProfilImagePageInfo!
+"Connection for ProfileImage."
+type ProfileImageConnection {
+    edges: [ProfileImageEdge]
+    pageInfo: ProfileImagePageInfo!
     totalCount: Int!
 }
 
-"Edge of ProfilImage."
-type ProfilImageEdge {
+"Edge of ProfileImage."
+type ProfileImageEdge {
     cursor: String!
-    node: ProfilImage
+    node: ProfileImage
 }
 
 "Information about the current page."
-type ProfilImagePageInfo {
+type ProfileImagePageInfo {
     endCursor: String
     hasNextPage: Boolean!
     hasPreviousPage: Boolean!
@@ -189,11 +193,9 @@ type Project implements Node {
     contentUrl: String
     createdAt: String!
     description: String
+    filename: String
     id: ID!
-    image: String
-    imagePath: String
     keys: Iterable
-    thumbnail: String
     title: String!
 }
 
@@ -220,6 +222,7 @@ type ProjectPageInfo {
 
 type Query {
     aboutMe(id: ID!): AboutMe
+    banner(id: ID!): Banner
     banners(
         "Returns the elements in the list that come after the specified cursor."
         after: String,
@@ -264,8 +267,8 @@ type Query {
         last: Int
     ): ExperienceConnection
     node(id: ID!): Node
-    profilImage(id: ID!): ProfilImage
-    profilImages(
+    profileImage(id: ID!): ProfileImage
+    profileImages(
         "Returns the elements in the list that come after the specified cursor."
         after: String,
         "Returns the elements in the list that come before the specified cursor."
@@ -274,7 +277,7 @@ type Query {
         first: Int,
         "Returns the last n elements from the list."
         last: Int
-    ): ProfilImageConnection
+    ): ProfileImageConnection
     project(id: ID!): Project
     projects(
         "Returns the elements in the list that come after the specified cursor."
@@ -346,8 +349,8 @@ type Query {
 type Service implements Node {
     _id: Int!
     contentUrl: String
+    filename: String
     id: ID!
-    image: String
     pageTitle: String
     priority: Int
     serviceSections(
@@ -389,8 +392,8 @@ type ServiceSection implements Node {
     _id: Int!
     contentUrl: String
     description: String
+    filename: String
     id: ID!
-    image: String
     keys: Iterable
     service: Service
     title: String

@@ -57,7 +57,7 @@ class Client
     private ?string $filename = '';
 
     /**
-     * @Vich\UploadableField(mapping="logos", fileNameProperty="image")
+     * @Vich\UploadableField(mapping="media", fileNameProperty="filename")
      */
     private File $file;
 
@@ -70,7 +70,7 @@ class Client
     /**
      * @ORM\OneToMany(targetEntity=Project::class, mappedBy="client")
      */
-    private ArrayCollection $projects;
+    private $projects;
 
     /**
      * @ORM\Column(type="array", nullable=true)

@@ -24,17 +24,17 @@ class Skill
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $title;
+    private ?string $title;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $value;
+    private ?int $value;
 
     public function getId(): ?int
     {

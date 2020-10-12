@@ -16,7 +16,14 @@
                 <div @fadeInRight *ngIf="isEven(i)" class="services-details-image">
                     <img  [src]="serverPath+section.contentUrl" alt="image">
                 </div>
-                <div  class="services-details-desc">
+                <div @fadeInLeft *ngIf="isEven(i)" class="services-details-desc">
+                    <h3>{{section.title}}</h3>
+                    <p *ngIf="section.description" >{{section.description}}</p>
+                    <div class="features-text" *ngFor="let key of section.keys" >
+                        <h4><i class="ri-check-line"></i>{{key}}</h4>
+                    </div>
+                </div>
+                <div @fadeInRight *ngIf="!isEven(i)" class="services-details-desc">
                     <h3>{{section.title}}</h3>
                     <p *ngIf="section.description" >{{section.description}}</p>
                     <div class="features-text" *ngFor="let key of section.keys" >

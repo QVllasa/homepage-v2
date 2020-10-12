@@ -1,4 +1,10 @@
 {
+    "alchemy/binary-driver": {
+        "version": "v5.2.0"
+    },
+    "aminyazdanpanah/php-ffmpeg-video-streaming": {
+        "version": "v1.2.11"
+    },
     "api-platform/core": {
         "version": "2.5",
         "recipe": {
@@ -119,6 +125,9 @@
     "easyrdf/easyrdf": {
         "version": "0.9.1"
     },
+    "evenement/evenement": {
+        "version": "v3.0.1"
+    },
     "fig/link-util": {
         "version": "1.1.1"
     },
@@ -195,6 +204,9 @@
             "config/packages/nelmio_cors.yaml"
         ]
     },
+    "neutron/temporary-filesystem": {
+        "version": "2.4"
+    },
     "nikic/php-parser": {
         "version": "v4.9.0"
     },
@@ -221,6 +233,9 @@
     },
     "php-cs-fixer/diff": {
         "version": "v1.3.0"
+    },
+    "php-ffmpeg/php-ffmpeg": {
+        "version": "v0.16"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"

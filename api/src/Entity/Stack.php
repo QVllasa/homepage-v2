@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\StackRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use App\Resolver\GetMediaObjectCollectionResolver;
@@ -33,43 +34,43 @@ class Stack
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"stack_read"})
      */
-    private $title;
+    private ?string $title;
 
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"stack_read"})
      */
-    private $url;
+    private ?string $url;
 
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $logo;
+    private ?string $filename = '';
 
     /**
-     * @Vich\UploadableField(mapping="logos", fileNameProperty="logo")
+     * @Vich\UploadableField(mapping="media", fileNameProperty="filename")
      */
-    private $logoFile;
+    private File $file;
 
     /**
      * @var string|null
      * @Groups({"stack_read"})
      */
-    public $contentUrl;
+    public ?string $contentUrl;
 
     /**
      * @ORM\Column(type="datetime")
      * @Groups({"stack_read"})
      */
-    private $updatedAt;
+    private \DateTime $updatedAt;
 
     public function __construct()
     {
@@ -106,40 +107,40 @@ class Stack
         return $this;
     }
 
+
+
     /**
-     * @return mixed
+     * @return File
      */
-    public function getLogoFile()
+    public function getFile(): File
     {
-        return $this->logoFile;
+        return $this->file;
     }
 
     /**
-     * @param mixed $logoFile
+     * @param File $file
      */
-    public function setLogoFile($logoFile): void
+    public function setFile(File $file): void
     {
-        $this->logoFile = $logoFile;
-
-        if($logoFile){
+        $this->file = $file;
+        if($file){
             $this->updatedAt = new \DateTime();
         }
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getLogo()
+    public function getFilename(): string
     {
-        return $this->logo;
+        return $this->filename;
     }
 
     /**
-     * @param mixed $logo
+     * @param string $filename
      */
-    public function setLogo($logo): void
+    public function setFilename(string $filename): void
     {
-        $this->logo = $logo;
-
+        $this->filename = $filename;
     }
 }

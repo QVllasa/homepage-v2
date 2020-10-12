@@ -28,8 +28,8 @@ class ServiceCrudController extends AbstractCrudController
             IntegerField::new('priority'),
             AssociationField::new('serviceSections'),
             TextField::new('pageTitle'),
-            ImageField::new('image')->setBasePath('/images/logos')->hideOnForm(),
-            ImageField::new('imageFile')->setFormType(VichImageType::class)->hideOnIndex(),
+            ImageField::new('filename')->setBasePath('/media')->hideOnForm(),
+            ImageField::new('file')->setFormType(VichImageType::class)->hideOnIndex(),
         ];
 
 

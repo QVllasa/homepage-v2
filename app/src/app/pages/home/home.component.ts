@@ -2,7 +2,7 @@ import {Component, NgZone, OnInit} from '@angular/core';
 import {Apollo} from "apollo-angular";
 import {Subscription} from "rxjs";
 import {
-    IAboutMe, IClient,
+    IAboutMe, IBanner, IClient,
     IExperience,
     IMainPage,
     IProfileImage, IProject, IService,
@@ -11,14 +11,11 @@ import {
     Models
 } from "../../models/models";
 import {
-    aboutMe,
-    profileImg,
     typeWriterText
 } from "../../../static/data";
 import {BASE_PATH} from "../../../environments/environment";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {fadeInUp400ms} from "../../components/animations/fade-in-up.animation";
-import {stagger60ms} from "../../components/animations/stagger.animation";
 import {OwlOptions} from "ngx-owl-carousel-o";
 
 
@@ -45,7 +42,7 @@ export class HomeComponent implements OnInit {
         rewind: true,
         autoWidth: true,
         navSpeed: 700,
-        autoplayTimeout: 7000,
+        autoplayTimeout: 10000,
         responsive: {
             0: {
                 items: 1,
@@ -69,22 +66,20 @@ export class HomeComponent implements OnInit {
         sources: [{ src: '/assets/mov/index.m3u8', type: 'application/x-mpegURL'}]
     }
 
-    activeTab: 'top-skills' | 'experience' | 'education';
-
     isLoading: boolean;
     query = Models;
 
     typeWriterText = typeWriterText;
 
-    aboutMe: IAboutMe = aboutMe;
-    profileImg: IProfileImage = profileImg;
+    aboutMe: IAboutMe;
+    banners: IBanner[];
+    profileImages: IProfileImage[] = [];
     experiences: IExperience[] = [];
     clients: IClient[] = [];
     stacks: IStack[] = [];
     skills: ISkill[] = [];
     services: IService[] = [];
     projects: IProject[] = [];
-    testimonials: ITestimonial[] = [];
 
     serverPath = BASE_PATH;
 
@@ -96,10 +91,11 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.activeTab = 'top-skills';
         this.isLoading = true;
         this.querySubscription = this.apollo.watchQuery<IMainPage>({query: this.query}).valueChanges
             .subscribe(({data, error, loading}) => {
+                this.profileImages = [];
+                this.banners = [];
                 this.aboutMe = data.aboutMe;
                 this.experiences = [];
                 this.skills = [];
@@ -107,6 +103,16 @@ export class HomeComponent implements OnInit {
                 this.clients = [];
                 this.projects = [];
                 this.services = [];
+
+                for (let profileImage of data.profileImages.edges) {
+                    this.profileImages.push(profileImage.node)
+                }
+
+                for (let banner of data.banners.edges) {
+                    this.banners.push(banner.node)
+                }
+
+                console.log(this.banners);
 
                 for (let exp of data.experiences.edges) {
                     this.experiences.push(exp.node)
@@ -134,9 +140,6 @@ export class HomeComponent implements OnInit {
                     this.projects.push(project.node)
                 }
 
-                for (let testimonial of data.testimonials.edges) {
-                    this.testimonials.push(testimonial.node)
-                }
 
                 this.isLoading = loading;
                 if (error) {
@@ -144,10 +147,6 @@ export class HomeComponent implements OnInit {
                 }
 
             });
-    }
-
-    onToggleTabs(tab) {
-        this.activeTab = tab;
     }
 
     openDialog() {
@@ -163,13 +162,15 @@ export class HomeComponent implements OnInit {
 
     }
 
-    intersected = false;
+    errorHandler(event, banner: IBanner) {
+        for (let img of this.banners){
+            if (img.mimeType === 'image/jpeg'){
+                event.target.src = this.serverPath+img.contentUrl;
+                console.log(event.target.src);
+            }
+        }
 
-    onIntersection(event) {
-        this.intersected = true;
-        console.log('on intersection');
     }
-
 
 }
 

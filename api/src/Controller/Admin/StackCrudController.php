@@ -22,15 +22,10 @@ class StackCrudController extends AbstractCrudController
         $fields = [
             TextField::new('title'),
             TextField::new('url'),
-            ImageField::new('logo')->setBasePath('/images/logos')->hideOnForm(),
-            ImageField::new('logoFile')->setFormType(VichImageType::class)->hideOnIndex(),
+            ImageField::new('filename')->setBasePath('/media')->hideOnForm(),
+            ImageField::new('file')->setFormType(VichImageType::class)->hideOnIndex(),
         ];
 
-        if ($pageName === Crud::PAGE_EDIT || $pageName === Crud::PAGE_NEW ){
-            $fields []  = ImageField::new('logoFile')->setFormType(VichFileType::class);
-        } else{
-            $fields []  = ImageField::new('logo')->setBasePath('/images/logos');
-        }
 
         return $fields;
     }

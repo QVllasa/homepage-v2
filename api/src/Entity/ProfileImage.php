@@ -4,10 +4,10 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ProfileImageRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints\DateTime;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use App\Resolver\GetMediaObjectCollectionResolver;
 use App\Resolver\GetMediaObjectResolver;
@@ -44,8 +44,8 @@ class ProfileImage
     private ?string $filename = '';
 
     /**
-     * @Vich\UploadableField(mapping="images", fileNameProperty="image")
-     * @Groups({"project_read"})
+     * @Vich\UploadableField(mapping="media", fileNameProperty="filename")
+     * @Groups({"profile_read"})
      */
     public File $file;
 
@@ -53,7 +53,7 @@ class ProfileImage
      * @ORM\Column(type="string", length=255)
      * @Groups({"profile_read"})
      */
-    private ?string $title;
+    private ?string $title = '';
 
     /**
      * @var string|null
@@ -63,9 +63,20 @@ class ProfileImage
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Groups({"project_read"})
+     * @Groups({"profile_read"})
      */
     private DateTime $updatedAt;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"profile_read"})
+     */
+    private ?string $mimeType;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $convert;
 
     public function __construct()
     {
@@ -121,8 +132,32 @@ class ProfileImage
     public function setFile(File $file): void
     {
         $this->file = $file;
-        if($file){
+        if ($file) {
             $this->updatedAt = new \DateTime();
         }
+    }
+
+    public function getMimeType(): ?string
+    {
+        return $this->mimeType;
+    }
+
+    public function setMimeType(?string $mimeType): self
+    {
+        $this->mimeType = $mimeType;
+
+        return $this;
+    }
+
+    public function getConvert(): ?bool
+    {
+        return $this->convert;
+    }
+
+    public function setConvert(?bool $convert): self
+    {
+        $this->convert = $convert;
+
+        return $this;
     }
 }

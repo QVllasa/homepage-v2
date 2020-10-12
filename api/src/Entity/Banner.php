@@ -35,28 +35,53 @@ class Banner
      * @ORM\Column(type="integer")
      * @Groups({"banner_read"})
      */
-    private ?int $id = null;
+    public ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"banner_read"})
      */
-    private ?string $filename = '';
+    public ?string $filename = '';
 
     /**
-     * @Vich\UploadableField(mapping="images", fileNameProperty="filename")
+     * @Vich\UploadableField(mapping="media", fileNameProperty="filename")
      * @Groups({"banner_read"})
      */
-    private ?File $file;
+    public ?File $file;
+
+
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"banner_read"})
      */
-    private ?string $title;
+    public ?string $title;
 
 
-    private DateTime $updatedAt;
+    public DateTime $updatedAt;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"banner_read"})
+     */
+    private ?int $priority;
+
+    /**
+     * @var string|null
+     * @Groups({"banner_read"})
+     */
+    public ?string $contentUrl = '';
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"banner_read"})
+     */
+    private ?string $mimeType;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $convert;
 
     public function __construct()
     {
@@ -81,35 +106,76 @@ class Banner
         return $this;
     }
 
-    public function getPath(): ?string
+    /**
+     * @return File|null
+     */
+    public function getFile(): ?File
     {
-        return $this->path;
+        return $this->file;
     }
 
-    public function setPath(?string $path): self
+    /**
+     * @param File|null $file
+     */
+    public function setFile(?File $file): void
     {
-        $this->path = $path;
+        $this->file = $file;
+        if($file){
+            $updatedAt = new \DateTime();
+        }
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFilename(): ?string
+    {
+        return $this->filename;
+    }
+
+    /**
+     * @param string|null $filename
+     */
+    public function setFilename(?string $filename): void
+    {
+        $this->filename = $filename;
+    }
+
+    public function getPriority(): ?int
+    {
+        return $this->priority;
+    }
+
+    public function setPriority(?int $priority): self
+    {
+        $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPathFile()
+    public function getMimeType(): ?string
     {
-        return $this->pathFile;
+        return $this->mimeType;
     }
 
-    /**
-     * @param mixed $pathFile
-     */
-    public function setPathFile($pathFile): void
+    public function setMimeType(?string $mimeType): self
     {
-        $this->pathFile = $pathFile;
+        $this->mimeType = $mimeType;
 
-        if($pathFile){
-            $updatedAt = new \DateTime();
-        }
+        return $this;
     }
+
+    public function getConvert(): ?bool
+    {
+        return $this->convert;
+    }
+
+    public function setConvert(?bool $convert): self
+    {
+        $this->convert = $convert;
+
+        return $this;
+    }
+
+
 }

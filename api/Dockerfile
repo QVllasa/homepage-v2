@@ -16,6 +16,7 @@ FROM php:${PHP_VERSION}-fpm-alpine AS api_platform_php
 RUN apk add --no-cache \
 		acl \
 		fcgi \
+		ffmpeg \
 		file \
 		gettext \
 		git \
