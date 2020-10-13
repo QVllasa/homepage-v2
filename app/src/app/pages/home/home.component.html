@@ -1,19 +1,13 @@
 <div id="main-content" class="main-content" *ngIf="!isLoading">
     <div class="home-area">
         <div class="main-banner">
-            <owl-carousel-o [options]="customOptions">
-                <ng-container *ngFor="let banner of banners; let i=index">
-                    <ng-template *ngIf="banner.mimeType === 'image/webp'" carouselSlide>
-                        <img class="banner-image" [src]="serverPath+banner.contentUrl" alt="profile_banner"
-                             (error)="errorHandler($event, banner)">
-                    </ng-template>
-                    <ng-template fxHide.lt-lg carouselSlide >
-                        <div>
-                            <app-vjs-player [options]="vjsOptions"></app-vjs-player>
-                        </div>
-                    </ng-template>
-                </ng-container>
-            </owl-carousel-o>
+            <div  [fxHide]="active">
+                <img class="banner-image" [src]="serverPath+banners[0].contentUrl" alt="profile_banner"
+                     (error)="errorHandler($event, banners[0])">
+            </div>
+            <div  [fxHide]="!active">
+                <app-vjs-player [options]="vjsOptionsForest"></app-vjs-player>
+            </div>
         </div>
         <div class="banner-content">
             <span class="sub-title">Hi I'am</span>

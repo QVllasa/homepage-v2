@@ -1,13 +1,13 @@
-import {Component, NgZone, OnInit} from '@angular/core';
+import { Component, ElementRef,  OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Apollo} from "apollo-angular";
-import {Subscription} from "rxjs";
+import {interval, Observable, Subscription} from "rxjs";
 import {
     IAboutMe, IBanner, IClient,
     IExperience,
     IMainPage,
     IProfileImage, IProject, IService,
     ISkill,
-    IStack, ITestimonial,
+    IStack,
     Models
 } from "../../models/models";
 import {
@@ -15,8 +15,8 @@ import {
 } from "../../../static/data";
 import {BASE_PATH} from "../../../environments/environment";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {fadeInUp400ms} from "../../components/animations/fade-in-up.animation";
-import {OwlOptions} from "ngx-owl-carousel-o";
+import {fadeInRight400ms} from "../../components/animations/fade-in-right.animation";
+
 
 
 @Component({
@@ -24,53 +24,28 @@ import {OwlOptions} from "ngx-owl-carousel-o";
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
     animations: [
-        fadeInUp400ms
+        fadeInRight400ms,
+
     ]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy{
 
-    customOptions: OwlOptions = {
-        animateOut: 'fadeOut',
-        items: 1,
-        mouseDrag: false,
-        touchDrag: false,
-        loop: true,
-        autoplay: true,
-        center: true,
-        dots: false,
-        autoHeight: true,
-        lazyLoadEager: 1,
-        autoWidth: true,
-        navSpeed: 100,
-        autoplayTimeout: 10000,
-        responsive: {
-            0: {
-                items: 1,
-                autoplay: false,
-                loop: false,
-            },
-            960: {
-                items: 1,
-            },
-            1000: {
-                items: 1,
-            }
-        }
-    }
+    active: boolean;
 
-    vjsOptions = {
+    vjsOptionsForest = {
         fluid: false,
         loop: true,
         controls: false,
         autoplay: true,
-        sources: [{ src: '/assets/mov/index.m3u8', type: 'application/x-mpegURL'}]
+        sources: [{ src: '/assets/mov/forest/index.m3u8', type: 'application/x-mpegURL'}]
     }
+
+
 
     isLoading: boolean;
     query = Models;
 
     typeWriterText = typeWriterText;
-
     aboutMe: IAboutMe;
     banners: IBanner[];
     profileImages: IProfileImage[] = [];
@@ -83,15 +58,20 @@ export class HomeComponent implements OnInit {
 
     serverPath = BASE_PATH;
 
+    sub: Subscription;
+
     private querySubscription: Subscription;
 
     constructor(private apollo: Apollo,
-                public dialog: MatDialog,
+                public dialog: MatDialog
     ) {
     }
 
     ngOnInit() {
         this.isLoading = true;
+        this.sub = interval(10000).subscribe(x => {
+            this.toggleActive();
+        });
         this.querySubscription = this.apollo.watchQuery<IMainPage>({query: this.query}).valueChanges
             .subscribe(({data, error, loading}) => {
                 this.profileImages = [];
@@ -145,8 +125,11 @@ export class HomeComponent implements OnInit {
                 if (error) {
                     console.log(error);
                 }
-
+                this.active = true;
             });
+
+
+
     }
 
     openDialog() {
@@ -169,6 +152,15 @@ export class HomeComponent implements OnInit {
                 console.log(event.target.src);
             }
         }
+    }
+
+
+    toggleActive(){
+        this.active = !this.active;
+    }
+
+    ngOnDestroy() {
+        this.sub.unsubscribe();
     }
 
 }
