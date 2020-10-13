@@ -39,9 +39,9 @@ export class HomeComponent implements OnInit {
         center: true,
         dots: false,
         autoHeight: true,
-        rewind: true,
+        lazyLoadEager: 1,
         autoWidth: true,
-        navSpeed: 700,
+        navSpeed: 100,
         autoplayTimeout: 10000,
         responsive: {
             0: {
