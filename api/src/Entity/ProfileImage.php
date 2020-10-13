@@ -47,7 +47,7 @@ class ProfileImage
      * @Vich\UploadableField(mapping="media", fileNameProperty="filename")
      * @Groups({"profile_read"})
      */
-    public File $file;
+    public ?File $file = null;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -121,7 +121,7 @@ class ProfileImage
     /**
      * @return File
      */
-    public function getFile(): File
+    public function getFile(): ?File
     {
         return $this->file;
     }

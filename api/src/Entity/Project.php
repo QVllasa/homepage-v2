@@ -78,7 +78,7 @@ class Project
     /**
      * @Vich\UploadableField(mapping="media", fileNameProperty="filename")
      */
-    private File $file;
+    public ?File $file = null;
 
     /**
      * @ORM\Column(type="datetime")

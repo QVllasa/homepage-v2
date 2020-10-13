@@ -47,7 +47,7 @@ class Banner
      * @Vich\UploadableField(mapping="media", fileNameProperty="filename")
      * @Groups({"banner_read"})
      */
-    public ?File $file;
+    public ?File $file = null;
 
 
 

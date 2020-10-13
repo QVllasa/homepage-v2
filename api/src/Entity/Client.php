@@ -59,7 +59,7 @@ class Client
     /**
      * @Vich\UploadableField(mapping="media", fileNameProperty="filename")
      */
-    private File $file;
+    public ?File $file = null;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -164,7 +164,7 @@ class Client
     /**
      * @return File
      */
-    public function getFile(): File
+    public function getFile(): ?File
     {
         return $this->file;
     }
