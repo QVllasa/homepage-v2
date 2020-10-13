@@ -19,31 +19,16 @@ export class AppComponent implements OnInit {
     location: any;
     routerSubscription: any;
 
+    state: boolean;
+
     constructor(private router: Router) {}
 
     ngOnInit(){
-        this.recallJsFuntions();
+    }
 
+    getState(event: boolean){
+        this.state = event;
     }
 
 
-    recallJsFuntions() {
-        this.router.events
-        .subscribe((event) => {
-            if ( event instanceof NavigationStart ) {
-                $('.preloader').fadeIn('slow');
-            }
-        });
-        this.routerSubscription = this.router.events
-        .pipe(filter(event => event instanceof NavigationEnd || event instanceof NavigationCancel))
-        .subscribe(event => {
-            $.getScript('../assets/js/main.js');
-            $('.preloader').fadeOut('slow');
-            this.location = this.router.url;
-            if (!(event instanceof NavigationEnd)) {
-                return;
-            }
-            window.scrollTo(0, 0);
-        });
-    }
 }

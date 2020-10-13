@@ -1,4 +1,4 @@
-<aside id="placid-aside" class="placid-aside bg-0f1d22">
+<aside id="placid-aside" class="placid-aside bg-0f1d22" [ngClass]="state ? 'active-placid-aside' : ''">
     <div class="logo">
         <a routerLink="home">
             <img style="height: 90px" src="../../../assets/img/logo_qv.svg" alt="image">
@@ -8,11 +8,13 @@
     <div class="d-table">
         <div class="d-table-cell">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="home#home">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#stack">Stack</a></li>
-                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                <li class="nav-item" *ngFor="let link of routerLinks">
+                    <a class="nav-link"
+                       routerLinkActive #rla="routerLinkActive"
+                       [routerLinkActiveOptions]="{exact: true}"
+                       [routerLink]="[link.path]"
+                       [fragment]="link.section">
+                    {{link.name}}</a></li>
                 <li class="nav-item" matTooltip="Github"><a class="nav-link" href="https://github.com/QVllasa" target="_blank"><i
                     class="ri-github-line ri-2x"></i></a></li>
             </ul>
@@ -32,9 +34,9 @@
 
     <div class="line"></div>
 
-    <div class="aside-show-hide">
-            <span>
-                <i class="ri-arrow-left-line"></i>
-            </span>
-    </div>
+<!--    <div class="aside-show-hide">-->
+<!--            <span>-->
+<!--                <i class="ri-arrow-left-line"></i>-->
+<!--            </span>-->
+<!--    </div>-->
 </aside>

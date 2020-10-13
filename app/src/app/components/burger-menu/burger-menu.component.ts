@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
     selector: 'app-burger-menu',
@@ -8,12 +8,20 @@ import {Component, OnInit} from '@angular/core';
 export class BurgerMenuComponent implements OnInit {
 
 
+    @Output() sidebar = new EventEmitter<boolean>();
+
+    state: boolean
 
     constructor() {
     }
 
     ngOnInit(): void {
+        this.state = false;
+    }
 
+    toggleVisibility(){
+        this.state = !this.state;
+        this.sidebar.emit(this.state)
     }
 
 

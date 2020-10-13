@@ -1,11 +1,11 @@
 <div id="main-content" class="main-content" *ngIf="!isLoading">
     <div class="home-area">
         <div class="main-banner">
-            <div  [fxHide]="active">
+            <div  fxHide.lt-md="false" [fxHide]="!image">
                 <img class="banner-image" [src]="serverPath+banners[0].contentUrl" alt="profile_banner"
                      (error)="errorHandler($event, banners[0])">
             </div>
-            <div  [fxHide]="!active">
+            <div fxHide.lt-md="true" [fxHide]="!video">
                 <app-vjs-player [options]="vjsOptionsForest"></app-vjs-player>
             </div>
         </div>
@@ -16,14 +16,14 @@
         </div>
     </div>
 
-    <section id="about" class="about-area ptb-120">
+    <section wmAnimate="fadeIn" aos="0.1" speed="fast" id="about" class="about-area ptb-120">
         <app-about-me
             [aboutMe]="aboutMe"
             [skills]="skills"
             [profileImages]="profileImages"
             [experiences]="experiences"></app-about-me>
     </section>
-    <section id="stack" class="pt-120 pb-90 bg-0f1d22">
+    <section wmAnimate="fadeIn" aos="0.1" speed="fast" id="stack" class="pt-120 pb-90 bg-0f1d22">
         <div class="container">
             <div class="section-title">
                 <span class="sub-title">Stack</span>
@@ -41,7 +41,7 @@
             </mat-grid-list>
         </div>
     </section>
-    <section id="services" class="services-area pt-120 pb-120">
+    <section wmAnimate="fadeIn" aos="0.1"  speed="fast" id="services" class="services-area pt-120 pb-120">
         <div class="container">
             <div class="section-title pb-90">
                 <span class="sub-title ">Services</span>
@@ -50,8 +50,7 @@
             <app-service-item [services]="services"></app-service-item>
         </div>
     </section>
-
-    <section id="portfolio" class="works-area pt-120 pb-90 bg-0f1d22">
+    <section wmAnimate="fadeIn" aos speed="fast" id="portfolio" class="works-area pt-120 pb-90 bg-0f1d22">
         <div class="container">
             <div class="section-title">
                 <span class="sub-title">Works</span>
@@ -60,8 +59,7 @@
             <app-project-item [projects]="projects"></app-project-item>
         </div>
     </section>
-
-    <div class="my-clients-area ptb-120">
+    <section wmAnimate="fadeIn" aos speed="fast" class="my-clients-area ptb-120">
         <div class="container">
             <div class="section-title">
                 <span class="sub-title">Experience</span>
@@ -70,14 +68,8 @@
 
             <app-client-item [clients]="clients"></app-client-item>
         </div>
-    </div>
-
-    <!--     <section class="feedback-area">
-             <app-testimonial-item [testimonials]="testimonials"></app-testimonial-item>
-         </section>-->
-
-
-    <section class="hire-me-area bg-0f1d22 ptb-120 bg-0f1d22">
+    </section>
+    <section wmAnimate="fadeIn" aos speed="fast" class="hire-me-area bg-0f1d22 ptb-120 bg-0f1d22">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7 col-md-12">

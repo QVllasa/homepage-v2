@@ -1,6 +1,6 @@
 <!--<app-preloader></app-preloader>-->
 <div class="main-container">
-    <app-burger-menu></app-burger-menu>
-    <app-sidenav></app-sidenav>
+    <app-burger-menu (sidebar)="getState($event)" ></app-burger-menu>
+    <app-sidenav [state]="state" ></app-sidenav>
     <router-outlet></router-outlet>
 </div>

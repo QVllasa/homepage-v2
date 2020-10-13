@@ -1,4 +1,4 @@
-<div  class="responsive-burger-menu" >
+<div  class="responsive-burger-menu" (click)="toggleVisibility()" [ngClass]="state ? 'active' : ''" >
     <span class="top-bar"></span>
     <span class="middle-bar"></span>
     <span class="bottom-bar"></span>

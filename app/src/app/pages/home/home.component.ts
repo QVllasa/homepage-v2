@@ -16,6 +16,8 @@ import {
 import {BASE_PATH} from "../../../environments/environment";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {fadeInRight400ms} from "../../components/animations/fade-in-right.animation";
+import {ViewportScroller} from "@angular/common";
+import {ActivatedRoute} from "@angular/router";
 
 
 
@@ -30,14 +32,15 @@ import {fadeInRight400ms} from "../../components/animations/fade-in-right.animat
 })
 export class HomeComponent implements OnInit, OnDestroy{
 
-    active: boolean;
+    image: boolean;
+    video: boolean;
 
     vjsOptionsForest = {
         fluid: false,
         loop: true,
         controls: false,
         autoplay: true,
-        sources: [{ src: '/assets/mov/forest/index.m3u8', type: 'application/x-mpegURL'}]
+        sources: [{ src: '/assets/video/forest/index.m3u8', type: 'application/x-mpegURL'}]
     }
 
 
@@ -59,17 +62,23 @@ export class HomeComponent implements OnInit, OnDestroy{
     serverPath = BASE_PATH;
 
     sub: Subscription;
+    fragment: string;
 
     private querySubscription: Subscription;
 
     constructor(private apollo: Apollo,
-                public dialog: MatDialog
+                public dialog: MatDialog,
+                public route: ActivatedRoute,
+                private viewportScroller: ViewportScroller
     ) {
     }
 
     ngOnInit() {
+        this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
         this.isLoading = true;
-        this.sub = interval(10000).subscribe(x => {
+        this.video = false;
+        this.image = true;
+        this.sub = interval(5000).subscribe(x => {
             this.toggleActive();
         });
         this.querySubscription = this.apollo.watchQuery<IMainPage>({query: this.query}).valueChanges
@@ -125,11 +134,21 @@ export class HomeComponent implements OnInit, OnDestroy{
                 if (error) {
                     console.log(error);
                 }
-                this.active = true;
+
+
+
             });
 
 
 
+    }
+
+    ngAfterViewChecked(): void {
+        try {
+            if(this.fragment) {
+                document.querySelector('#' + this.fragment).scrollIntoView({behavior: "smooth", block: "start"});
+            }
+        } catch (e) { }
     }
 
     openDialog() {
@@ -156,7 +175,8 @@ export class HomeComponent implements OnInit, OnDestroy{
 
 
     toggleActive(){
-        this.active = !this.active;
+        this.video = !this.video;
+        this.image = !this.image;
     }
 
     ngOnDestroy() {

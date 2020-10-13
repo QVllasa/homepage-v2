@@ -69,8 +69,9 @@ class ServiceSection
 
     /**
      * @Vich\UploadableField(mapping="media", fileNameProperty="filename")
+     * @Groups({"service_section_read", "service_read"})
      */
-    private File $file;
+    private ?File $file = null;
 
     /**
      * @var string|null
@@ -167,7 +168,7 @@ class ServiceSection
     /**
      * @return File
      */
-    public function getFile(): File
+    public function getFile(): ?File
     {
         return $this->file;
     }

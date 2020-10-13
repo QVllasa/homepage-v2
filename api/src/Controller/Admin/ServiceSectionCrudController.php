@@ -29,8 +29,8 @@ class ServiceSectionCrudController extends AbstractCrudController
             TextareaField::new('description'),
             ArrayField::new('keys'),
             AssociationField::new('service'),
-            ImageField::new('image')->setBasePath('/images')->hideOnForm(),
-            ImageField::new('imageFile')->setFormType(VichImageType::class)->hideOnIndex(),
+            ImageField::new('filename')->setBasePath('/media')->hideOnForm(),
+            ImageField::new('file')->setFormType(VichImageType::class)->hideOnIndex(),
         ];
 
 
