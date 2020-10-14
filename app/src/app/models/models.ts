@@ -1,5 +1,6 @@
 import gql from "graphql-tag";
 
+
 export interface IMainPage {
     banners: {
         edges: {

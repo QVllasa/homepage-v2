@@ -15,15 +15,22 @@
             "prefix": "app",
             "architect": {
                 "build": {
-                    "allowedCommonJsDependencies": [
-                        "graphql-tag",
-                        "zen-observable",
-                        "apollo-client",
-                        "video.js",
-                        "apollo-angular"
-                    ],
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
+                        "allowedCommonJsDependencies": [
+                            "graphql-tag",
+                            "mux.js/lib/tools/ts-inspector.js",
+                            "global/document",
+                            "mux.js/lib/tools/mp4-inspector",
+                            "mux.js/lib/mp4/caption-parser",
+                            "mux.js/lib/mp4/probe",
+                            "videojs-vtt.js",
+                            "@babel/runtime/helpers/inherits",
+                            "@babel/runtime/helpers/construct",
+                            "@babel/runtime/helpers/possibleConstructorReturn",
+                            "zen-observable",
+                            "@videojs/xhr"
+                        ],
                         "outputPath": "dist/qv-homepage",
                         "index": "src/index.html",
                         "main": "src/main.ts",

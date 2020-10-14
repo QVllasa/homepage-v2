@@ -18,12 +18,12 @@
 
 
 # https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact
-ARG NODE_VERSION=13
-ARG NGINX_VERSION=1.17
+#ARG NODE_VERSION=13
+#ARG NGINX_VERSION=1.17
 
 
 # "development" stage
-FROM node:${NODE_VERSION}-alpine AS api_platform_app_development
+FROM node:${NODE_VERSION}-alpine AS app_development
 
 WORKDIR /usr/src/app
 
@@ -49,7 +49,7 @@ CMD ["npm", "start"]
 
 # "build" stage
 # depends on the "development" stage above
-FROM api_platform_app_development AS api_platform_app_build
+FROM app_development AS app_build
 
 #ARG ANGULAR_APP_API_ENTRYPOINT
 
