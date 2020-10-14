@@ -1,3 +1,5 @@
+import gql from "graphql-tag";
+
 export interface IMainPage {
     banners: {
         edges: {
@@ -152,7 +154,7 @@ export interface IBanner {
 }
 
 
-import gql from 'graphql-tag';
+
 
 export const Models = gql`
     {
