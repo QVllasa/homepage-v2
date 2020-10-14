@@ -1,10 +1,12 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-export const BASE_PATH = 'https://localhost:8443'
+
 
 export const environment = {
-  production: false
+    production: false,
+    apiUrl: 'https://localhost:8443',
+    graphqlEndpoint: 'https://localhost:8443/graphql'
 };
 
 /*

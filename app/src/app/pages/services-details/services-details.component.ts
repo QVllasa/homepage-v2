@@ -3,11 +3,10 @@ import {Apollo} from "apollo-angular";
 import {IServiceSection, ServiceModel, TService} from "../../models/models";
 import {ActivatedRoute} from "@angular/router";
 import {map, mergeMap} from "rxjs/operators";
-import {BASE_PATH} from "../../../environments/environment";
+import {environment} from "../../../environments/environment";
 import {scaleFadeIn800ms} from "../../components/animations/scale-fade-in.animation";
 import {fadeInLeft800ms} from "../../components/animations/fade-in-left.animation";
 import {fadeInRight800ms} from "../../components/animations/fade-in-right.animation";
-import {scaleInOutAnimation} from "../../components/animations/scale-in-out.animation";
 import {scaleIn400ms} from "../../components/animations/scale-in.animation";
 
 
@@ -26,7 +25,7 @@ export class ServicesDetailsComponent implements OnInit {
 
     service: TService;
     sections: IServiceSection[] = [];
-    serverPath = BASE_PATH;
+    serverPath = environment.apiUrl;
     isLoading: boolean;
     query = ServiceModel;
 

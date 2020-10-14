@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
 import {IAboutMe, IExperience, IProfileImage, ISkill} from "../../models/models";
-import {BASE_PATH} from "../../../environments/environment";
+import {environment} from "../../../environments/environment";
 import {fadeInUp800ms} from "../animations/fade-in-up.animation";
 
 @Component({
@@ -20,7 +20,7 @@ export class AboutMeComponent implements OnInit {
     @Input() profileImages: IProfileImage[];
 
     activeTab: 'top-skills' | 'experience' | 'education';
-    serverPath = BASE_PATH;
+    serverPath = environment.apiUrl;
 
   constructor() { }
 

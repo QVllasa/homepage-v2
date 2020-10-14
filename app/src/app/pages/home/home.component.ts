@@ -13,7 +13,7 @@ import {
 import {
     typeWriterText
 } from "../../../static/data";
-import {BASE_PATH} from "../../../environments/environment";
+import {environment} from "../../../environments/environment";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {fadeInRight400ms} from "../../components/animations/fade-in-right.animation";
 import {ViewportScroller} from "@angular/common";
@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit, OnDestroy{
     services: IService[] = [];
     projects: IProject[] = [];
 
-    serverPath = BASE_PATH;
+    serverPath = environment.apiUrl;
 
     sub: Subscription;
     fragment: string;

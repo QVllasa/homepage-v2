@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IProject, ProjectModel, TProject, TService} from "../../models/models";
-import {BASE_PATH} from "../../../environments/environment";
+import {environment} from "../../../environments/environment";
 import {map, mergeMap} from "rxjs/operators";
 import {Apollo} from "apollo-angular";
 import {ActivatedRoute} from "@angular/router";
@@ -17,7 +17,7 @@ import {scaleFadeIn800ms} from "../../components/animations/scale-fade-in.animat
 export class WorksDetailsComponent implements OnInit {
 
     project: IProject;
-    serverPath = BASE_PATH;
+    serverPath = environment.apiUrl;
     isLoading: boolean;
     query = ProjectModel;
 

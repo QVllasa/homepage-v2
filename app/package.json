@@ -2,6 +2,7 @@
   "name": "qv-homepage",
   "version": "0.0.0",
   "scripts": {
+      "dev": "lite-server",
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0",
     "build": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --prod",
@@ -60,6 +61,7 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "lite-server": "^2.5.4",
     "protractor": "^7.0.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",

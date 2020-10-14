@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'placid-ng'`, () => {
+  it(`should have as title 'qv-homepage'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('placid-ng');
+    expect(app.title).toEqual('qv-homepage');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('placid-ng app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('qv-homepage app is running!');
   });
 });

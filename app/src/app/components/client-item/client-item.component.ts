@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IClient} from "../../models/models";
-import {BASE_PATH} from "../../../environments/environment";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-client-item',
@@ -11,7 +11,7 @@ export class ClientItemComponent implements OnInit {
 
     @Input()clients: IClient[];
 
-    serverPath = BASE_PATH
+    serverPath = environment.apiUrl
 
   constructor() { }
 
