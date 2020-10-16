@@ -45,14 +45,16 @@ services:
         - ${CLIENT_IMAGE:?CLIENT_IMAGE is not set or empty}
     image: ${CLIENT_IMAGE:?CLIENT_IMAGE is not set or empty}
 
-  admin:
+  app:
     # in production, we may want to use a static website hosting service
     # https://facebook.github.io/create-react-app/docs/deployment
     build:
-      context: ../admin
-      target: api_platform_admin_nginx
-      args:
-        - REACT_APP_API_ENTRYPOINT=${REACT_APP_API_ENTRYPOINT:?REACT_APP_API_ENTRYPOINT is not set or empty}
+      context: ../app
+      target: api_platform_app_nginx
+#      args:
+#        - NODE_VERSION=13
+#        - NGINX_VERSION=1.17
+#        - REACT_APP_API_ENTRYPOINT=${REACT_APP_API_ENTRYPOINT:?REACT_APP_API_ENTRYPOINT is not set or empty}
       cache_from:
-        - ${ADMIN_IMAGE:?ADMIN_IMAGE is not set or empty}
-    image: ${ADMIN_IMAGE:?ADMIN_IMAGE is not set or empty}
+        - ${APP_IMAGE:?ADMIN_IMAGE is not set or empty}
+    image: ${APP_IMAGE:?ADMIN_IMAGE is not set or empty}

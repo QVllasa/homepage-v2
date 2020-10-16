@@ -31,7 +31,7 @@
                             "zen-observable",
                             "@videojs/xhr"
                         ],
-                        "outputPath": "dist/qv-homepage",
+                        "outputPath": "dist/",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
