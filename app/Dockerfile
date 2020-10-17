@@ -63,7 +63,7 @@ FROM nginx:${NGINX_VERSION}-alpine AS api_platform_app_nginx
 
 COPY docker/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
 
-WORKDIR /usr/src/app/dist/qv-homepage
+WORKDIR /usr/src/app/dist/
 
 COPY --from=api_platform_app_build /usr/src/app/dist/ ./
 
