@@ -51,10 +51,6 @@ services:
     build:
       context: ../app
       target: api_platform_app_nginx
-#      args:
-#        - NODE_VERSION=13
-#        - NGINX_VERSION=1.17
-#        - REACT_APP_API_ENTRYPOINT=${REACT_APP_API_ENTRYPOINT:?REACT_APP_API_ENTRYPOINT is not set or empty}
       cache_from:
         - ${APP_IMAGE:?ADMIN_IMAGE is not set or empty}
     image: ${APP_IMAGE:?ADMIN_IMAGE is not set or empty}

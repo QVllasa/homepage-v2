@@ -33,8 +33,6 @@ services:
     depends_on:
       - php
         
-
-
   client:
     build:
       context: ./client
