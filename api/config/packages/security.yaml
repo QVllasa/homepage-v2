@@ -8,7 +8,8 @@ security:
         backend_users:
             memory:
                 users:
-                    admin: { password: '$argon2id$v=19$m=65536,t=4,p=1$iKmY1lZBtop3dmYN9/bl4g$Z3dBZLGkmemOAkKcolyEpiBNtTOgqnCvlZwlD7J65vg' , roles: ['ROLE_ADMIN'] }
+                    admin: { password: '$argon2id$v=19$m=65536,t=4,p=1$iKmY1lZBtop3dmYN9/bl4g$Z3dBZLGkmemOAkKcolyEpiBNtTOgqnCvlZwlD7J65vg' , 
+                             roles: ['ROLE_ADMIN'] }
                     
     firewalls:
         dev:

@@ -1,0 +1,112 @@
+version: '3.4'
+
+#x-cache-from:
+#  - &api-cache-from
+#    cache_from:
+#      - ${NGINX_IMAGE:-quay.io/api-platform/nginx}
+#      - ${PHP_IMAGE:-quay.io/api-platform/php}
+
+services:
+  php:
+    container_name: php
+    restart: always
+    build:
+      context: ./api
+      target: api_platform_php
+#      <<: *api-cache-from
+#    image: ${PHP_IMAGE:-quay.io/api-platform/php}
+    healthcheck:
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 30s
+    environment:
+      - APP_DEBUG=${APP_DEBUG:-0}
+      - APP_ENV=${APP_ENV:-prod}
+      - APP_SECRET=${APP_SECRET:?APP_SECRET is not set or empty}
+      - CORS_ALLOW_ORIGIN=${CORS_ALLOW_ORIGIN:?CORS_ALLOW_ORIGIN is not set or empty}
+      - DATABASE_URL=${DATABASE_URL:?DATABASE_URL is not set or empty}
+      - MERCURE_JWT_SECRET=${MERCURE_JWT_SECRET:?MERCURE_JWT_SECRET is not set or empty}
+      - MERCURE_SUBSCRIBE_URL=${MERCURE_SUBSCRIBE_URL:?MERCURE_SUBSCRIBE_URL is not set or empty}
+      - TRUSTED_HOSTS=${TRUSTED_HOSTS:?TRUSTED_HOSTS is not set or empty}
+      - TRUSTED_PROXIES=${TRUSTED_PROXIES:-10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
+    depends_on:
+      - db
+        
+        
+  
+  
+  api:
+    container_name: api
+    build:
+      context: ./api
+      target: api_platform_nginx
+    depends_on:
+      - php
+        
+  cache-proxy:
+    build:
+      context: ./api
+      target: api_platform_varnish
+    depends_on:
+      - api
+    environment:
+      - VIRTUAL_HOST=${API_HOST:?API_HOST is not set or empty}
+    tmpfs:
+      - /usr/local/var/varnish:exec
+
+  db:
+    container_name: postgresql
+    restart: always
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-api}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is not set or empty}
+      - POSTGRES_USER=${POSTGRES_USER:-admin}
+    volumes:
+      - ./api/docker/db/data:/var/lib/postgresql/data:rw
+
+  mercure:
+    container_name: mercure
+    image: dunglas/mercure
+    environment:
+      - ALLOW_ANONYMOUS=${MERCURE_ALLOW_ANONYMOUS:?MERCURE_ALLOW_ANONYMOUS is not set or empty}
+      - CORS_ALLOWED_ORIGINS=${MERCURE_CORS_ALLOWED_ORIGINS:?MERCURE_CORS_ALLOWED_ORIGINS is not set or empty}
+      - JWT_KEY=${MERCURE_JWT_KEY:?MERCURE_JWT_KEY is not set or empty}
+      - VIRTUAL_HOST=${MERCURE_HOST:?MERCURE_HOST is not set or empty}
+
+  client:
+    container_name: client_dev
+    build:
+      context: ./client
+      target: api_platform_client_nginx
+      args:
+        - REACT_APP_API_ENTRYPOINT=${REACT_APP_API_ENTRYPOINT:?REACT_APP_API_ENTRYPOINT is not set or empty}
+    environment:
+      - VIRTUAL_HOST=${CLIENT_HOST:?CLIENT_HOST is not set or empty}
+
+  app:
+    container_name: app
+    build:
+      context: ./app
+      target: api_platform_app_nginx
+    environment:
+      - VIRTUAL_HOST=${APP_HOST:?APP_HOST is not set or empty}
+    expose:
+      - 80
+
+        
+  nginx-proxy:
+    image: jwilder/nginx-proxy:alpine
+    restart: always
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+      - target: 443
+        published: 443
+        protocol: tcp
+    volumes:
+      - ./docker/nginx-proxy/certs:/etc/nginx/certs:ro
+      - ./docker/nginx-proxy/vhost.d:/etc/nginx/vhost.d:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
