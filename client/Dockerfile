@@ -23,7 +23,7 @@ COPY . ./
 
 VOLUME /usr/src/client/node_modules
 
-ENV HTTPS false
+ENV HTTPS true
 
 CMD ["yarn", "start"]
 
@@ -33,6 +33,9 @@ CMD ["yarn", "start"]
 FROM api_platform_client_development AS api_platform_client_build
 
 ARG REACT_APP_API_ENTRYPOINT
+ARG GRAPHQL_ENDPOINT
+ARG APP_ENDPOINT
+ARG ADMIN_ENDPOINT
 
 RUN set -eux; \
 	yarn build

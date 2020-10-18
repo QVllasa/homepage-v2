@@ -152,6 +152,11 @@ services:
         published: 80
         protocol: tcp
 
+
+volumes:
+  db-data: {}
+  dev-certs: {}
+
 #  app:
 #    build:
 #      context: ./app
@@ -160,7 +165,7 @@ services:
 #      - 80
 #    environment:
 #      - "VIRTUAL_HOST=test.domain.com"
-
+#
 #  client:
 #    build:
 #      context: ./client
@@ -185,6 +190,3 @@ services:
 #      - ./docker/nginx-proxy/vhost.d:/etc/nginx/vhost.d:ro
 #      - /var/run/docker.sock:/tmp/docker.sock:ro
 
-volumes:
-  db-data: {}
-  dev-certs: {}

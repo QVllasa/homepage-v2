@@ -1,5 +1,6 @@
 import React from 'react';
 import './welcome.css';
+import {ADMIN_ENDPOINT, APP_ENTRYPOINT, ENTRYPOINT, GRAPHQL_ENTRYPOINT} from "./config/entrypoint";
 
 const Welcome = () => (
     <div className="welcome">
@@ -50,7 +51,7 @@ const Welcome = () => (
                             <Api/>
                         </div>
                         <div className="other__content">
-                            <h3><a href={`https://${document.domain}:447`}>APP</a></h3>
+                            <h3><a href={APP_ENTRYPOINT}>APP</a></h3>
                         </div>
                     </div>
                     <div className="other__bloc">
@@ -58,7 +59,7 @@ const Welcome = () => (
                             <Api/>
                         </div>
                         <div className="other__content">
-                            <h3><a href={`https://${document.domain}:8443/api/graphql/graphql_playground`}>GraphQL</a></h3>
+                            <h3><a href={GRAPHQL_ENTRYPOINT}>GraphQL</a></h3>
                         </div>
                     </div>
                     <div className="other__bloc">
@@ -66,7 +67,7 @@ const Welcome = () => (
                             <Admin/>
                         </div>
                         <div className="other__content">
-                            <h3><a href={`https://${document.domain}:8443`}>API</a></h3>
+                            <h3><a href={ENTRYPOINT}>API</a></h3>
                         </div>
                     </div>
                     <div className="other__bloc">
@@ -74,7 +75,7 @@ const Welcome = () => (
                             <Admin/>
                         </div>
                         <div className="other__content">
-                            <h3><a href={`https://${document.domain}:8443/admin`}>Admin</a></h3>
+                            <h3><a href={'"'+ADMIN_ENDPOINT+'"'}>Admin</a></h3>
                         </div>
                     </div>
                 </div>
