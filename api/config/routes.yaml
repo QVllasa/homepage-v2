@@ -1,3 +1,7 @@
+#index:
+#    path: /
+#    controller: App\Controller\SecurityController::index
+
 api_graphql_entrypoint:
     path: /graphql
     controller: api_platform.graphql.action.entrypoint
