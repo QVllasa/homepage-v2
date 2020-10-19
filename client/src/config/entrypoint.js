@@ -5,3 +5,5 @@ export const GRAPHQL_ENTRYPOINT = process.env.GRAPHQL_ENDPOINT;
 export const APP_ENTRYPOINT = process.env.APP_ENDPOINT;
 
 export const ADMIN_ENDPOINT = process.env.ADMIN_ENDPOINT;
+
+export const API_ENDPOINT = process.env.API_ENDPOINT;

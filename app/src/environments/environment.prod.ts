@@ -1,5 +1,6 @@
-export const environment = {
-    production: true,
-    apiUrl: 'https://localhost:8443',
-    graphqlEndpoint: 'https://localhost:8443/graphql'
-};
+//
+// export const environment = {
+//     production: true,
+//     apiUrl: undefined,
+//     graphqlEndpoint: undefined,
+// };

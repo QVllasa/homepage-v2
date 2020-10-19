@@ -33,11 +33,7 @@ services:
     depends_on:
       - db
         
-        
-  
-  
-  api:
-    container_name: api
+  admin:
     build:
       context: ./api
       target: api_platform_nginx
@@ -49,7 +45,7 @@ services:
       context: ./api
       target: api_platform_varnish
     depends_on:
-      - api
+      - admin
     environment:
       - VIRTUAL_HOST=${API_HOST:?API_HOST is not set or empty}
     tmpfs:

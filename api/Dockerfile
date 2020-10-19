@@ -147,7 +147,7 @@ COPY --from=api_platform_php /srv/api/public ./
 # does not depend on any of the above stages, but placed here to keep everything in one Dockerfile
 FROM varnish:${VARNISH_VERSION} AS api_platform_varnish
 
-ENV BACKEND=api
+ENV BACKEND=admin
 ENV UPSTREAM=php
 
 COPY docker/varnish/conf/default.tmpl /usr/local/etc/varnish/default.tmpl

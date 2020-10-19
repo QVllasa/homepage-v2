@@ -1,6 +1,6 @@
 import React from 'react';
 import './welcome.css';
-import {ADMIN_ENDPOINT, APP_ENTRYPOINT, ENTRYPOINT, GRAPHQL_ENTRYPOINT} from "./config/entrypoint";
+import {ADMIN_ENDPOINT, API_ENDPOINT, APP_ENTRYPOINT, ENTRYPOINT, GRAPHQL_ENTRYPOINT} from "./config/entrypoint";
 
 const Welcome = () => (
     <div className="welcome">
@@ -27,7 +27,7 @@ const Welcome = () => (
             {/*</div>*/}
             <div className="main__content">
                 <h1>
-                    Willkommen in der <strong>API Platform mit MySQL!</strong>
+                    Willkommen in der <strong>API Platform mit PostgreSQL!</strong>
                 </h1>
                 {/*<div className="main__before-starting">*/}
                 {/*    /!*<p>*!/*/}
@@ -51,7 +51,7 @@ const Welcome = () => (
                             <Api/>
                         </div>
                         <div className="other__content">
-                            <h3><a href={APP_ENTRYPOINT}>APP</a></h3>
+                            <h3><a href={`https://${APP_ENTRYPOINT}`}>APP</a></h3>
                         </div>
                     </div>
                     <div className="other__bloc">
@@ -59,7 +59,7 @@ const Welcome = () => (
                             <Api/>
                         </div>
                         <div className="other__content">
-                            <h3><a href={GRAPHQL_ENTRYPOINT}>GraphQL</a></h3>
+                            <h3><a href={`https://${GRAPHQL_ENTRYPOINT}`}>GraphQL</a></h3>
                         </div>
                     </div>
                     <div className="other__bloc">
@@ -67,7 +67,7 @@ const Welcome = () => (
                             <Admin/>
                         </div>
                         <div className="other__content">
-                            <h3><a href={ENTRYPOINT}>API</a></h3>
+                            <h3><a href={`https://${API_ENDPOINT}`}>API</a></h3>
                         </div>
                     </div>
                     <div className="other__bloc">
@@ -75,7 +75,7 @@ const Welcome = () => (
                             <Admin/>
                         </div>
                         <div className="other__content">
-                            <h3><a href={'"'+ADMIN_ENDPOINT+'"'}>Admin</a></h3>
+                            <h3><a href={`https://${ADMIN_ENDPOINT}`}>Admin</a></h3>
                         </div>
                     </div>
                 </div>
