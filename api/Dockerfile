@@ -163,4 +163,5 @@ RUN chmod +x /usr/local/bin/docker-entrypoint
 
 ENTRYPOINT ["docker-entrypoint"]
 
-CMD ["varnishd", "-F", "-f", "/etc/varnish/default.vcl", "-p", "http_resp_hdr_len=65536", "-p", "http_resp_size=98304"]
+CMD ["varnishd", "-F", "-f", "/etc/varnish/default.vcl", "-p", "http_resp_hdr_len=128k", "-p", "http_resp_size=128k", "-p", "http_req_hdr_len=64k", "-p", "workspace_backend=256k", "-p", "workspace_client=256k", "-p", "http_max_hdr=256"]
+#CMD ["varnishd", "-F", "-f", "/etc/varnish/default.vcl", "-p", "http_resp_hdr_len=65536", "-p", "http_resp_size=98304"]
