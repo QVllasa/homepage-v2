@@ -17,7 +17,7 @@ services:
       - TRUSTED_HOSTS=${TRUSTED_HOSTS:?TRUSTED_HOSTS is not set or empty}
       - TRUSTED_PROXIES=${TRUSTED_PROXIES:-10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
 
-  api:
+  admin:
     image: ${NGINX_IMAGE:?NGINX_IMAGE is not set or empty}
     restart: always
     depends_on:
@@ -27,7 +27,7 @@ services:
     image: ${VARNISH_IMAGE:?VARNISH_IMAGE is not set or empty}
     restart: always
     depends_on:
-      - api
+      - admin
     environment:
       - VIRTUAL_HOST=${API_HOST:?API_HOST is not set or empty}
     tmpfs:
@@ -69,6 +69,8 @@ services:
     # https://facebook.github.io/create-react-app/docs/deployment
     image: ${APP_IMAGE:?APP_IMAGE is not set or empty}
     restart: always
+    expose:
+      - 80
     environment:
       - VIRTUAL_HOST=${APP_HOST:?APP_HOST is not set or empty}
 
@@ -83,6 +85,6 @@ services:
         published: 443
         protocol: tcp
     volumes:
-      - ./docker/nginx-proxy/certs:/etc/nginx/certs:ro
+#      - ./docker/nginx-proxy/certs:/etc/nginx/certs:ro
       - ./docker/nginx-proxy/vhost.d:/etc/nginx/vhost.d:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro

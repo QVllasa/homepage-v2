@@ -1,25 +1,25 @@
 version: '3.4'
 
-x-cache-from:
-  - &api-cache-from
-    cache_from:
-      - ${NGINX_IMAGE:?NGINX_IMAGE is not set or empty}
-      - ${PHP_IMAGE:?PHP_IMAGE is not set or empty}
-      - ${VARNISH_IMAGE:?VARNISH_IMAGE is not set or empty}
+#x-cache-from:
+#  - &api-cache-from
+#    cache_from:
+#      - ${NGINX_IMAGE:?NGINX_IMAGE is not set or empty}
+#      - ${PHP_IMAGE:?PHP_IMAGE is not set or empty}
+#      - ${VARNISH_IMAGE:?VARNISH_IMAGE is not set or empty}
 
 services:
   php:
     build:
       context: ../api
       target: api_platform_php
-      <<: *api-cache-from
+#      <<: *api-cache-from
     image: ${PHP_IMAGE:?PHP_IMAGE is not set or empty}
 
-  api:
+  admin:
     build:
       context: ../api
       target: api_platform_nginx
-      <<: *api-cache-from
+#      <<: *api-cache-from
     image: ${NGINX_IMAGE:?NGINX_IMAGE is not set or empty}
     depends_on:
       - php
@@ -28,10 +28,10 @@ services:
     build:
       context: ../api
       target: api_platform_varnish
-      <<: *api-cache-from
+#      <<: *api-cache-from
     image: ${VARNISH_IMAGE:?VARNISH_IMAGE is not set or empty}
     depends_on:
-      - api
+      - admin
 
   client:
     # in production, we may want to use a static website hosting service
@@ -41,8 +41,8 @@ services:
       target: api_platform_client_nginx
       args:
         - REACT_APP_API_ENTRYPOINT=${REACT_APP_API_ENTRYPOINT:?REACT_APP_API_ENTRYPOINT is not set or empty}
-      cache_from:
-        - ${CLIENT_IMAGE:?CLIENT_IMAGE is not set or empty}
+#      cache_from:
+#        - ${CLIENT_IMAGE:?CLIENT_IMAGE is not set or empty}
     image: ${CLIENT_IMAGE:?CLIENT_IMAGE is not set or empty}
 
   app:
@@ -51,6 +51,8 @@ services:
     build:
       context: ../app
       target: api_platform_app_nginx
-      cache_from:
-        - ${APP_IMAGE:?ADMIN_IMAGE is not set or empty}
+#      cache_from:
+#        - ${APP_IMAGE:?ADMIN_IMAGE is not set or empty}
     image: ${APP_IMAGE:?ADMIN_IMAGE is not set or empty}
+    expose:
+      - 80

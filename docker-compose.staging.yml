@@ -8,8 +8,8 @@ version: '3.4'
 
 services:
   php:
-    container_name: php
     restart: always
+    image: ${PHP_IMAGE:?PHP_IMAGE is not set or empty}
     build:
       context: ./api
       target: api_platform_php
@@ -34,6 +34,7 @@ services:
       - db
         
   admin:
+    image: ${NGINX_IMAGE:?NGINX_IMAGE is not set or empty}
     build:
       context: ./api
       target: api_platform_nginx
@@ -41,6 +42,7 @@ services:
       - php
         
   cache-proxy:
+    image: ${VARNISH_IMAGE:?VARNISH_IMAGE is not set or empty}
     build:
       context: ./api
       target: api_platform_varnish
@@ -52,7 +54,6 @@ services:
       - /usr/local/var/varnish:exec
 
   db:
-    container_name: postgresql
     restart: always
     image: postgres:12-alpine
     environment:
@@ -72,7 +73,7 @@ services:
       - VIRTUAL_HOST=${MERCURE_HOST:?MERCURE_HOST is not set or empty}
 
   client:
-    container_name: client_dev
+    image: ${CLIENT_IMAGE:?CLIENT_IMAGE is not set or empty}
     build:
       context: ./client
       target: api_platform_client_nginx
@@ -82,7 +83,7 @@ services:
       - VIRTUAL_HOST=${CLIENT_HOST:?CLIENT_HOST is not set or empty}
 
   app:
-    container_name: app
+    image: ${APP_IMAGE:?APP_IMAGE is not set or empty}
     build:
       context: ./app
       target: api_platform_app_nginx
@@ -103,6 +104,6 @@ services:
         published: 443
         protocol: tcp
     volumes:
-      - ./docker/nginx-proxy/certs:/etc/nginx/certs:ro
+#      - ./docker/nginx-proxy/certs:/etc/nginx/certs:ro
       - ./docker/nginx-proxy/vhost.d:/etc/nginx/vhost.d:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
