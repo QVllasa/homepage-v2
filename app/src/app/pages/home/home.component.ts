@@ -1,6 +1,6 @@
-import { Component, ElementRef,  OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Apollo} from "apollo-angular";
-import {interval, Observable, Subscription} from "rxjs";
+import {BehaviorSubject, interval, Observable, Subscription} from "rxjs";
 import {
     IAboutMe, IBanner, IClient,
     IExperience,
@@ -16,9 +16,9 @@ import {
 import {environment} from "../../../environments/environment";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {fadeInRight400ms} from "../../components/animations/fade-in-right.animation";
+import {ActivatedRoute, Router, Scroll} from "@angular/router";
 import {ViewportScroller} from "@angular/common";
-import {ActivatedRoute} from "@angular/router";
-
+import {filter} from "rxjs/operators";
 
 
 @Component({
@@ -30,7 +30,7 @@ import {ActivatedRoute} from "@angular/router";
 
     ]
 })
-export class HomeComponent implements OnInit, OnDestroy{
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
     image: boolean;
     video: boolean;
@@ -40,9 +40,8 @@ export class HomeComponent implements OnInit, OnDestroy{
         loop: true,
         controls: false,
         autoplay: true,
-        sources: [{ src: '/assets/video/forest/index.m3u8', type: 'application/x-mpegURL'}]
+        sources: [{src: '/assets/video/forest/index.m3u8', type: 'application/x-mpegURL'}]
     }
-
 
 
     isLoading: boolean;
@@ -56,25 +55,27 @@ export class HomeComponent implements OnInit, OnDestroy{
     clients: IClient[] = [];
     stacks: IStack[] = [];
     skills: ISkill[] = [];
-    services: IService[] = [];
+    servicePost: IService[] = [];
     projects: IProject[] = [];
 
     serverPath = environment.apiUrl;
 
     sub: Subscription;
-    fragment: string;
+    fragment = new BehaviorSubject<string>(null);
 
     private querySubscription: Subscription;
 
     constructor(private apollo: Apollo,
                 public dialog: MatDialog,
-                public route: ActivatedRoute,
+                private route: ActivatedRoute,
                 private viewportScroller: ViewportScroller
     ) {
     }
 
     ngOnInit() {
-        this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
+        this.route.fragment.subscribe((fragment: string) => {
+            this.fragment.next(fragment);
+        });
         this.isLoading = true;
         this.video = false;
         this.image = true;
@@ -91,7 +92,7 @@ export class HomeComponent implements OnInit, OnDestroy{
                 this.stacks = [];
                 this.clients = [];
                 this.projects = [];
-                this.services = [];
+                this.servicePost = [];
 
                 for (let profileImage of data.profileImages.edges) {
                     this.profileImages.push(profileImage.node)
@@ -101,7 +102,6 @@ export class HomeComponent implements OnInit, OnDestroy{
                     this.banners.push(banner.node)
                 }
 
-                console.log(this.banners);
 
                 for (let exp of data.experiences.edges) {
                     this.experiences.push(exp.node)
@@ -120,10 +120,10 @@ export class HomeComponent implements OnInit, OnDestroy{
                 }
 
                 for (let service of data.services.edges) {
-                    this.services.push(service.node);
+                    this.servicePost.push(service.node);
                 }
 
-                this.services = this.services.sort((a, b) => a.priority - b.priority);
+                this.servicePost = this.servicePost.sort((a, b) => a.priority - b.priority);
 
                 for (let project of data.projects.edges) {
                     this.projects.push(project.node)
@@ -136,19 +136,21 @@ export class HomeComponent implements OnInit, OnDestroy{
                 }
 
 
-
             });
-
-
-
     }
 
-    ngAfterViewChecked(): void {
-        try {
-            if(this.fragment) {
-                document.querySelector('#' + this.fragment).scrollIntoView({behavior: "smooth", block: "start"});
-            }
-        } catch (e) { }
+
+    ngAfterViewInit(): void {
+        // if (!this.isLoading) {
+            this.fragment.subscribe(f => {
+
+                if (this.fragment) {
+                    this.viewportScroller.scrollToAnchor(f);
+                }
+
+            })
+        // }
+
     }
 
     openDialog() {
@@ -165,18 +167,17 @@ export class HomeComponent implements OnInit, OnDestroy{
     }
 
     errorHandler(event, banner: IBanner) {
-        for (let img of this.banners){
-            if (img.mimeType === 'image/jpeg'){
-                event.target.src = this.serverPath+img.contentUrl;
-                console.log(event.target.src);
+        for (let img of this.banners) {
+            if (img.mimeType === 'image/jpeg') {
+                event.target.src = this.serverPath + img.contentUrl;
             }
         }
     }
 
 
-    toggleActive(){
-        this.video = !this.video;
-        this.image = !this.image;
+    toggleActive() {
+        // this.video = !this.video;
+        // this.image = !this.image;
     }
 
     ngOnDestroy() {

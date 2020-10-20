@@ -10,20 +10,23 @@ import {PrivacyComponent} from "./pages/privacy/privacy.component";
 
 
 const routes: Routes = [
-    {
-        path: '', redirectTo: 'home', pathMatch: 'full'
-    },
     {path: 'home', component: HomeComponent},
     {path: 'services-details/:id', component: ServicesDetailsComponent},
     {path: 'works-details/:id', component: WorksDetailsComponent},
     {path: 'blog-details/:id', component: BlogDetailsComponent},
     {path: 'legal', component: LegalComponent},
     {path: 'privacy', component: PrivacyComponent},
+    {
+        path: '', redirectTo: 'home', pathMatch: 'full'
+    },
     {path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { anchorScrolling: 'enabled', relativeLinkResolution: 'legacy' })],
+    imports: [RouterModule.forRoot(routes, {
+        scrollPositionRestoration: 'enabled', // or 'top'
+        anchorScrolling: 'enabled',
+    })],
     exports: [RouterModule]
 })
 export class AppRoutingModule {

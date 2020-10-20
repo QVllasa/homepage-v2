@@ -58,15 +58,7 @@
                             "node_modules/jquery/dist/jquery.min.js",
                             "node_modules/popper.js/dist/umd/popper.min.js",
                             "node_modules/bootstrap/dist/js/bootstrap.min.js",
-                            "node_modules/owl.carousel/dist/owl.carousel.min.js",
-                            "src/assets/js/ripples.min.js",
-                            "src/assets/js/magnific-popup.min.js",
-                            "src/assets/js/headroom.js",
-                            "src/assets/js/particles.min.js",
-                            "src/assets/js/appear.min.js",
-                            "src/assets/js/odometer.min.js",
-                            "src/assets/js/parallax.min.js",
-                            "src/assets/js/main.js"
+                            "node_modules/owl.carousel/dist/owl.carousel.min.js"
                         ]
                     },
                     "configurations": {

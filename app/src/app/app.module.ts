@@ -36,8 +36,7 @@ import {AboutMeComponent} from "./components/about-me/about-me.component";
 import {BurgerMenuComponent} from "./components/burger-menu/burger-menu.component";
 import {AnimateModule} from "@wizdm/animate";
 import {VjsPlayerComponent} from "./components/vjs-player/vjs-player.component";
-
-
+import {MatIconModule} from "@angular/material/icon";
 
 
 
@@ -84,7 +83,8 @@ import {VjsPlayerComponent} from "./components/vjs-player/vjs-player.component";
         MatDialogModule,
         MatButtonModule,
         CarouselModule,
-        AnimateModule
+        AnimateModule,
+        MatIconModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -10,8 +10,6 @@
             <ul class="navbar-nav">
                 <li class="nav-item" *ngFor="let link of routerLinks">
                     <a class="nav-link"
-                       routerLinkActive #rla="routerLinkActive"
-                       [routerLinkActiveOptions]="{exact: true}"
                        [routerLink]="[link.path]"
                        [fragment]="link.section">
                     {{link.name}}</a></li>
@@ -23,7 +21,6 @@
 
     <div class="aside-footer">
         <a style="cursor: pointer;" (click)="openDialog()" class="default-btn">Contact</a>
-
         <ul class="social">
             <li><a href="#" target="_blank"><i class="ri-facebook-box-line"></i></a></li>
             <li><a href="#" target="_blank"><i class="ri-twitter-line"></i></a></li>

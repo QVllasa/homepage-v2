@@ -10,6 +10,11 @@ $value_six: 1199px;
 $value_seven: 1550px;
 
 
+//.banner-image {
+//    height: 100vh;
+//    margin-top: 0;
+//    object-fit: cover;
+//}
 
 @media only #{$media} and ($feature_max : $value_two) {
 
@@ -39,6 +44,12 @@ $value_seven: 1550px;
             bottom: 60px;
         };
     }
+    .banner-image {
+        height: 100vh;
+        margin-top: 0;
+        object-fit: cover;
+    }
+
     .pt-120 {
         padding: {
             top: 60px;
@@ -206,6 +217,7 @@ $value_seven: 1550px;
         }
     }
     .banner-image {
+        height: 100vh;
         margin-top: 0;
         object-fit: cover;
     }
@@ -408,7 +420,7 @@ $value_seven: 1550px;
         };
         img {
             width: auto;
-            height: 450px;
+            //height: 450px;
         }
     }
     .about-list-tab-2 {
@@ -1338,7 +1350,11 @@ $value_seven: 1550px;
         border: 1px solid rgba(200, 171, 128, 0.5);
     }
 
-
+    .banner-image {
+        height: 100vh;
+        margin-top: 0;
+        object-fit: cover;
+    }
     .main-banner-content {
         h1 {
             margin-bottom: 15px;
@@ -1585,6 +1601,7 @@ $value_seven: 1550px;
         }
     }
     .banner-image {
+        height: 100vh;
         margin-top: 0;
         object-fit: cover;
     }
@@ -1649,7 +1666,7 @@ $value_seven: 1550px;
         };
         img {
             width: auto;
-            height: 450px;
+            //height: 450px;
         }
     }
     .about-list-tab-2 {
@@ -2280,6 +2297,11 @@ $value_seven: 1550px;
             font-size: 72px;
         }
     }
+    .banner-image {
+        height: 100vh;
+        margin-top: 0;
+        object-fit: cover;
+    }
     .hero-content {
         h1 {
             line-height: 1.2;
@@ -2334,7 +2356,7 @@ $value_seven: 1550px;
         };
         img {
             width: auto;
-            height: 450px;
+            //height: 450px;
         }
     }
     .about-style-two {
@@ -2620,7 +2642,7 @@ $value_seven: 1550px;
 
 }
 
-@media only #{$media} and ($feature_min : $value_seven) {
+@media only #{$media} and ($feature_min : $value_seven)  {
 
     body {
         .container {
@@ -2628,6 +2650,12 @@ $value_seven: 1550px;
         }
     }
 
+    .banner-image {
+        height: 100vh;
+        width: 100%;
+        margin-top: 0;
+        object-fit: cover;
+    }
 
 
     .feedback-slides-content {
@@ -2670,3 +2698,5 @@ $value_seven: 1550px;
     }
 
 }
+
+

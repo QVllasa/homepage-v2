@@ -1250,10 +1250,10 @@ Main Banner CSS
 
 .banner-image {
     text-align: center;
-    height: 100vh;
+    //height: 100vh;
     width: auto;
     object-fit: cover;
-    object-position: right;
+    object-position: right top;
 }
 
 .hero-content {
