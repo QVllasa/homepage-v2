@@ -30,6 +30,12 @@ sub vcl_recv {
     set req.hash_always_miss = true;
   }
 
+ if (req.http.X-Forwarded-Proto == "https" ) {
+      set req.http.X-Forwarded-Port = "443";
+  } else {
+      set req.http.X-Forwarded-Port = "80";
+  }
+
   # Remove the "Forwarded" HTTP header if exists (security)
   unset req.http.forwarded;
 
