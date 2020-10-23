@@ -19,6 +19,7 @@ import {fadeInRight400ms} from "../../components/animations/fade-in-right.animat
 import {ActivatedRoute, Router, Scroll} from "@angular/router";
 import {ViewportScroller} from "@angular/common";
 import {filter} from "rxjs/operators";
+import {DomSanitizer} from "@angular/platform-browser";
 
 
 @Component({
@@ -35,13 +36,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     image: boolean;
     video: boolean;
 
-    vjsOptionsForest = {
-        fluid: false,
-        loop: true,
-        controls: false,
-        autoplay: true,
-        sources: [{src: '/assets/video/forest/index.m3u8', type: 'application/x-mpegURL'}]
-    }
+    vjsOptions = [];
 
 
     isLoading: boolean;
@@ -68,7 +63,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     constructor(private apollo: Apollo,
                 public dialog: MatDialog,
                 private route: ActivatedRoute,
-                private viewportScroller: ViewportScroller
+                private viewportScroller: ViewportScroller,
+                private sanitizer: DomSanitizer
     ) {
     }
 
@@ -93,18 +89,35 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.clients = [];
                 this.projects = [];
                 this.servicePost = [];
+                this.vjsOptions = [];
 
                 for (let profileImage of data.profileImages.edges) {
                     this.profileImages.push(profileImage.node)
                 }
 
                 for (let banner of data.banners.edges) {
+                    if (banner.node.mimeType === 'text/plain') {
+                        let url = this.serverPath + banner.node.contentUrl;
+                        this.sanitizer.bypassSecurityTrustResourceUrl(url);
+                        this.vjsOptions.push(
+                            {
+                                fluid: true,
+                                loop: true,
+                                controls: false,
+                                autoplay: true,
+                                sources: [{
+                                    src: url,
+                                    type: 'application/x-mpegURL'
+                                }]
+                            }
+                        )
+                        console.log(this.vjsOptions);
+                    }
                     this.banners.push(banner.node)
                 }
 
-
-                for (let exp of data.experiences.edges) {
-                    this.experiences.push(exp.node)
+                for (let experience of data.experiences.edges) {
+                    this.experiences.push(experience.node)
                 }
 
                 for (let skill of data.skills.edges) {
@@ -112,10 +125,12 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
                 }
 
                 for (let stack of data.stacks.edges) {
+                    this.sanitizer.bypassSecurityTrustResourceUrl(stack.node.url);
                     this.stacks.push(stack.node);
                 }
 
                 for (let company of data.clients.edges) {
+                    this.sanitizer.bypassSecurityTrustUrl(company.node.url);
                     this.clients.push(company.node);
                 }
 
@@ -142,13 +157,13 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
     ngAfterViewInit(): void {
         // if (!this.isLoading) {
-            this.fragment.subscribe(f => {
+        this.fragment.subscribe(f => {
 
-                if (this.fragment) {
-                    this.viewportScroller.scrollToAnchor(f);
-                }
+            if (this.fragment) {
+                this.viewportScroller.scrollToAnchor(f);
+            }
 
-            })
+        })
         // }
 
     }
@@ -176,8 +191,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
 
     toggleActive() {
-        // this.video = !this.video;
-        // this.image = !this.image;
+        this.video = !this.video;
+        this.image = !this.image;
     }
 
     ngOnDestroy() {

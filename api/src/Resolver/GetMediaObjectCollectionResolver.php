@@ -5,15 +5,21 @@ namespace App\Resolver;
 
 
 use ApiPlatform\Core\GraphQl\Resolver\QueryCollectionResolverInterface;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 use Vich\UploaderBundle\Storage\StorageInterface;
+
 
 final class GetMediaObjectCollectionResolver implements QueryCollectionResolverInterface
 {
 
+
     /**
      * @var StorageInterface
      */
-    private $storage;
+    private StorageInterface $storage;
+
 
     public function __construct(StorageInterface $storage)
     {

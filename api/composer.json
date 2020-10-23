@@ -6,7 +6,7 @@
         "ext-ctype": "*",
         "ext-gd": "*",
         "ext-iconv": "*",
-        "aminyazdanpanah/php-ffmpeg-video-streaming": "^1.2",
+        "aminyazdanpanah/php-ffmpeg-video-streaming": "1.2.7",
         "api-platform/core": "^2.5",
         "composer/package-versions-deprecated": "^1.11",
         "doctrine/annotations": "^1.0",
@@ -36,7 +36,8 @@
         "symfony/validator": "5.1.*",
         "symfony/yaml": "5.1.*",
         "vich/uploader-bundle": "^1.15",
-        "webonyx/graphql-php": "^14.3"
+        "webonyx/graphql-php": "^14.3",
+      "ext-json": "*"
     },
     "require-dev": {
         "api-platform/schema-generator": "^2.2",

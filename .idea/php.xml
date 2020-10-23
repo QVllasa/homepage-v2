@@ -26,14 +26,12 @@
       <path value="$PROJECT_DIR$/api/vendor/league/flysystem" />
       <path value="$PROJECT_DIR$/api/vendor/league/html-to-markdown" />
       <path value="$PROJECT_DIR$/api/vendor/nelmio/cors-bundle" />
-      <path value="$PROJECT_DIR$/api/vendor/alchemy/binary-driver" />
       <path value="$PROJECT_DIR$/api/vendor/easyrdf/easyrdf" />
       <path value="$PROJECT_DIR$/api/vendor/imagine/imagine" />
       <path value="$PROJECT_DIR$/api/vendor/laminas/laminas-zendframework-bridge" />
       <path value="$PROJECT_DIR$/api/vendor/laminas/laminas-eventmanager" />
       <path value="$PROJECT_DIR$/api/vendor/laminas/laminas-code" />
       <path value="$PROJECT_DIR$/api/vendor/monolog/monolog" />
-      <path value="$PROJECT_DIR$/api/vendor/neutron/temporary-filesystem" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/framework-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/monolog-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-intl-icu" />
@@ -120,7 +118,6 @@
       <path value="$PROJECT_DIR$/api/vendor/doctrine/doctrine-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/easycorp/easyadmin-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/ocramius/proxy-manager" />
-      <path value="$PROJECT_DIR$/api/vendor/evenement/evenement" />
       <path value="$PROJECT_DIR$/api/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/api/vendor/rosell-dk/webp-convert" />
       <path value="$PROJECT_DIR$/api/vendor/rosell-dk/image-mime-type-guesser" />
@@ -128,7 +125,6 @@
       <path value="$PROJECT_DIR$/api/vendor/guzzlehttp/promises" />
       <path value="$PROJECT_DIR$/api/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/api/vendor/guzzlehttp/guzzle" />
-      <path value="$PROJECT_DIR$/api/vendor/php-ffmpeg/php-ffmpeg" />
       <path value="$PROJECT_DIR$/api/vendor/webimpress/safe-writer" />
       <path value="$PROJECT_DIR$/api/vendor/willdurand/negotiation" />
       <path value="$PROJECT_DIR$/api/vendor/api-platform/core" />
@@ -139,6 +135,10 @@
       <path value="$PROJECT_DIR$/api/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/api/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/api/vendor/aminyazdanpanah/php-ffmpeg-video-streaming" />
+      <path value="$PROJECT_DIR$/api/vendor/alchemy/binary-driver" />
+      <path value="$PROJECT_DIR$/api/vendor/evenement/evenement" />
+      <path value="$PROJECT_DIR$/api/vendor/php-ffmpeg/php-ffmpeg" />
+      <path value="$PROJECT_DIR$/api/vendor/neutron/temporary-filesystem" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />

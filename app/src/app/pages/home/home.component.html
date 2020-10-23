@@ -2,13 +2,17 @@
     <div class="home-area" *ngIf="!isLoading">
         <div class="main-banner">
             <div  fxHide.lt-md="false" [fxHide]="!image">
-                <img class="banner-image" [src]="serverPath+banners[0].contentUrl" alt="profile_banner"
-                     (error)="errorHandler($event, banners[0])">
+                <ng-container *ngIf="banners[0]">
+                    <img wmAnimate="fadeIn" aos="0.1" speed="normal" class="banner-image"  [src]="serverPath+banners[0].contentUrl" alt="profile_banner"
+                         (error)="errorHandler($event, banners[0])">
+                </ng-container>
+                <ng-container *ngIf="!banners[0]">
+                    <div class="bg-0f1d22"></div>
+                </ng-container>
             </div>
-            <div fxHide.lt-md="true" [fxHide]="!video">
-                <app-vjs-player [options]="vjsOptionsForest"></app-vjs-player>
+            <div wmAnimate="fadeIn" aos="0.1" speed="normal" fxHide.lt-md="true" [fxHide]="!video" *ngFor="let vjsOption of vjsOptions">
+                <app-vjs-player  [options]="vjsOption"></app-vjs-player>
             </div>
-
         </div>
         <div class="banner-content">
             <span class="sub-title">Hi I'am</span>
