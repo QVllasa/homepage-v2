@@ -139,6 +139,11 @@
       <path value="$PROJECT_DIR$/api/vendor/evenement/evenement" />
       <path value="$PROJECT_DIR$/api/vendor/php-ffmpeg/php-ffmpeg" />
       <path value="$PROJECT_DIR$/api/vendor/neutron/temporary-filesystem" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/mailer" />
+      <path value="$PROJECT_DIR$/api/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/google-mailer" />
+      <path value="$PROJECT_DIR$/api/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/swiftmailer-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />

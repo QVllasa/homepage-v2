@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -29,6 +30,8 @@ class ProjectCrudController extends AbstractCrudController
         $fields = [
             TextField::new('title'),
             TextareaField::new('description'),
+            TextField::new('previewUrl'),
+            DateField::new('finishedAt'),
             AssociationField::new('category'),
             AssociationField::new('client'),
             ArrayField::new('keys'),

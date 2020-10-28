@@ -37,6 +37,7 @@ import {BurgerMenuComponent} from "./components/burger-menu/burger-menu.componen
 import {AnimateModule} from "@wizdm/animate";
 import {VjsPlayerComponent} from "./components/vjs-player/vjs-player.component";
 import {MatIconModule} from "@angular/material/icon";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -84,7 +85,8 @@ import {MatIconModule} from "@angular/material/icon";
         MatButtonModule,
         CarouselModule,
         AnimateModule,
-        MatIconModule
+        MatIconModule,
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

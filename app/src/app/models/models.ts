@@ -106,6 +106,7 @@ export interface IProject {
     id: string,
     title: string
     description: string,
+    finishedAt: Date,
     keys: string[],
     createdAt: Date,
     category: {
@@ -115,6 +116,7 @@ export interface IProject {
     }
     client: IClient
     contentUrl: string,
+    previewUrl: string,
 }
 
 export interface ICategory {
@@ -232,6 +234,7 @@ export const Models = gql`
                         name
                     }
                     contentUrl
+                    previewUrl
                 }
             }
         }
@@ -294,6 +297,8 @@ export const ProjectModel = gql`
             _id
             title
             description
+            finishedAt
+            keys
             category{
                 edges{
                     node{

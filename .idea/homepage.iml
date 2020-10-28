@@ -29,6 +29,7 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/sql-formatter" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/easycorp/easyadmin-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/easyrdf/easyrdf" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/egulias/email-validator" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/evenement/evenement" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/fig/link-util" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/friendsofphp/php-cs-fixer" />
@@ -65,6 +66,7 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/ralouphie/getallheaders" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/rosell-dk/image-mime-type-guesser" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/rosell-dk/webp-convert" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/asset" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/browser-kit" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/cache" />
@@ -87,11 +89,13 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/flex" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/form" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/framework-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/google-mailer" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/http-client" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/http-client-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/http-foundation" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/http-kernel" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/intl" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/mailer" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/maker-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/mercure" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/mercure-bundle" />
@@ -120,6 +124,7 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/service-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/stopwatch" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/string" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/swiftmailer-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/templating" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/translation" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/translation-contracts" />

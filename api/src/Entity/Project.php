@@ -73,7 +73,7 @@ class Project
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"project_read"})
      */
-    private ?string $filename;
+    private ?string $filename = '';
 
     /**
      * @Vich\UploadableField(mapping="media", fileNameProperty="filename")
@@ -97,6 +97,18 @@ class Project
      * @Groups({"project_read"})
      */
     public $contentUrl;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"project_read"})
+     */
+    private $previewUrl;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"project_read"})
+     */
+    private $finishedAt;
 
     public function __construct()
     {
@@ -235,5 +247,29 @@ class Project
     public function setFilename(?string $filename): void
     {
         $this->filename = $filename;
+    }
+
+    public function getPreviewUrl(): ?string
+    {
+        return $this->previewUrl;
+    }
+
+    public function setPreviewUrl(?string $previewUrl): self
+    {
+        $this->previewUrl = $previewUrl;
+
+        return $this;
+    }
+
+    public function getFinishedAt(): ?\DateTimeInterface
+    {
+        return $this->finishedAt;
+    }
+
+    public function setFinishedAt(?\DateTimeInterface $finishedAt): self
+    {
+        $this->finishedAt = $finishedAt;
+
+        return $this;
     }
 }

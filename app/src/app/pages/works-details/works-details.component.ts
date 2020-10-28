@@ -38,6 +38,7 @@ export class WorksDetailsComponent implements OnInit {
                 }).valueChanges.pipe(
                     map(({data, loading, errors}) => {
                         this.project = data.project;
+                        console.log(data.project);
                         this.isLoading = loading;
                     }));
             })

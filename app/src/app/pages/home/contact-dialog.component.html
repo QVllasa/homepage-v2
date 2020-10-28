@@ -15,31 +15,35 @@
 
             <div class="col-lg-7 col-md-12">
                 <div class="contact-form bg-0f1d22">
-                    <form id="contactForm">
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()" id="contactForm">
                         <div class="row">
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group">
-                                    <input type="text" name="name" id="name" class="form-control"
-                                           placeholder="Enter your name">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group">
-                                    <input type="email" name="email" id="email" class="form-control"
+                                    <input formControlName="email" type="email" name="email" id="email" class="form-control"
+                                           required
                                            placeholder="Enter your email">
+                                    <div class="py-2" style="color: indianred" *ngIf="!form.get('email').valid && form.get('email').touched">No email? But who are you then...<span style="font-size: 22px" >🤔</span> </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group">
-                                            <textarea name="message" class="form-control" id="message" cols="30"
-                                                      rows="5" placeholder="Enter your message"></textarea>
+                                    <input formControlName="subject" type="text" name="subject" id="subject" class="form-control" required
+                                           placeholder="What do you want to talk about?">
+                                    <div class="py-2" style="color: indianred" *ngIf="!form.get('subject').valid && form.get('subject').touched">Please help me categorize your request! <span style="font-size: 22px" >😬</span></div>
                                 </div>
                             </div>
 
                             <div class="col-lg-12 col-md-12">
-                                <button mat-dialog-close type="submit" class="default-btn">Send Message</button>
+                                <div class="form-group">
+                                            <textarea formControlName="content" required name="content" class="form-control" id="content" cols="30"
+                                                      rows="5" placeholder="Tell me what's in your mind."></textarea>
+                                    <div class="py-2" style="color: indianred" *ngIf="!form.get('content').valid && form.get('content').touched">You really have nothing to say? <span style="font-size: 22px" >😔</span></div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12">
+                                <button mat-dialog-close type="submit" [disabled]="!form.valid" class="default-btn">Send Message</button>
                             </div>
                         </div>
                     </form>

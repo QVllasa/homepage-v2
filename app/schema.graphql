@@ -194,8 +194,10 @@ type Project implements Node {
     createdAt: String!
     description: String
     filename: String
+    finishedAt: String
     id: ID!
     keys: Iterable
+    previewUrl: String
     title: String!
 }
 

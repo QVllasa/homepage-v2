@@ -7,6 +7,7 @@ use App\Entity\Banner;
 use App\Entity\Category;
 use App\Entity\Client;
 use App\Entity\Experience;
+use App\Entity\Message;
 use App\Entity\ProfileImage;
 use App\Entity\Project;
 use App\Entity\Service;
@@ -52,6 +53,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Service Sections', 'fa fa-dot-circle', ServiceSection::class);
         yield MenuItem::section('Options');
         yield MenuItem::linkToCrud('Profile Image', 'fa fa-dot-circle', ProfileImage::class);
+        yield MenuItem::linkToCrud('Messages', 'fa fa-dot-circle', Message::class);
         yield MenuItem::linkToCrud('Banners', 'fa fa-dot-circle', Banner::class);
         yield MenuItem::linkToCrud('Categories', 'fa fa-dot-circle', Category::class);
         yield MenuItem::linkToCrud('Clients', 'fa fa-dot-circle', Client::class);

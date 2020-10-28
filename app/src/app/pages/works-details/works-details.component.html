@@ -4,7 +4,6 @@
 <div id="main-content" class="main-content" *ngIf="!isLoading">
 
 
-
     <section class="works-details-area bg-0f1d22 ptb-120">
         <div class="container">
             <div class="row">
@@ -44,12 +43,12 @@
 
                             <div class="single-info-box">
                                 <h4>Category</h4>
-                                <span *ngFor="let cat of project.category.edges" >{{cat.node.title}}</span>
+                                <span *ngFor="let cat of project.category.edges">{{cat.node.title}}</span>
                             </div>
 
                             <div class="single-info-box">
                                 <h4>Date</h4>
-                                <span>{{project.createdAt}}</span>
+                                <span>{{project.finishedAt ? project.finishedAt : 'ongoing'  | date}}</span>
                             </div>
 
                             <div class="single-info-box">

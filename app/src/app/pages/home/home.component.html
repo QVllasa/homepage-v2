@@ -11,7 +11,7 @@
                 </ng-container>
             </div>
             <div wmAnimate="fadeIn" aos="0.1" speed="normal" fxHide.lt-md="true" [fxHide]="!video" *ngFor="let vjsOption of vjsOptions">
-                <app-vjs-player  [options]="vjsOption"></app-vjs-player>
+                <app-vjs-player (ready)="checkVideo($event)" [options]="vjsOption"></app-vjs-player>
             </div>
         </div>
         <div class="banner-content">

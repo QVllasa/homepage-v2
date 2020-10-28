@@ -101,7 +101,7 @@ class ImageToWebPSubscriber implements EventSubscriberInterface
             });
             $video->hls()
                 ->setFormat($format)
-                ->autoGenerateRepresentations()
+                ->autoGenerateRepresentations([1080, 2160])
                 ->save($uploadedFile->getPath() . '/' . $fileName . '.m3u8');
 
 

@@ -20,7 +20,15 @@ import {ActivatedRoute, Router, Scroll} from "@angular/router";
 import {ViewportScroller} from "@angular/common";
 import {filter} from "rxjs/operators";
 import {DomSanitizer} from "@angular/platform-browser";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
+
+interface IMessage{
+    sendFrom: string,
+    subject: string,
+    content: string,
+}
 
 @Component({
     selector: 'app-home',
@@ -53,6 +61,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     servicePost: IService[] = [];
     projects: IProject[] = [];
 
+    onReady: boolean;
+
     serverPath = environment.apiUrl;
 
     sub: Subscription;
@@ -75,7 +85,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
         this.isLoading = true;
         this.video = false;
         this.image = true;
-        this.sub = interval(5000).subscribe(x => {
+        this.sub = interval(7500).subscribe(x => {
             this.toggleActive();
         });
         this.querySubscription = this.apollo.watchQuery<IMainPage>({query: this.query}).valueChanges
@@ -189,10 +199,17 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
         }
     }
 
+    checkVideo(event: boolean){
+        this.onReady = event;
+    }
+
 
     toggleActive() {
-        this.video = !this.video;
-        this.image = !this.image;
+        console.log(this.onReady);
+        if (this.onReady){
+            this.video = !this.video;
+            this.image = !this.image;
+        }
     }
 
     ngOnDestroy() {
@@ -205,9 +222,18 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     selector: 'app-contact-dialog',
     templateUrl: './contact-dialog.component.html'
 })
+
 export class ContactDialogComponent implements OnInit {
 
-    constructor(public dialogRef: MatDialogRef<ContactDialogComponent>) {
+    form = new FormGroup({
+        email: new FormControl('', [Validators.required, Validators.email]),
+        subject: new FormControl('', [Validators.required]),
+        content: new FormControl('', [Validators.required])
+    });
+
+
+    constructor(public dialogRef: MatDialogRef<ContactDialogComponent>,
+                private http: HttpClient) {
     }
 
     ngOnInit() {
@@ -215,6 +241,22 @@ export class ContactDialogComponent implements OnInit {
 
     close() {
         this.dialogRef.close(true);
+    }
+
+    onSubmit(){
+        const message: IMessage = {
+            sendFrom: this.form.get('email').value,
+            subject: this.form.get('subject').value,
+            content: this.form.get('content').value
+        }
+        const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
+        console.log(JSON.stringify(this.form.value));
+        this.http.post<IMessage>(environment.apiUrl + 'messages.json', message, {
+            headers: headers
+        })
+            .subscribe(res => {
+            console.log(res);
+            });
     }
 }
 
