@@ -94,7 +94,8 @@ services:
 
         
   nginx-proxy:
-    image: jwilder/nginx-proxy:alpine
+    build: 
+      context: ./docker-compose-prod/docker/nginx-proxy
     restart: always
     ports:
       - target: 80
