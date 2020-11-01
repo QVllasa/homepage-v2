@@ -58,7 +58,7 @@ class Stack
     /**
      * @Vich\UploadableField(mapping="media", fileNameProperty="filename")
      */
-    private File $file;
+    public File $file;
 
     /**
      * @var string|null
@@ -137,9 +137,9 @@ class Stack
     }
 
     /**
-     * @param string $filename
+     * @param string|null $filename
      */
-    public function setFilename(string $filename): void
+    public function setFilename(?string $filename): void
     {
         $this->filename = $filename;
     }

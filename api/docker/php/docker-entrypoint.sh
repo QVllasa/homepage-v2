@@ -16,6 +16,13 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 	mkdir -p var/cache var/log
 	setfacl -R -m u:www-data:rwX -m u:"$(whoami)":rwX var
 	setfacl -dR -m u:www-data:rwX -m u:"$(whoami)":rwX var
+#	chown www-data:www-data -R /srv/api/public/media
+	chmod -R 777 /srv/api/public/media
+
+#	HTTPDUSER=$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)
+#	setfacl -dR -m u:"$HTTPDUSER":rwX -m u:$(whoami):rwX /srv/api/public/media
+#	setfacl -R -m u:"$HTTPDUSER":rwX -m u:$(whoami):rwX /srv/api/public/media
+
 
 	if [ "$APP_ENV" != 'prod' ] && [ -f /certs/localCA.crt ]; then
 		ln -sf /certs/localCA.crt /usr/local/share/ca-certificates/localCA.crt
@@ -28,9 +35,9 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 
 	echo "Waiting for db to be ready..."
 	ATTEMPTS_LEFT_TO_REACH_DATABASE=60
-	until [ $ATTEMPTS_LEFT_TO_REACH_DATABASE -eq 0 ] || bin/console doctrine:query:sql "SELECT 1" > /dev/null 2>&1; do
+	until [ $ATTEMPTS_LEFT_TO_REACH_DATABASE -eq 0 ] || bin/console doctrine:query:sql "SELECT 1" >/dev/null 2>&1; do
 		sleep 1
-		ATTEMPTS_LEFT_TO_REACH_DATABASE=$((ATTEMPTS_LEFT_TO_REACH_DATABASE-1))
+		ATTEMPTS_LEFT_TO_REACH_DATABASE=$((ATTEMPTS_LEFT_TO_REACH_DATABASE - 1))
 		echo "Still waiting for db to be ready... Or maybe the db is not reachable. $ATTEMPTS_LEFT_TO_REACH_DATABASE attempts left"
 	done
 
@@ -38,10 +45,10 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 		echo "The db is not up or not reachable"
 		exit 1
 	else
-	   echo "The db is now ready and reachable"
+		echo "The db is now ready and reachable"
 	fi
 
-	if ls -A migrations/*.php > /dev/null 2>&1; then
+	if ls -A migrations/*.php >/dev/null 2>&1; then
 		bin/console doctrine:migrations:migrate --no-interaction
 	fi
 fi

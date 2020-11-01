@@ -14,8 +14,10 @@ use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProfileImageCrudController extends AbstractCrudController
 {
+
     public static function getEntityFqcn(): string
     {
+        umask(0000);
         return ProfileImage::class;
     }
 

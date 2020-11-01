@@ -1,4 +1,11 @@
+{% extends 'base.html.twig' %}
 
-From:  {{ from }} <br>
-Subject: {{ subject }} <br>
-Content: {{ content }}
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+   <div>
+       From:  {{ from }} <br>
+       Subject: {{ subject }} <br>
+       Content: {{ content }}
+   </div>
+{% endblock %}

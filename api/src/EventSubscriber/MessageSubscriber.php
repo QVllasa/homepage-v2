@@ -15,6 +15,8 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Twig\Environment;
+use function Symfony\Component\String\s;
+
 
 
 class MessageSubscriber implements EventSubscriberInterface
@@ -52,18 +54,11 @@ class MessageSubscriber implements EventSubscriberInterface
             ->setFrom('qendrimvllasa.homepage@gmail.com')
             ->setTo('qendrim.vllasa@gmail.com')
             ->setBody(
-                $this->templating->render(
-                    'emails/registration.html.twig',
-                    [
-                        'from' => $from,
-                        'subject' => $subject,
-                        'content' => $content
-                    ]
-                ),
-                'text/html'
-            );
+                $from.' <br> '.$subject.'<br>'.$content, 'text/html');
 
         $this->mailer->send($email);
     }
+
+
 
 }

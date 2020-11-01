@@ -1,10 +1,11 @@
 <?php
 
+//umask(0000);
+
 use App\Kernel;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
-
 
 
 require dirname(__DIR__).'/vendor/autoload.php';
@@ -27,6 +28,8 @@ if ($trustedHosts = $_SERVER['TRUSTED_HOSTS'] ?? false) {
 
 #SSL Port
 $_SERVER['SERVER_PORT'] = 443;
+
+
 
 $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
 $request = Request::createFromGlobals();
