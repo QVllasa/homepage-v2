@@ -14,6 +14,8 @@ services:
       target: api_platform_php
       <<: *api-cache-from
     image: ${PHP_IMAGE:?PHP_IMAGE is not set or empty}
+    volumes:
+      - media-volume:/srv/api/public/media:rw
 
   admin:
     build:
@@ -23,6 +25,8 @@ services:
     image: ${NGINX_IMAGE:?NGINX_IMAGE is not set or empty}
     depends_on:
       - php
+    volumes:
+      - media-volume:/srv/api/public/media:rw
 
   cache-proxy:
     build:
@@ -59,3 +63,6 @@ services:
     image: ${APP_IMAGE:?ADMIN_IMAGE is not set or empty}
     expose:
       - 80
+
+volumes:
+  media-volume: {}

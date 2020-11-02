@@ -117,6 +117,7 @@ RUN set -eux; \
 	composer run-script --no-dev post-install-cmd; \
 	chmod +x bin/console; sync
 VOLUME /srv/api/var
+VOLUME /srv/api/public/media
 
 COPY docker/php/docker-healthcheck.sh /usr/local/bin/docker-healthcheck
 RUN chmod +x /usr/local/bin/docker-healthcheck
@@ -133,14 +134,27 @@ CMD ["php-fpm"]
 # "nginx" stage
 # depends on the "php" stage above
 # The OpenResty distribution of NGINX is only needed for Kubernetes compatiblity (dynamic upstream resolution)
-FROM openresty/openresty:${OPENRESTY_VERSION}-alpine AS api_platform_nginx
+#FROM openresty/openresty:${OPENRESTY_VERSION}-alpine AS api_platform_nginx
+#
+#RUN echo -e "env UPSTREAM;\n$(cat /usr/local/openresty/nginx/conf/nginx.conf)" > /usr/local/openresty/nginx/conf/nginx.conf
+#COPY docker/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+#
+#WORKDIR /srv/api/public
+#
+#COPY --from=api_platform_php /srv/api/public ./
 
-RUN echo -e "env UPSTREAM;\n$(cat /usr/local/openresty/nginx/conf/nginx.conf)" > /usr/local/openresty/nginx/conf/nginx.conf
+FROM nginx:${NGINX_VERSION}-alpine AS api_platform_nginx
+
+#RUN echo -e "env UPSTREAM;\n$(cat /usr/local/openresty/nginx/conf/nginx.conf)" > /usr/local/openresty/nginx/conf/nginx.conf
 COPY docker/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
 
 WORKDIR /srv/api/public
+VOLUME /srv/api/public/media
 
 COPY --from=api_platform_php /srv/api/public ./
+
+
+
 
 
 # "varnish" stage

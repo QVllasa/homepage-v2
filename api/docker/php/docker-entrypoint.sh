@@ -16,8 +16,11 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 	mkdir -p var/cache var/log
 	setfacl -R -m u:www-data:rwX -m u:"$(whoami)":rwX var
 	setfacl -dR -m u:www-data:rwX -m u:"$(whoami)":rwX var
+	setfacl -R -m u:www-data:rwX -m u:$(whoami):rwX /srv/api/public/media
+	setfacl -dR -m u:www-data:rwX -m u:$(whoami):rwX /srv/api/public/media
+	echo "Permissions set"
 #	chown www-data:www-data -R /srv/api/public/media
-	chmod -R 777 /srv/api/public/media
+#	chmod -R 777 /srv/api/public/media
 
 #	HTTPDUSER=$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)
 #	setfacl -dR -m u:"$HTTPDUSER":rwX -m u:$(whoami):rwX /srv/api/public/media

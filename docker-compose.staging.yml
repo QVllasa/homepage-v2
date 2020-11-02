@@ -32,6 +32,9 @@ services:
       - TRUSTED_PROXIES=${TRUSTED_PROXIES:-10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
     depends_on:
       - db
+    volumes:
+      - media-volume:/srv/api/public/media:rw
+
         
   admin:
     image: ${NGINX_IMAGE:?NGINX_IMAGE is not set or empty}
@@ -40,7 +43,9 @@ services:
       target: api_platform_nginx
     depends_on:
       - php
-        
+    volumes:
+      - media-volume:/srv/api/public/media:rw
+
   cache-proxy:
     image: ${VARNISH_IMAGE:?VARNISH_IMAGE is not set or empty}
     build:
@@ -56,6 +61,8 @@ services:
   db:
     restart: always
     image: postgres:12-alpine
+#    ports:
+#      - 5432:5432
     environment:
       - POSTGRES_DB=${POSTGRES_DB:-api}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is not set or empty}
@@ -108,3 +115,7 @@ services:
 #      - ./docker/nginx-proxy/certs:/etc/nginx/certs:ro
       - ./docker/nginx-proxy/vhost.d:/etc/nginx/vhost.d:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
+
+
+volumes:
+  media-volume: {}
