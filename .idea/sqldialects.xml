@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$USER_HOME$/Desktop/api_public_about_me.sql" dialect="PostgreSQL" />
     <file url="file://$USER_HOME$/api_localhost-2020_10_16_14_09_35-dump.sql" dialect="PostgreSQL" />
   </component>
 </project>
