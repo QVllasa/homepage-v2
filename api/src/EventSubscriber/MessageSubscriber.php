@@ -51,8 +51,8 @@ class MessageSubscriber implements EventSubscriberInterface
         $from = $message->getSendFrom();
 
         $email = (new Swift_Message($subject))
-            ->setFrom('qendrimvllasa.homepage@gmail.com')
-            ->setTo('qendrim.vllasa@gmail.com')
+            ->setFrom('example@example.com')
+            ->setTo('example@example.com')
             ->setBody(
                 $from.' <br> '.$subject.'<br>'.$content, 'text/html');
 
