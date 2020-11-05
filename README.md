@@ -1,4 +1,4 @@
-#Project Template for Angular & Symfony Api Platform
+# Project Template for Angular & Symfony Api Platform
 This is a ready to use template for projects in which you use angular in frontend and symfony api platform as backend. 
 
 ###Main Stack
